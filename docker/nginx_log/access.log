@@ -1,1 +1,4 @@
 172.18.0.1 - - [10/Dec/2024:10:38:01 +0000] "GET / HTTP/1.1" 500 1120469 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" "-"
+172.18.0.1 - - [10/Dec/2024:10:38:24 +0000] "GET / HTTP/1.1" 200 409 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" "-"
+172.18.0.1 - - [10/Dec/2024:10:40:23 +0000] "GET / HTTP/1.1" 200 418 "http://learning.local/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" "-"
+172.18.0.1 - - [10/Dec/2024:11:09:35 +0000] "GET / HTTP/1.1" 500 1121242 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" "-"
