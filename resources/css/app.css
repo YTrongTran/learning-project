@@ -4,7 +4,7 @@
 
 /* Define class component*/
 .btn-primary {
-    @apply bg-sky-950 text-white px-4 py-2 rounded-full;
+    @apply bg-rose-900 text-white px-4 py-2 rounded-full hover:bg-rose-800 transition-all font-bold;
 }
 .container {
     @apply max-w-7xl m-auto;
