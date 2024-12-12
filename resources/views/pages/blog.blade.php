@@ -1,7 +1,7 @@
 @extends('layouts.main') @section('title', 'Blog') @section('content')
 <div class="">
    
-    <div class="container relative w-full overflow-hidden rounded-3xl bg-white shadow-xl" style="max-height: 600px;">
+    <div class="container relative w-full overflow-hidden rounded-3xl" style="max-height: 600px;">
         <div class="relative aspect-[16/9] w-full">
             <img src="{{ asset('images/banner-blog.png') }}" alt="Students writing during exam" class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-white/50 to-transparent"></div>
@@ -41,8 +41,8 @@
         </div>
     </div>
 
-    <div class="mt6">
-        <nav class="bg-[#1e2f6f] px-4 py-4">
+    <div class="mt-6">
+        <nav class="bg-rose-900 px-4 py-4">
             <div class="container mx-auto flex flex-wrap justify-center gap-4">
                 <a href="#" class="rounded-full bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-gray-100 transition-colors">
                     IELTS
@@ -63,7 +63,7 @@
         </nav>
     </div>
 
-    <div class="bg-[#7dd3fc] p-8">
+    <div class=" bg-[#7dd3fc] p-8">
         <div class="container mx-auto">
             <!-- Grid Container -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -124,7 +124,29 @@
         </div>
     </div>
 
-      <div>
+      <div class="container pt-20">
+        <div class="text-center mb-8"> 
+            <h2 class="text-2xl font-bold text-blue-900">
+              Đăng ký nhận
+              <span class="relative inline-block text-white bg-red-600 px-3 py-1 rounded-3xl">
+                tư vấn ngay
+                <img 
+                  loading="lazy" 
+                  src="https://cdn.vus.edu.vn/webroot/css/images/website/icons/icon_new.svg" 
+                  class="absolute -top-2 -right-2 w-16 h-16" 
+                  alt="Đăng ký nhận tư vấn ngay" 
+                  title="Đăng ký nhận tư vấn ngay"
+                  max-width="65px"
+                >
+              </span>
+            </h2> 
+            <div class="mt-2">
+              <p class="text-sm text-gray-600">
+                Vui lòng để lại thông tin phía dưới để được tư vấn miễn phí.
+              </p>
+            </div> 
+          </div>
+          
         <x-form-contact-component></x-form-contact-component>
     </div>
 </div>
