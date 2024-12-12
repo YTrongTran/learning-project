@@ -1,4 +1,4 @@
-<div class="bg-white border-gray-200 flex">
+<div class="bg-white border-gray-200 border shadow-lg">
     <div class="flex container justify-between items-center">
         <div class="logo"><img src="/logo.avif" alt="" /></div>
         <nav class="">
