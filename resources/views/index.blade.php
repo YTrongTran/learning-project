@@ -1,15 +1,15 @@
 @extends('layouts.main') @section('title', 'Home') @section('content')
 <div class="banner-homepage">
     <div class="container">
-        <div class="flex justify-between mt-20 items-center border-b-4 border-rose-900">
-            <div class="w-3/5 flex flex-col">
-                <h1 class="text-rose-900 font-bold text-5xl mb-4">
+        <div class="flex justify-between lg:mt-20 mt-10 items-center lg:flex-row flex-col">
+            <div class="lg:w-3/5 w-full flex flex-col">
+                <h1 class="text-rose-900 font-bold text-2xl lg:text-5xl mb-4">
                     TRUNG TÂM ANH NGỮ TỰ NHIÊN
                 </h1>
-                <h2 class="text-3xl font-bold text-yellow-600 mb-10">
+                <h2 class="lg:text-3xl text-xl font-bold text-yellow-600 mb-4 lg:mb-10">
                     NATURAL ENGLISH CENTER
                 </h2>
-                <p class="mb-10 text-gray-600">
+                <p class="mb-4 lg:mb-10 text-gray-600 text-sm lg:text-base">
                     NES tự hào là một trong những trung tâm Anh ngữ hàng đầu,
                     chúng tôi chuyên tâm vào việc xây dựng cơ sở hạ tầng giáo
                     dục vững chắc, giúp học viên tiếp cận kiến thức một cách tự
@@ -18,17 +18,18 @@
                     tự tin trong việc sử dụng tiếng Anh, từ việc giao tiếp hàng
                     ngày đến việc áp dụng trong công việc và học tập.
                 </p>
-                <a href="/thi-thu" class="btn-primary w-fit">Thi thử nhận kết quả ngay</a>
+                <a href="/thi-thu" class="btn-primary w-fit"><span class="relative z-10">Thi thử nhận kết quả
+                        ngay</span></a>
             </div>
-            <div>
+            <div class="lg:pl-0 pl-14">
                 <img src="/banner-home.avif" alt="" />
             </div>
         </div>
-
+        <x-filter-component></x-filter-component>
     </div>
-    <div class="bg-rose-50 py-20">
+    <div class="bg-rose-50 py-20 pt-40">
         <div class="container">
-            <h2 class="text-4xl text-rose-900 font-bold text-center mb-10">KHOÁ HỆ THỐNG GIÁO DỤC</h2>
+            <h2 class="lg:text-4xl text-2xl text-rose-900 font-bold text-center mb-10">KHOÁ HỆ THỐNG GIÁO DỤC</h2>
             <div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- JumpStart Card -->
@@ -209,14 +210,15 @@
             </div>
         </div>
     </div>
-    <div class="p-20">
+
+    <div class="lg:p-20 py-10">
         <div class="container">
             <h2 class="text-4xl text-rose-900 font-bold text-center mb-10">BÀI VIẾT</h2>
             </h2>
             <x-blog-components data=""></x-blog-components>
         </div>
     </div>
-    <div class="bg-rose-50 p-20">
+    <div class="bg-rose-50 lg:p-20 px-4 py-10">
         <x-form-contact-component></x-form-contact-component>
     </div>
 </div>
