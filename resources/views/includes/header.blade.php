@@ -27,13 +27,13 @@
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900" href="/thi-thu"
-                        >Chương trình online</a
+                    <a class="hover:text-rose-900" href="/blog"
+                        >Blog</a
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900" href="/blog"
-                        >Blog</a
+                    <a class="hover:text-rose-900" href="/news"
+                        >News</a
                     >
                 </li>
             </ul>

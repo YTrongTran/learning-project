@@ -126,7 +126,7 @@
 
       <div class="container pt-20">
         <div class="text-center mb-8"> 
-            <h2 class="text-2xl font-bold text-blue-900">
+            <h2 class="text-2xl font-bold text-blue-900 uppercase">
               Đăng ký nhận
               <span class="relative inline-block text-white bg-red-600 px-3 py-1 rounded-3xl">
                 tư vấn ngay
