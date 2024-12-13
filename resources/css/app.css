@@ -4,7 +4,7 @@
 
 /* Define class component*/
 .btn-primary {
-    @apply bg-rose-900 text-white px-10 py-3 text-xl rounded-full hover:bg-rose-800 transition-all font-bold;
+    @apply relative flex sm:px-6 sm:py-4 px-4 py-2 rounded-full font-bold text-sm sm:text-base items-center justify-center overflow-hidden bg-rose-900 text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-orange-600 before:duration-500 before:ease-out hover:shadow-orange-600 hover:before:h-56 hover:before:w-[400px];
 }
 .container {
     @apply max-w-[1480px] m-auto px-10;
