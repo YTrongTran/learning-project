@@ -1,4 +1,4 @@
-<div class="bg-rose-950 mt-20">
+<div class="bg-rose-950">
     <div class="container">
         <div class="py-12 mx-auto text-white">
             <h1 class="text-3xl font-bold mb-8 text-center">

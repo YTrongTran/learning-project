@@ -10,7 +10,7 @@
     @apply max-w-[1480px] m-auto px-10;
 }
 
-.-top-2{
+.-top-2 {
     top: -2.4rem;
 }
 .-right-2 {
