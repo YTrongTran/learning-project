@@ -1,4 +1,20 @@
-<div class=" mx-auto max-w-5xl">
+<div class="mx-auto max-w-5xl">
+    <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-blue-900">
+            Đăng ký nhận
+            <span class="relative inline-block text-white bg-red-600 px-3 py-1 rounded-3xl">
+                tư vấn ngay
+                <img loading="lazy" src="https://cdn.vus.edu.vn/webroot/css/images/website/icons/icon_new.svg"
+                    class="absolute -top-2 -right-2 w-16 h-16" alt="Đăng ký nhận tư vấn ngay"
+                    title="Đăng ký nhận tư vấn ngay" max-width="65px">
+            </span>
+        </h2>
+        <div class="mt-2">
+            <p class="text-sm text-gray-600">
+                Vui lòng để lại thông tin phía dưới để được tư vấn miễn phí.
+            </p>
+        </div>
+    </div>
     <div class="grid md:grid-cols-3 gap-6">
         <!-- Form Section -->
         <div class="md:col-span-2">
