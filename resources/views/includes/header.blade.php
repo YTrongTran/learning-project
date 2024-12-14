@@ -29,12 +29,12 @@
                 </li>
                 <li>
                     <a class="hover:text-rose-900" href="/thi-thu"
-                        >Cơ hội việc làm</a
+                        >Chương trình online</a
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900" href="/thi-thu"
-                        >Chương trình online</a
+                    <a class="hover:text-rose-900" href="/news"
+                        >Tin tức</a
                     >
                 </li>
                 <li>
