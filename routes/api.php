@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ZoomController;
+use App\Http\Controllers\MeetingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/create-meeting', [ZoomController::class, 'createMeeting']);
+Route::post('/create-meeting', [MeetingController::class, 'createMeeting']);
 
