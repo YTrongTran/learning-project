@@ -93,3 +93,12 @@ body {
 .-right-2 {
     right: -2.4rem;
 }
+
+/* Swiper news */
+.swiper-pagination-bullet {
+    @apply w-3 h-3 bg-white opacity-50;
+}
+
+.swiper-pagination-bullet-active {
+    @apply opacity-100;
+}

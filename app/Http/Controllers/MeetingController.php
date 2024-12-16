@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MeetingConfirmation;
+use Illuminate\Support\Facades\Log;
 
 class MeetingController extends Controller
 {
@@ -16,8 +19,9 @@ class MeetingController extends Controller
     {
         $validated = $this->validate($request, [
             'title' => 'required',
+            'email' => 'required|email',
             'start_date_time' => 'required|date',
-            'duration_in_minute' => 'required|numeric'
+            'duration_in_minute' => 'required|numeric',
         ]);
 
         try {
@@ -36,6 +40,14 @@ class MeetingController extends Controller
             if ($response->successful()) {
                 $meeting = $response->json();
                 session(['meeting' => $meeting]);
+                
+                // Log::debug('Mail configuration:', config('mail'));
+                try {
+                    Mail::to($validated['email'])->send(new MeetingConfirmation($meeting));
+                } catch (\Exception $e) {
+                    // Log::error('Mail error: ' . $e->getMessage());
+                    return redirect()->back()->with('error', 'Failed to send email. Please check logs for details.');
+                }
 
                 return redirect()->route('meeting.confirm');
             }
