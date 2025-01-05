@@ -6,7 +6,7 @@
 
     <body class="antialiased">
         <header>@include('includes.header')</header>
-        <div id="app" class="min-h-screen">@yield('content')</div>
+        <div id="app">@yield('content')</div>
         <footer>@include('includes.footer')</footer>
     </body>
 </html>
