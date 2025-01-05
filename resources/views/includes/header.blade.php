@@ -19,7 +19,8 @@
                     <!-- Dropdown Menu -->
                     <ul
                         class="hidden absolute -left-[100px] mt-2 bg-white border-t-0 border-gray-300 rounded shadow-lg group-hover:grid grid-cols-2 min-w-[400px]">
-                        <li><a class="block px-4 py-2 hover:bg-gray-100" href="/khoa-hoc/khoa-hoc-thieu-nhi">Tiếng anh thiếu nhi</a></li>
+                        <li><a class="block px-4 py-2 hover:bg-gray-100" href="/khoa-hoc/khoa-hoc-thieu-nhi">Tiếng anh
+                                thiếu nhi</a></li>
                         <li><a class="block px-4 py-2 hover:bg-gray-100" href="/course-2">Tiếng anh giao tiếp</a></li>
                         <li><a class="block px-4 py-2 hover:bg-gray-100" href="/course-3">Khóa học phát âm</a></li>
                     </ul>

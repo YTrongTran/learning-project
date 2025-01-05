@@ -1,10 +1,6 @@
-<div class="bg-rose-950">
-    <div class="container">
-        <div class="py-12 mx-auto text-white">
-            <h1 class="md:text-4xl text-2xl font-bold mb-8 md:text-center text-left ">
-                HỆ THỐNG GIÁO DỤC CHẤT LƯỢNG CHUẨN QUỐC TẾ TẠI VIỆT NAM
-            </h1>
-
+<div class="bg-[#1B1D20]">
+    <div class="w-full custom-container">
+        <div class="mx-auto text-white">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 ">
                 <img src="/logo-white.avif" class="md:w-full w-1/2" alt="NES Logo" />
                 <!-- English Courses -->
