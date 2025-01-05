@@ -134,6 +134,9 @@ body {
 .container {
     @apply max-w-[1480px] m-auto px-10;
 }
+.course-title {
+    @apply font-bold text-4xl text-rose-800 text-center mb-8;
+}
 
 .custom-container {
     @apply max-w-[1440px] m-auto px-4 md:px-[60px] lg:px-[80px] py-8 md:py-[60px] lg:py-[80px];

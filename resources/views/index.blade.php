@@ -12,7 +12,10 @@
                         NATURAL ENGLISH CENTER
                     </h2>
                     <p class="mb-4 lg:mb-10 text-gray-600 text-sm lg:text-base text-center max-w-[918px]">
-                        NES cung cấp cho bạn nhiều khóa học tiếng Anh đa dạng, phù hợp với mọi lứa tuổi & nhu cầu, từ tiếng Anh thiếu nhi dành cho các bé từ 3 đến 15 tuổi với Chứng chỉ Cambridge ba cấp độ Starters, Movers và Flyers đến khóa học ôn luyện IELTS và TOEIC, chuẩn bị hành trang cho bạn sẵn sàng vươn ra thế giới.
+                        NES cung cấp cho bạn nhiều khóa học tiếng Anh đa dạng, phù hợp với mọi lứa tuổi & nhu cầu, từ
+                        tiếng Anh thiếu nhi dành cho các bé từ 3 đến 15 tuổi với Chứng chỉ Cambridge ba cấp độ Starters,
+                        Movers và Flyers đến khóa học ôn luyện IELTS và TOEIC, chuẩn bị hành trang cho bạn sẵn sàng vươn
+                        ra thế giới.
                     </p>
                     <a href="/thi-thu" class="btn-primary w-fit "><span class="relative z-10">Thi thử nhận kết quả
                             ngay</span></a>
@@ -21,7 +24,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="max-w-[1110px] mx-auto bg-white rounded-[32px] shadow-xl p-6">
                 <div class="flex-1 mb-6 lg:mb-0">
                     <div class="sm:flex-row gap-4 items-center justify-between">
@@ -29,15 +32,17 @@
                             Tìm khóa học theo độ tuổi và nhu cầu
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <select class="w-full sm:w-[327px] p-2 rounded-2xl bg-white border border-[#5A5A5A] text-sm md:text-base"
+                            <select
+                                class="w-full sm:w-[327px] p-2 rounded-2xl bg-white border border-[#5A5A5A] text-sm md:text-base"
                                 aria-label="Độ tuổi">
                                 <option value="" disabled selected>Độ tuổi</option>
                                 <option value="6-8">6-8 tuổi</option>
                                 <option value="9-11">9-11 tuổi</option>
                                 <option value="12-15">12-15 tuổi</option>
                             </select>
-    
-                            <select class="w-full sm:w-[327px] p-2 rounded-2xl bg-white border border-[#5A5A5A] text-sm md:text-base"
+
+                            <select
+                                class="w-full sm:w-[327px] p-2 rounded-2xl bg-white border border-[#5A5A5A] text-sm md:text-base"
                                 aria-label="Chương trình học">
                                 <option value="" disabled selected>Chương trình học</option>
                                 <option value="math">Toán học</option>
@@ -49,8 +54,8 @@
                                 Tìm kiếm
                             </button>
                         </div>
-    
-    
+
+
                     </div>
                 </div>
             </div>
@@ -138,7 +143,8 @@
                     <h4 class="text-xl md:text-2xl font-bold mb-4 flex items-center">
                         <span class="text-red-500 mr-2">📢</span> Tiếng Anh Thiếu Nhi
                     </h4>
-                    <p class="text-gray-500 font-medium text-sm md:text-base mb-2 md:mb-4">Chuẩn bị vững vàng cho tương lai của con bạn.</p>
+                    <p class="text-gray-500 font-medium text-sm md:text-base mb-2 md:mb-4">Chuẩn bị vững vàng cho tương
+                        lai của con bạn.</p>
                     <p class="text-gray-500 mb-4 text-sm md:text-base">
                         Chương trình Tiếng Anh cho Trẻ em của chúng tôi khuyến khích sự yêu thích việc học ngôn ngữ, xây
                         dựng nền tảng vững chắc để tâm hồn trẻ trở thành công dân toàn cầu tự tin với đam mê giao tiếp
@@ -151,7 +157,8 @@
                     <h4 class="text-xl md:text-2xl font-bold mb-4 flex items-center">
                         <span class="text-red-500 mr-2">📢</span> Tiếng Anh Giao Tiếp
                     </h4>
-                    <p class="text-gray-500 font-medium text-sm md:text-base mb-2 md:mb-6">Kết Nối, Giao Tiếp, Chinh Phục!</p>
+                    <p class="text-gray-500 font-medium text-sm md:text-base mb-2 md:mb-6">Kết Nối, Giao Tiếp, Chinh
+                        Phục!</p>
                     <p class="text-gray-500 mb-4 text-sm md:text-base">
                         Mở khóa sức mạnh của giao tiếp hiệu quả với khóa học Giao Tiếp Tiếng Anh của chúng tôi. Nâng cao
                         kỹ năng nói Tiếng Anh của bạn, kết nối với người khác và chinh phục mọi cuộc trò chuyện, có thể
@@ -165,7 +172,8 @@
                     <h4 class="text-xl md:text-2xl font-bold mb-4 flex items-center">
                         <span class="text-red-500 mr-2">📢</span> Chứng Chỉ Quốc Tế
                     </h4>
-                    <p class="text-gray-500 font-medium text-sm md:text-base mb-2 md:mb-6">Xuất Sắc Toàn Cầu, Chứng Nhận Địa Phương!</p>
+                    <p class="text-gray-500 font-medium text-sm md:text-base mb-2 md:mb-6">Xuất Sắc Toàn Cầu, Chứng Nhận
+                        Địa Phương!</p>
                     <p class="text-gray-500 mb-4 text-sm md:text-base">
                         Chương trình Chứng Chỉ Quốc Tế của chúng tôi trang bị bạn với khả năng sử dụng ngôn ngữ cần
                         thiết để xuất sắc toàn cầu. Đạt được các chứng chỉ được công nhận, giúp bạn tỏa sáng cả ở cấp
@@ -179,7 +187,8 @@
                     <h4 class="text-xl md:text-2xl font-bold mb-4 flex items-center">
                         <span class="text-red-500 mr-2">📢</span> Tiếng Anh Phổ Thông
                     </h4>
-                    <p class="text-gray-500 font-medium text-sm md:text-base mb-2 md:mb-6">Nâng Tầm Xuất Sắc Ngôn Ngữ trong Học Vụ!</p>
+                    <p class="text-gray-500 font-medium text-sm md:text-base mb-2 md:mb-6">Nâng Tầm Xuất Sắc Ngôn Ngữ
+                        trong Học Vụ!</p>
                     <p class="text-gray-500 mb-4 text-sm md:text-base">
                         Nâng tầm hành trình học tập của bạn với chương trình Tiếng Anh Phổ Thông của chúng tôi. Thiết kế
                         cho học viên ở mọi cấp độ, chúng tôi cung cấp kỹ năng ngôn ngữ toàn diện giúp bạn xuất sắc trong
@@ -271,7 +280,8 @@
                 <div class="bg-white md:col-span-2 md:row-span-2">
                     <img src="/images/Future.png" alt="" class="mb-4 md:mb-6">
                     <p class="text-sm text-[#2E3E5C] mb-2 md:mb-4">Tiếng Anh nâng cao</p>
-                    <h3 class="text-xl md:text-2xl text-black font-medium mb-2">Bỏ túi ngay kiến thức tổng hợp về thì tương lai
+                    <h3 class="text-xl md:text-2xl text-black font-medium mb-2">Bỏ túi ngay kiến thức tổng hợp về thì
+                        tương lai
                         hoàn thành tiếp diễn</h3>
                     <p class="text-gray-400 text-sm mb-4 md:mb-8">
                         Bạn đã bao giờ gặp tình huống mà bạn biết rõ ý mình muốn nói nhưng lại loay hoay không biết dùng
@@ -287,7 +297,8 @@
                 <div class="bg-white">
                     <img src="/images/child.png" alt="" class="mb-2 w-full md:w-auto">
                     <p class="text-sm color-secondary mb-2">Tiếng Anh cùng bé</p>
-                    <h3 class="text-base md:text-lg capitalize color-secondary font-bold mb-4">SmartKids - Lựa chọn số 1 khi nhắc
+                    <h3 class="text-base md:text-lg capitalize color-secondary font-bold mb-4">SmartKids - Lựa chọn số 1
+                        khi nhắc
                         đến chương trình tiếng Anh cho bé</h3>
                     <a href="#" class="color-primary font-medium underline">
                         Tìm hiểu thêm
@@ -296,7 +307,8 @@
                 <div class="bg-white">
                     <img src="/images/aeiou.png" alt="" class="mb-2 w-full md:w-auto">
                     <p class="text-sm color-secondary mb-2">Tiếng Anh cơ bản</p>
-                    <h3 class="text-base md:text-lg capitalize color-secondary font-bold mb-4">Nguyên âm tiếng Anh gồm bao nhiêu âm?
+                    <h3 class="text-base md:text-lg capitalize color-secondary font-bold mb-4">Nguyên âm tiếng Anh gồm
+                        bao nhiêu âm?
                         Phụ âm thì sao?</h3>
                     <a href="#" class="color-primary font-medium underline">
                         Tìm hiểu thêm
@@ -305,7 +317,8 @@
                 <div class="bg-white">
                     <img src="/images/meeting.png" alt="" class="mb-2 w-full md:w-auto">
                     <p class="text-sm color-secondary mb-2">Tiếng Anh cùng bé</p>
-                    <h3 class="text-base md:text-lg color-secondary font-bold mb-4">Trung tâm tiếng Anh cho bé: Trẻ chủ động khám
+                    <h3 class="text-base md:text-lg color-secondary font-bold mb-4">Trung tâm tiếng Anh cho bé: Trẻ chủ
+                        động khám
                         phá ngoại ngữ cùng NES</h3>
                     <a href="#" class="color-primary font-medium underline">
                         Tìm hiểu thêm
@@ -314,7 +327,8 @@
                 <div class="bg-white">
                     <img src="/images/if.png" alt="" class="mb-2 w-full md:w-auto">
                     <p class="text-sm color-secondary mb-2">Tiếng Anh cơ bản</p>
-                    <h3 class="text-base md:text-lg capitalize color-secondary font-bold mb-4">Chinh phục cấu trúc if only: Nắm vững
+                    <h3 class="text-base md:text-lg capitalize color-secondary font-bold mb-4">Chinh phục cấu trúc if
+                        only: Nắm vững
                         công thức và cách sử dụng ...</h3>
                     <a href="#" class="color-primary font-medium underline">
                         Tìm hiểu thêm
@@ -376,76 +390,94 @@
                 <div class="row clearfix">
                     <div
                         class="col-md-6 testimonial-section-col testimonial-section-col-left clearfix p-5 d-flex align-items-center relative">
-                        <img src="/assets/img/nhay.svg" alt="tsukaeru" class="w-auto md:w-16 absolute top-0 left-0 md:left-40 lg:left-52" />
-                        <img src="/assets/img/nhay2.svg" alt="tsukaeru" class="w-auto md:w-16 absolute top-0 right-0 md:right-40 lg:right-52" />
+                        <img src="/assets/img/nhay.svg" alt="tsukaeru"
+                            class="w-auto md:w-16 absolute top-0 left-0 md:left-40 lg:left-52" />
+                        <img src="/assets/img/nhay2.svg" alt="tsukaeru"
+                            class="w-auto md:w-16 absolute top-0 right-0 md:right-40 lg:right-52" />
                         <div class="slider slider-for w-100">
                             <div class="testimonial-section-col-content-holder clearfix p-5">
-                                <p class="text-[#5A5A5A] text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện và phương
+                                <p class="text-[#5A5A5A] text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">
+                                    Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện và phương
                                     pháp giảng dạy hợp lý. Tôi đã cảm thấy tiến bộ lớn trong việc giao tiếp.</p>
                             </div>
                             <div class="testimonial-section-col-content-holder clearfix p-5">
-                                <p class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
+                                <p
+                                    class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">
+                                    Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
                                     và phương pháp giảng dạy hợp lý. Tôi đã cảm thấy tiến bộ lớn trong việc giao tiếp 2.
                                 </p>
                             </div>
                             <div class="testimonial-section-col-content-holder clearfix p-5">
-                                <p class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
+                                <p
+                                    class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">
+                                    Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
                                     và phương pháp giảng dạy hợp lý. Tôi đã cảm thấy tiến bộ lớn trong việc giao tiếp 3.
                                 </p>
                             </div>
                             <div class="testimonial-section-col-content-holder clearfix p-5">
-                                <p class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
+                                <p
+                                    class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">
+                                    Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
                                     và phương pháp giảng dạy hợp lý. Tôi đã cảm thấy tiến bộ lớn trong việc giao tiếp 4.
                                 </p>
                             </div>
                             <div class="testimonial-section-col-content-holder clearfix p-5">
-                                <p class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
+                                <p
+                                    class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">
+                                    Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
                                     và phương pháp giảng dạy hợp lý. Tôi đã cảm thấy tiến bộ lớn trong việc giao tiếp 5.
                                 </p>
                             </div>
                             <div class="testimonial-section-col-content-holder clearfix p-5">
-                                <p class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
+                                <p
+                                    class="text-[#5A5A5A] text-hite text-center text-base mx-auto max-w-[620px] lg:max-w-[620px]">
+                                    Trung tâm tiếng Anh này rất tốt, giáo viên thân thiện
                                     và phương pháp giảng dạy hợp lý. Tôi đã cảm thấy tiến bộ lớn trong việc giao tiếp 6.
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="col-md-6 testimonial-section-col testimonial-section-col-right clearfix bg-orange-1">
+                    <div class="col-md-6 testimonial-section-col testimonial-section-col-right clearfix bg-orange-1">
                         <div class="slider slider-nav m-0">
                             <div class="testimonial-section-col-logo-holder clearfix text-center">
                                 <img src="/assets/img/avt1.svg" alt="tsukaeru" class="w-16 mx-auto" />
-                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị Hương</p>
+                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị
+                                    Hương</p>
                                 <p class="text-sm md:text-xl color-secondary font-medium hidden">Sinh Viên</p>
 
                             </div>
                             <div class="testimonial-section-col-logo-holder clearfix text-center">
                                 <img src="/assets/img/avt2.svg" alt="tsukaeru" class="w-16 mx-auto" />
-                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị Hương</p>
+                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị
+                                    Hương</p>
                                 <p class="text-sm md:text-xl color-secondary font-medium hidden">Sinh Viên</p>
 
                             </div>
                             <div class="testimonial-section-col-logo-holder clearfix text-center">
                                 <img src="/assets/img/avt3.svg" alt="tsukaeru" class="w-16 mx-auto" />
-                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị Hương</p>
+                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị
+                                    Hương</p>
                                 <p class="text-sm md:text-xl color-secondary font-medium hidden">Sinh Viên</p>
 
                             </div>
                             <div class="testimonial-section-col-logo-holder clearfix text-center">
                                 <img src="/assets/img/avt4.svg" alt="tsukaeru" class="w-16 mx-auto" />
-                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị Hương</p>
+                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị
+                                    Hương</p>
                                 <p class="text-sm md:text-xl color-secondary font-medium hidden">Sinh Viên</p>
 
                             </div>
                             <div class="testimonial-section-col-logo-holder clearfix text-center">
                                 <img src="/assets/img/avt1.svg" alt="tsukaeru" class="w-16 mx-auto" />
-                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị Hương</p>
+                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị
+                                    Hương</p>
                                 <p class="text-sm md:text-xl color-secondary font-medium hidden">Sinh Viên</p>
 
                             </div>
                             <div class="testimonial-section-col-logo-holder clearfix text-center">
                                 <img src="/assets/img/avt5.svg" alt="tsukaeru" class="w-16 mx-auto" />
-                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị Hương</p>
+                                <p class="textbase md:text-2xl capitalize text-[#06052E] font-bold hidden">Nguyễn Thị
+                                    Hương</p>
                                 <p class="text-sm md:text-xl color-secondary font-medium hidden">Sinh Viên</p>
 
                             </div>
@@ -461,7 +493,7 @@
     </div>
 
     <div class="bg-[#F9FAFC]">
-        <div class="w-full custom-container padding-bottom-none" >
+        <div class="w-full custom-container padding-bottom-none">
             <x-form-contact-component></x-form-contact-component>
         </div>
     </div>
