@@ -86,7 +86,9 @@ body {
 .container {
     @apply max-w-[1480px] m-auto px-10;
 }
-
+.course-title {
+    @apply font-bold text-3xl text-rose-800 text-center mb-10;
+}
 .-top-2 {
     top: -2.4rem;
 }
