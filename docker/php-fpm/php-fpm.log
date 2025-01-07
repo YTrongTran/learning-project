@@ -4,6 +4,32 @@
 [11-Dec-2024 06:15:45] NOTICE: fpm is running, pid 15
 [11-Dec-2024 06:15:45] NOTICE: ready to handle connections
 [11-Dec-2024 06:15:45] NOTICE: systemd monitor interval set to 10000ms
+<<<<<<< HEAD
 [11-Dec-2024 11:43:33] NOTICE: fpm is running, pid 16
 [11-Dec-2024 11:43:33] NOTICE: ready to handle connections
 [11-Dec-2024 11:43:33] NOTICE: systemd monitor interval set to 10000ms
+=======
+[16-Dec-2024 15:13:52] NOTICE: fpm is running, pid 15
+[16-Dec-2024 15:13:52] NOTICE: ready to handle connections
+[16-Dec-2024 15:13:52] NOTICE: systemd monitor interval set to 10000ms
+[16-Dec-2024 16:02:57] WARNING: [pool www] child 29 said into stderr: "The environment file is invalid!"
+[16-Dec-2024 16:02:57] WARNING: [pool www] child 29 said into stderr: "Failed to parse dotenv file. Encountered unexpected whitespace at [ncii tito onfh vgyy]."
+[16-Dec-2024 16:03:22] WARNING: [pool www] child 30 said into stderr: "The environment file is invalid!"
+[16-Dec-2024 16:03:22] WARNING: [pool www] child 30 said into stderr: "Failed to parse dotenv file. Encountered unexpected whitespace at [ncii tito onfh vgyy]."
+[16-Dec-2024 16:04:42] WARNING: [pool www] child 31 said into stderr: "The environment file is invalid!"
+[16-Dec-2024 16:04:42] WARNING: [pool www] child 31 said into stderr: "Failed to parse dotenv file. Encountered unexpected whitespace at [ncii tito onfh vgyy]."
+[16-Dec-2024 16:06:03] WARNING: [pool www] child 29 said into stderr: "The environment file is invalid!"
+[16-Dec-2024 16:06:03] WARNING: [pool www] child 29 said into stderr: "Failed to parse dotenv file. Encountered unexpected whitespace at [ncii tito onfh vgyy]."
+[02-Jan-2025 12:10:33] NOTICE: fpm is running, pid 16
+[02-Jan-2025 12:10:33] NOTICE: ready to handle connections
+[02-Jan-2025 12:10:33] NOTICE: systemd monitor interval set to 10000ms
+[03-Jan-2025 03:31:15] NOTICE: fpm is running, pid 15
+[03-Jan-2025 03:31:15] NOTICE: ready to handle connections
+[03-Jan-2025 03:31:15] NOTICE: systemd monitor interval set to 10000ms
+[03-Jan-2025 13:08:24] NOTICE: fpm is running, pid 15
+[03-Jan-2025 13:08:24] NOTICE: ready to handle connections
+[03-Jan-2025 13:08:24] NOTICE: systemd monitor interval set to 10000ms
+[04-Jan-2025 01:13:25] NOTICE: fpm is running, pid 15
+[04-Jan-2025 01:13:25] NOTICE: ready to handle connections
+[04-Jan-2025 01:13:25] NOTICE: systemd monitor interval set to 10000ms
+>>>>>>> eb9d154b9c60302fc578af47ce5331ef75dda2ac

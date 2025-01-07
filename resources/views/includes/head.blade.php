@@ -9,5 +9,10 @@
     href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap"
     rel="stylesheet"
 />
+
+<link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet"/>
+<link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css" rel="stylesheet"/>
+
+
 <script src="/assets/js/jquery.js"></script>
 @vite('resources/css/app.css')

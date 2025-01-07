@@ -1,13 +1,13 @@
 @extends('layouts.main') @section('title', 'Blog') @section('content')
 <div class="">
-    <div class="container relative w-full overflow-hidden rounded-3xl" style="max-height: 600px;">
+    <div class="relative w-full overflow-hidden rounded-3xl" style="max-height: 600px;">
         <div class="relative aspect-[16/9] w-full">
             <img src="{{ asset('images/banner-blog.png') }}" alt="Students writing during exam"
                 class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-r from-white/50 to-transparent"></div>
 
             <!-- Content Container -->
-            <div class="absolute inset-0 flex items-center">
+            <div class="container absolute inset-0 flex items-center">
                 <div class="relative ml-8 max-w-xl rounded-[2rem] bg-white p-8 shadow-lg">
                     <!-- Title -->
                     <h2 class="mb-4 text-2xl font-bold text-[#1a237e]">
@@ -150,7 +150,7 @@
         </div>
     </div>
 
-    <div class="container py-20">
+    <div class="bg-rose-50 lg:p-20 px-4 py-10">
         <x-form-contact-component></x-form-contact-component>
     </div>
 </div>
