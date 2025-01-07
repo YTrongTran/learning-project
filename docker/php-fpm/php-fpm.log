@@ -4,11 +4,6 @@
 [11-Dec-2024 06:15:45] NOTICE: fpm is running, pid 15
 [11-Dec-2024 06:15:45] NOTICE: ready to handle connections
 [11-Dec-2024 06:15:45] NOTICE: systemd monitor interval set to 10000ms
-<<<<<<< HEAD
-[11-Dec-2024 11:43:33] NOTICE: fpm is running, pid 16
-[11-Dec-2024 11:43:33] NOTICE: ready to handle connections
-[11-Dec-2024 11:43:33] NOTICE: systemd monitor interval set to 10000ms
-=======
 [16-Dec-2024 15:13:52] NOTICE: fpm is running, pid 15
 [16-Dec-2024 15:13:52] NOTICE: ready to handle connections
 [16-Dec-2024 15:13:52] NOTICE: systemd monitor interval set to 10000ms
@@ -32,4 +27,3 @@
 [04-Jan-2025 01:13:25] NOTICE: fpm is running, pid 15
 [04-Jan-2025 01:13:25] NOTICE: ready to handle connections
 [04-Jan-2025 01:13:25] NOTICE: systemd monitor interval set to 10000ms
->>>>>>> eb9d154b9c60302fc578af47ce5331ef75dda2ac
