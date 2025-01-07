@@ -34,6 +34,26 @@
 2024/12/11 06:15:44 [notice] 16#16: start worker process 26
 2024/12/11 06:15:44 [notice] 16#16: start worker process 27
 2024/12/11 06:15:44 [notice] 16#16: start worker process 28
+<<<<<<< HEAD
+2024/12/11 11:43:33 [notice] 17#17: using the "epoll" event method
+2024/12/11 11:43:33 [notice] 17#17: nginx/1.21.6
+2024/12/11 11:43:33 [notice] 17#17: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2024/12/11 11:43:33 [notice] 17#17: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2024/12/11 11:43:33 [notice] 17#17: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2024/12/11 11:43:33 [notice] 17#17: start worker processes
+2024/12/11 11:43:33 [notice] 17#17: start worker process 18
+2024/12/11 11:43:33 [notice] 17#17: start worker process 19
+2024/12/11 11:43:33 [notice] 17#17: start worker process 20
+2024/12/11 11:43:33 [notice] 17#17: start worker process 21
+2024/12/11 11:43:33 [notice] 17#17: start worker process 22
+2024/12/11 11:43:33 [notice] 17#17: start worker process 23
+2024/12/11 11:43:33 [notice] 17#17: start worker process 24
+2024/12/11 11:43:33 [notice] 17#17: start worker process 25
+2024/12/11 11:43:33 [notice] 17#17: start worker process 26
+2024/12/11 11:43:33 [notice] 17#17: start worker process 27
+2024/12/11 11:43:33 [notice] 17#17: start worker process 28
+2024/12/11 11:43:33 [notice] 17#17: start worker process 29
+=======
 2024/12/16 15:13:52 [notice] 16#16: using the "epoll" event method
 2024/12/16 15:13:52 [notice] 16#16: nginx/1.21.6
 2024/12/16 15:13:52 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
@@ -773,3 +793,4 @@
 2025/01/04 05:50:47 [error] 20#20: *125 open() "/var/www/html/public/slick/slick.css" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /slick/slick.css HTTP/1.1", host: "learning.local", referrer: "http://learning.local/"
 2025/01/04 05:50:47 [error] 19#19: *123 open() "/var/www/html/public/slick/slick-theme.css" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /slick/slick-theme.css HTTP/1.1", host: "learning.local", referrer: "http://learning.local/"
 2025/01/04 05:50:47 [error] 19#19: *123 open() "/var/www/html/public/slick/slick.min.js" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /slick/slick.min.js HTTP/1.1", host: "learning.local", referrer: "http://learning.local/"
+>>>>>>> eb9d154b9c60302fc578af47ce5331ef75dda2ac

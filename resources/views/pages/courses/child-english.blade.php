@@ -194,7 +194,7 @@
                     </span>
                     ​Đạt nhiều kết quả cao</li>
             </ul>
-            <img src="{{ asset('/images/Thiết kế chưa có tên (2).avif') }}" class="" alt="">
+            <img src="{{ asset('/images/Thiết kế chưa có tên (2).avif') }}" class="s" alt="">
         </div>
     </div>
 </div>
