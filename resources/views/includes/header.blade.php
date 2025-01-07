@@ -2,7 +2,7 @@
     <div class="flex container justify-between items-center">
         <div class="logo">
             <a href="/">
-                <img src="/logo.avif" alt="Logo" />
+                <img src="/assets/img/logoheader.png" class="w-full" alt="Logo" />
             </a>
         </div>
         <button class="menu-toggle lg:hidden" aria-label="Toggle Menu">
@@ -12,40 +12,40 @@
             </svg>
         </button>
         <nav class="hidden lg:flex">
-            <ul class="flex gap-6 text-base font-bold transition-all">
-                <li><a class="hover:text-rose-900" href="/">Trang chủ</a></li>
+            <ul class="flex lg:gap-4 xl:gap-6 text-base font-bold transition-all">
+                <li><a class="hover:text-rose-900 text-gray-500 font-semibold" href="/">Trang chủ</a></li>
                 <li>
-                    <a class="hover:text-rose-900" href="/thi-thu"
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
                         >Các khóa học</a
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900" href="/thi-thu"
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
                         >Chúng tôi là ai</a
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900" href="/thi-thu">Đối tác</a>
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu">Đối tác</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900" href="/thi-thu"
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
                         >Chương trình online</a
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900" href="/news"
-                        >Tin tức</a
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/news"
+                        >Cơ hội việc làm</a
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900" href="/blog"
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/blog"
                         >Blog</a
                     >
                 </li>
             </ul>
         </nav>
         <div class="hidden lg:flex">
-            <button class="btn-primary"><span class="relative z-10">Đăng ký ngay</span></button>
+            <button class="btn-primary"><span class="relative z-10">Liên hệ ngay</span></button>
         </div>
     </div>
     <div class="overlay hidden"></div>

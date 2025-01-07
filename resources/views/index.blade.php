@@ -16,8 +16,8 @@
                     </p>
                     <a href="/thi-thu" class="btn-primary w-fit "><span class="relative z-10">Thi thử nhận kết quả
                             ngay</span></a>
-                    <div class="pl-0">
-                        <img src="/images/img-home.png" alt="" />
+                    <div class="flex items-end pl-0 h-[284px] lg:h-[552px]">
+                        <img src="/images/img-home.png" id="child-home" class="" alt="" />
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="bg-[#F9FAFC]">
+    <div class="bg-section">
         <div class="w-full custom-container">
             <div class="flex flex-wrap items-center gap-16">
                 <div class="w-full md:w-5/12 flex justify-center">
@@ -193,7 +193,7 @@
         </div>
     </div>
 
-    <div class="bg-[#F9FAFC]">
+    <div class="bg-section">
         <div class="w-full custom-container">
 
             <div class="flex flex-wrap md:flex-nowrap items-center gap-6 flex-col-reverse md:flex-row">
@@ -330,7 +330,7 @@
         </div>
     </div>
 
-    <div class="bg-[#F9FAFC]">
+    <div class="bg-section">
         <div class="w-full custom-container">
 
             <div class="text-center mb-8 md:mb-12">
@@ -460,7 +460,7 @@
         </div>
     </div>
 
-    <div class="bg-[#F9FAFC]">
+    <div class="bg-section">
         <div class="w-full custom-container padding-bottom-none" >
             <x-form-contact-component></x-form-contact-component>
         </div>

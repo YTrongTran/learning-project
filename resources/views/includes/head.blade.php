@@ -15,4 +15,5 @@
 
 
 <script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/handle.js"></script>
 @vite('resources/css/app.css')

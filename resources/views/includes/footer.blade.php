@@ -1,67 +1,49 @@
 <div class="bg-[#1B1D20]">
     <div class="w-full custom-container">
         <div class="mx-auto text-white">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 ">
-                <img src="/logo-white.avif" class="md:w-full w-1/2" alt="NES Logo" />
-                <!-- English Courses -->
-                <div>
-                    <h2 class="text-xl font-bold mb-4">KHOÁ HỌC TIẾNG ANH</h2>
+            <div class="grid grid-cols-custom gap-4 md:gap-8 lg:gap-32 lg:px-20">
+                <!-- Logo and Social Media -->
+                <div class="mx-auto">
+                    <img src="/assets/img/logox3.png" class="w-32 md:w-40 mb-4" alt="NES Logo" />
+                    <div class="flex space-x-4 justify-center">
+                        <img src="/assets/img/insta.png" class="w-6 md:w-[30px]" alt="Instagram" />
+                        <img src="/assets/img/twitter.png" class="w-6 md:w-[30px]" alt="Twitter" />
+                        <img src="/assets/img/fb.png" class="w-6 md:w-[30px]" alt="Facebook" />
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="md:w-[352] text-center md:text-left">
+                    <h2 class="text-lg md:text-2xl mb-4 md:mb-6">Adress</h2>
                     <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            Tiếng Anh Mẫu Giáo (4-6 tuổi)
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            Tiếng Anh Thiếu Nhi (6-11 tuổi)
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            Tiếng Anh Trung Học (11-15 tuổi)
-                        </li>
-                        <!-- Add other courses here -->
+                        <li class="text-sm md:text-base">5G - 5H - 5I Huynh Van Nghe, Phu Loi, Binh Duong</li>
+                        <li class="text-sm md:text-base">3K1 - 4K1 Nguyen Thai Hoc, P.7, Vung Tau</li>
+                        <li class="text-sm md:text-base">498-500 duong 30/4, P. Rach Dua, Vung Tau</li>
                     </ul>
                 </div>
 
-                <!-- NES Information -->
-                <div>
-                    <h2 class="text-xl font-bold mb-4">ANH VĂN HỘI VIỆT MỸ</h2>
+                <!-- Contact -->
+                <div class="text-center md:text-left">
+                    <h2 class="text-lg md:text-2xl mb-4 md:mb-6">Call Us</h2>
                     <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            Giới Thiệu NES
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            Trung Tâm NES
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            Giáo Viên NES
-                        </li>
-                        <!-- Add other information items here -->
+                        <li class="text-sm md:text-base">0274 3878 576</li>
+                        <li class="text-sm md:text-base">0254 3 616 159</li>
+                        <li class="text-sm md:text-base">0254 3 616 896</li>
+                        <li class="text-sm md:text-base">info@nes.edu.vn</li>
                     </ul>
                 </div>
 
-                <!-- Contact Information -->
-                <div>
-                    <h2 class="text-xl font-bold mb-4">LIÊN HỆ NES</h2>
+                <!-- Links -->
+                <div class="text-center md:text-left">
+                    <h2 class="text-lg md:text-2xl mb-4 md:mb-6">Link</h2>
                     <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            KHU VỰC MIỀN NAM<br />
-                            028 7308 3333 (Phím 0)
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            ĐÀ NẴNG<br />
-                            (023) 6710 9649
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-4 h-4 bg-red-500 rounded-full mr-2"></span>
-                            HÀ NỘI<br />
-                            (08) 8867 1155
-                        </li>
+                        <li class="text-sm md:text-base">Trang chủ</li>
+                        <li class="text-sm md:text-base">Các khóa học</li>
+                        <li class="text-sm md:text-base">Đối tác</li>
+                        <li class="text-sm md:text-base">Tư vấn</li>
+                        <li class="text-sm md:text-base">Cơ hội việc làm</li>
+                        <li class="text-sm md:text-base">Về chúng tôi</li>
+                        <li class="text-sm md:text-base">Tin tức</li>
                     </ul>
                 </div>
             </div>
