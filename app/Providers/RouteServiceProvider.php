@@ -37,17 +37,16 @@ class RouteServiceProvider extends ServiceProvider
             //     ->group(base_path('routes/web.php'));
 
             Route::middleware('web')
-                ->group(base_path('routes/frontend/web.php'));
-                Route::middleware('web')
-                ->group(base_path('routes/frontend/blog/blog.php'));
-                Route::middleware('web')
-                ->group(base_path('routes/frontend/news/news.php'));
-                Route::middleware('web')
-                ->group(base_path('routes/frontend/meeting/meeting.php'));
-                Route::middleware('web')
-                ->group(base_path('routes/frontend/practice-test/index.php'));
-                Route::middleware('web')
-                ->group(base_path('routes/admin/users/users.php'));  
+                ->group(base_path('routes/frontend/web.php'))
+                ->group(base_path('routes/frontend/courses/index.php'))
+                ->group(base_path('routes/frontend/blog/blog.php'))
+                ->group(base_path('routes/frontend/news/news.php'))
+                ->group(base_path('routes/frontend/meeting/meeting.php'))
+                ->group(base_path('routes/frontend/practice-test/index.php'))
+                ->group(base_path('routes/admin/users/users.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/admin/web.php'));
                   
         });
     }
