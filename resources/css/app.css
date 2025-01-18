@@ -73,60 +73,94 @@
 }
  */
 
- @font-face {
-    font-family: 'Roboto';
-    src: url('../../public/assets/fonts/Roboto/Roboto-Light.woff2') format('woff2'),
-        url('../../public/assets/fonts/Roboto/Roboto-Light.woff') format('woff');
+@font-face {
+    font-family: "Roboto";
+    src: url("../../public/assets/fonts/Roboto/Roboto-Light.woff2")
+            format("woff2"),
+        url("../../public/assets/fonts/Roboto/Roboto-Light.woff") format("woff");
     font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('../../public/assets/fonts/Roboto/Roboto-Bold.woff2') format('woff2'),
-        url('../../public/assets/fonts/Roboto/Roboto-Bold.woff') format('woff');
+    font-family: "Roboto";
+    src: url("../../public/assets/fonts/Roboto/Roboto-Bold.woff2")
+            format("woff2"),
+        url("../../public/assets/fonts/Roboto/Roboto-Bold.woff") format("woff");
     font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('../../public/assets/fonts/Roboto/Roboto-Regular.woff2') format('woff2'),
-        url('../../public/assets/fonts/Roboto/Roboto-Regular.woff') format('woff');
+    font-family: "Roboto";
+    src: url("../../public/assets/fonts/Roboto/Roboto-Regular.woff2")
+            format("woff2"),
+        url("../../public/assets/fonts/Roboto/Roboto-Regular.woff")
+            format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('../../public/assets/fonts/Roboto/Roboto-Medium.woff2') format('woff2'),
-        url('../../public/assets/fonts/Roboto/Roboto-Medium.woff') format('woff');
+    font-family: "Roboto";
+    src: url("../../public/assets/fonts/Roboto/Roboto-Medium.woff2")
+            format("woff2"),
+        url("../../public/assets/fonts/Roboto/Roboto-Medium.woff")
+            format("woff");
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('../../public/assets/fonts/Roboto/Roboto-Black.woff2') format('woff2'),
-        url('../../public/assets/fonts/Roboto/Roboto-Black.woff') format('woff');
+    font-family: "Roboto";
+    src: url("../../public/assets/fonts/Roboto/Roboto-Black.woff2")
+            format("woff2"),
+        url("../../public/assets/fonts/Roboto/Roboto-Black.woff") format("woff");
     font-weight: 900;
     font-style: normal;
     font-display: swap;
 }
-
-
-
-
+html {
+    scroll-behavior: smooth;
+}
+.question {
+    scroll-margin-top: 60px;
+}
 body {
     /* font-family: 'Bricolage Grotesque', sans-serif; */
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
+    
+}
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    outline: none;
+    position: relative;
 }
 
+input[type="radio"]:checked {
+    /* border-color: #dc2626; */
+}
 
+input[type="radio"]:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #dc2626;
+    border-radius: 50%;
+}
 /* Define class component*/
 .btn-primary {
     @apply relative flex sm:px-6 sm:py-4 px-4 py-2 rounded-full font-bold text-sm sm:text-base items-center justify-center overflow-hidden bg-[#BA121A] text-white shadow-2xl transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:bg-orange-600 before:duration-500 before:ease-out hover:shadow-red-600 hover:before:h-56 hover:before:w-[400px];
@@ -142,7 +176,7 @@ body {
     @apply max-w-[1440px] m-auto px-4 md:px-[60px] lg:px-[80px] py-8 md:py-[60px] lg:py-[80px];
 }
 
-.padding-bottom-none{
+.padding-bottom-none {
     @apply pb-8 md:pb-0;
 }
 
@@ -176,13 +210,13 @@ body {
     right: -2.4rem;
 }
 
-.slider-nav .slick-current img{
+.slider-nav .slick-current img {
     border: 3px solid red;
     border-radius: 50%;
     padding: 2px;
     width: 5rem;
 }
-.slider-nav .slick-current p{
+.slider-nav .slick-current p {
     display: block;
 }
 
