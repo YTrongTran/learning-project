@@ -146,12 +146,27 @@ body {
     @apply pb-8 md:pb-0;
 }
 
+.mt-custom-otp{
+    @apply mt-4 !important;
+}
+
 .color-primary {
     @apply text-[#BA121A];
 }
 
 .color-secondary {
     @apply text-[#2E3E5C];
+}
+
+.h-custom-line{
+    height: 1px;
+    background-color: #5A5A5A;
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+}
+.bg-image-login{
+    background-image: url('/assets/img/bg-login.png');
+    background-repeat: no-repeat;
 }
 
 .-top-2 {
