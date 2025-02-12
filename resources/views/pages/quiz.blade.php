@@ -13,7 +13,7 @@
                     <div class="font-medium text-[13px] mb-2">Tiếng Anh Mẫu Hè Superkids (6-11 Tuổi)</div>
                     <ul class="space-y-2 text-[13px] pl-4 ">
                         <li>Học liệu</li>
-                        <li>Vốn</li>
+                        <li>Viết</li>
                         <li>Nghe</li>
                         <li>Phát âm</li>
                     </ul>
@@ -33,11 +33,11 @@
                         <div class="grid grid-cols-5 gap-1">
                             <!-- Red buttons 1-5 -->
                             @foreach ($quiz['questions'] as $index => $question)
-                            <button onclick="scrollToQuestion('question-{{$index+1}}')"
-                                class="question-button border border-[#E5E7EB] w-full h-full rounded p-3 text-[13px] text-gray-700"
-                                data-question="{{$index+1}}">
-                                {{$index + 1}}
-                            </button>
+                                <button onclick="scrollToQuestion('question-{{$index+1}}')"
+                                    class="question-button border border-[#E5E7EB] w-full h-full rounded p-3 text-[13px] text-gray-700"
+                                    data-question="{{$index+1}}">
+                                    {{$index + 1}}
+                                </button>
                             @endforeach
                         </div>
                     </div>
@@ -75,51 +75,26 @@
                     <div class="bg-white shadow-md border border-[#E5E7EB] rounded-lg p-6">
                         <div class="text-[18px] font-semibold text-[#06052E] mb-6">Complete the dialogues by choosing
                             the correct option (A-D).</div>
-                        <div class="space-y-6">
-                            @foreach ($quiz['questions'] as $index => $item)
-                            <div id="question-{{$index + 1}}" class="question">
-                                <div class="font-medium text-[16px] mb-2">Question {{$index + 1}}</div>
-                                <div class="text-[13px]  mb-3">
-                                    {{$item['question']}}
-                                </div>
-                                <div class="space-y-2">
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input type="radio" name="q-{{$index}}"
-                                            class="w-4 h-4 text-red-600 focus:ring-red-500">
-                                        <span class="text-[13px]">A. {{$item['A']}}</span>
-                                    </label>
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input type="radio" name="q-{{$index}}"
-                                            class="w-4 h-4 text-red-600 focus:ring-red-500">
-                                        <span class="text-[13px]">B. {{$item['B']}}</span>
-                                    </label>
-                                    @if (isset($item['C']))
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input type="radio" name="q-{{$index}}"
-                                            class="w-4 h-4 text-red-600 focus:ring-red-500">
-                                        <span class="text-[13px]">C. {{$item['C']}}</span>
-                                    </label>
 
-                                    @endif
-                                    @if (isset($item['D']))
-                                    <label class="flex items-center gap-2 cursor-pointer">
-                                        <input type="radio" name="q-{{$index}}"
-                                            class="w-4 h-4 text-red-600 focus:ring-red-500">
-                                        <span class="text-[13px]">D. {{$item['D']}}</span>
-                                    </label>
-                                    @endif
-
-                                </div>
+                            {{-- Area display question --}}
+                            <div id="quiz-container">
+                                @include('components.quiz_questions', ['questions' => $data['questions'], 'currentPage' => $data['currentPage']])
                             </div>
-                            @endforeach
-                        </div>
-                        <!-- Next Page Button -->
-                        <div class="flex justify-end mt-8">
-                            <button id="next-page"
-                                class="bg-rose-600 text-white px-6 py-2 rounded-lg text-[13px] font-medium">
-                                Next page
-                            </button>
-                        </div>
+
+                            {{-- Page transfer button --}}
+                            <div class="flex justify-between mt-6">
+                                    <button id="prevPage" class="bg-white text-[#BA121A] px-4 py-2 rounded md:rounded-3xl hidden border border-solid border-[#BA121A]">
+                                        Previous Page
+                                    </button>
+
+                                    <button id="nextPage" class="bg-[#BA121A] text-white px-4 py-2 rounded md:rounded-3xl ml-auto">
+                                        Next Page
+                                    </button>
+
+                                    <button id="finishTest" class="bg-[#BA121A] text-white px-4 py-2 rounded md:rounded-3xl hidden">
+                                        Finish attempt...
+                                    </button>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -221,45 +196,94 @@
 
     </div>
 </div>
+
+<div id="overlay">
+    <div class="cv-spinner">
+      <span class="spinner"></span>
+    </div>
+  </div>
+
 <script>
     $(document).ready(function () {
-    // Function to scroll to question
-    function scrollToQuestion(questionId) {
-        const questionElement = document.getElementById(questionId);
-        if (questionElement) {
-            questionElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+
+        let currentPage = 1;
+        let totalPages = {{ $data['totalPages'] }}; 
+
+        // Function to scroll to question
+        function scrollToQuestion(questionId) {
+            const questionElement = document.getElementById(questionId);
+            if (questionElement) {
+                questionElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Highlight selected question button when an answer is chosen
+        $('#quiz-container').on('change', 'input[type="radio"]', function () {
+            const questionDiv = $(this).closest('.question');
+            const questionId = questionDiv.attr('id'); // Example: "question-1"
+            const questionIndex = questionId.split('-')[1]; // Extract number (e.g., "1")
+
+            // Highlight the selected question button
+            $(`.question-button[data-question="${questionIndex}"]`).addClass('bg-rose-700 text-white');
+        });
+
+        // Attach click event to question buttons
+       $(document).on('click', '.question-button', function () {
+            const questionId = $(this).data('question');
+            console.log("Scrolling to question:", questionId);
+            scrollToQuestion(`question-${questionId}`);
+        });
+
+        // Show result modal on next page button click
+        $("#finishTest").click(function () {
+            $("#modal-result-test").css("display", "flex");
+        });
+
+        // Close modal when clicking outside or on close button
+        $("#close-modal-result-test, #overlay-modal-result-test").click(function () {
+            $("#modal-result-test").css("display", "none");
+        });
+
+        function loadQuestions(page) {
+            // if (page < 1 || page > totalPages) return; 
+            $.ajax({
+                url: "{{ route('quiz', ['quiz' => $id]) }}",
+                type: "GET",
+                data: { page: page },
+                beforeSend: function() {
+                    // $("#quiz-container").html("<p>Loading...</p>");
+                    $("#overlay").show();
+                },
+                success: function (response) {
+                    $("#overlay").hide();
+                    $("#quiz-container").html(response.html);
+                    currentPage = response.currentPage;
+                    console.log("Current:", currentPage);
+                    console.log("Total:", totalPages);
+                    updateButtons();                
+                }
             });
         }
-    }
 
-    // Highlight selected question button when an answer is chosen
-    $('input[type="radio"]').on('change', function () {
-        const questionDiv = $(this).closest('.question');
-        const questionId = questionDiv.attr('id'); // Example: "question-1"
-        const questionIndex = questionId.split('-')[1]; // Extract number (e.g., "1")
+        function updateButtons() {
+            $("#prevPage").toggle(currentPage > 1);
+            $("#nextPage").toggle(currentPage < totalPages);
+            $("#finishTest").toggle(currentPage >= totalPages);
+        }
 
-        // Highlight the selected question button
-        $(`.question-button[data-question="${questionIndex}"]`).addClass('bg-rose-500 text-white');
+        $("#prevPage").click(function () {
+            if (currentPage > 1) loadQuestions(currentPage - 1);
+        });
+
+        $("#nextPage").click(function () {
+            if (currentPage < totalPages) loadQuestions(currentPage + 1);
+        });
+
+        updateButtons();
     });
-
-    // Attach click event to question buttons
-    $('.question-button').on('click', function () {
-        const questionId = $(this).data('question');
-        scrollToQuestion(`question-${questionId}`);
-    });
-
-    // Show result modal on next page button click
-    $("#next-page").click(function () {
-        $("#modal-result-test").css("display", "flex");
-    });
-
-    // Close modal when clicking outside or on close button
-    $("#close-modal-result-test, #overlay-modal-result-test").click(function () {
-        $("#modal-result-test").css("display", "none");
-    });
-});
     
 </script>
 @stop
