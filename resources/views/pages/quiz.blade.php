@@ -231,6 +231,7 @@
         });
 
         // Attach click event to question buttons
+        // Con truong hop click cau hoi o next page chua lam
        $(document).on('click', '.question-button', function () {
             const questionId = $(this).data('question');
             console.log("Scrolling to question:", questionId);

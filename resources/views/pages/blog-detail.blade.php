@@ -86,16 +86,15 @@
                         <p class="text-gray-600 text-sm mb-4">Bạn có biết, chỉ mới 3 phút không học tiếng Anh cho bé sẽ
                             phụ hục có thể khiến con bạn bỏng cơ hội mà bé đáng có bởi khi các bạn trẻ con thế giới...
                         </p>
-                        <a
-                            href="{{route('blog.detail-1') }}"
-                            class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 flex items-center w-fit transition-colors">
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
                             Xem thêm
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
                             </svg>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
