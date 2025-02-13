@@ -36,6 +36,11 @@
                             Luyện Thi IELTS
                         </label>
                         <div class="w-full h-custom-line"></div>
+                        <label class="block text-sm md:text-base font-medium text-[#06052E]">
+                            <input type="radio" name="level" value="toeic" class="mr-2">
+                            Luyện Thi TOEIC
+                        </label>
+                        <div class="w-full h-custom-line"></div>
                     </div>
     
                     <div class="text-center">
