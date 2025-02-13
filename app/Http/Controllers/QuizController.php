@@ -13,7 +13,8 @@ class QuizController extends Controller
         $quiz = [
             'questions' => [
                 0 => [
-                    'question' => 'sjsjdjdb?',
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -21,7 +22,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 1 => [
-                    'question' => 'sjsjdjdb?',
+                     'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -29,7 +31,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 2 => [
-                    'question' => 'sjsjdjdb?',
+                     'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -37,7 +40,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                3 => [
-                    'question' => 'sjsjdjdb?',
+                     'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -45,7 +49,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 4 => [
-                    'question' => 'sjsjdjdb?',
+                     'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -53,7 +58,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 5 => [
-                    'question' => 'sjsjdjdb?',
+                     'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -61,7 +67,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 6 => [
-                    'question' => 'cau hoi so 6?',
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -69,7 +76,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 7 => [
-                    'question' => 'cau hoi so 7?',
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -77,7 +85,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 8 => [
-                    'question' => 'sjsjdjdb?',
+                     'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -85,7 +94,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 9 => [
-                    'question' => 'cau hoi so 6?',
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -93,7 +103,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 10 => [
-                    'question' => 'cau hoi so 7?',
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -101,7 +112,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 11 => [
-                    'question' => 'sjsjdjdb?',
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -109,7 +121,8 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 12 => [
-                    'question' => 'cau hoi so 6?',
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -117,7 +130,62 @@ class QuizController extends Controller
                     'correct' => 'A'
                 ],
                 13 => [
-                    'question' => 'cau hoi so 7?',
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                14 => [
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                15 => [
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                16 => [
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                17 => [
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                18 => [
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                19 => [
+                    'question' => 'Manager: Where’s Mr. Davidson?
+                                    Assistant: Oh, he’s _______ London today.',
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
@@ -152,6 +220,7 @@ class QuizController extends Controller
     
         return view('pages.quiz', compact('quiz','data', 'id'));
     }
+
 
     public function submit(Request $request)
     {

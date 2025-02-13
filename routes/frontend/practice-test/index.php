@@ -13,4 +13,6 @@ Route::get('/test-step-3', function () {
     return view('pages.test_step_3');
 });
 Route::get('/test/{quiz}', [QuizController::class, 'index'])->name('quiz');
+
+Route::get('/test-toeic/{quiz}', [QuizController::class, 'toeic'])->name('quiz.toeic');
 ?>
