@@ -373,6 +373,7 @@
         },
         {
             "name": "doctrine/dbal",
+<<<<<<< HEAD
             "version": "3.9.4",
             "source": {
                 "type": "git",
@@ -383,6 +384,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/doctrine/dbal/zipball/ec16c82f20be1a7224e65ac67144a29199f87959",
                 "reference": "ec16c82f20be1a7224e65ac67144a29199f87959",
+=======
+            "version": "3.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/dbal.git",
+                "reference": "61446f07fcb522414d6cfd8b1c3e5f9e18c579ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/61446f07fcb522414d6cfd8b1c3e5f9e18c579ba",
+                "reference": "61446f07fcb522414d6cfd8b1c3e5f9e18c579ba",
+>>>>>>> 7d8ca2440c1d0686d9d66a8c77d1b5adc9bf6331
                 "shasum": ""
             },
             "require": {
@@ -398,6 +411,7 @@
                 "doctrine/coding-standard": "12.0.0",
                 "fig/log-test": "^1",
                 "jetbrains/phpstorm-stubs": "2023.1",
+<<<<<<< HEAD
                 "phpstan/phpstan": "2.1.1",
                 "phpstan/phpstan-strict-rules": "^2",
                 "phpunit/phpunit": "9.6.22",
@@ -405,6 +419,17 @@
                 "squizlabs/php_codesniffer": "3.10.2",
                 "symfony/cache": "^5.4|^6.0|^7.0",
                 "symfony/console": "^4.4|^5.4|^6.0|^7.0"
+=======
+                "phpstan/phpstan": "1.12.6",
+                "phpstan/phpstan-strict-rules": "^1.6",
+                "phpunit/phpunit": "9.6.20",
+                "psalm/plugin-phpunit": "0.18.4",
+                "slevomat/coding-standard": "8.13.1",
+                "squizlabs/php_codesniffer": "3.10.2",
+                "symfony/cache": "^5.4|^6.0|^7.0",
+                "symfony/console": "^4.4|^5.4|^6.0|^7.0",
+                "vimeo/psalm": "4.30.0"
+>>>>>>> 7d8ca2440c1d0686d9d66a8c77d1b5adc9bf6331
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
@@ -464,7 +489,11 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/doctrine/dbal/tree/3.9.4"
+=======
+                "source": "https://github.com/doctrine/dbal/tree/3.9.3"
+>>>>>>> 7d8ca2440c1d0686d9d66a8c77d1b5adc9bf6331
             },
             "funding": [
                 {
@@ -480,7 +509,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2025-01-16T08:28:55+00:00"
+=======
+            "time": "2024-10-10T17:56:43+00:00"
+>>>>>>> 7d8ca2440c1d0686d9d66a8c77d1b5adc9bf6331
         },
         {
             "name": "doctrine/deprecations",
@@ -2006,6 +2039,7 @@
         },
         {
             "name": "laravel/ui",
+<<<<<<< HEAD
             "version": "v4.6.1",
             "source": {
                 "type": "git",
@@ -2023,12 +2057,36 @@
                 "illuminate/filesystem": "^9.21|^10.0|^11.0|^12.0",
                 "illuminate/support": "^9.21|^10.0|^11.0|^12.0",
                 "illuminate/validation": "^9.21|^10.0|^11.0|^12.0",
+=======
+            "version": "v4.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "a34609b15ae0c0512a0cf47a21695a2729cb7f93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/a34609b15ae0c0512a0cf47a21695a2729cb7f93",
+                "reference": "a34609b15ae0c0512a0cf47a21695a2729cb7f93",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^9.21|^10.0|^11.0",
+                "illuminate/filesystem": "^9.21|^10.0|^11.0",
+                "illuminate/support": "^9.21|^10.0|^11.0",
+                "illuminate/validation": "^9.21|^10.0|^11.0",
+>>>>>>> 7d8ca2440c1d0686d9d66a8c77d1b5adc9bf6331
                 "php": "^8.0",
                 "symfony/console": "^6.0|^7.0"
             },
             "require-dev": {
+<<<<<<< HEAD
                 "orchestra/testbench": "^7.35|^8.15|^9.0|^10.0",
                 "phpunit/phpunit": "^9.3|^10.4|^11.5"
+=======
+                "orchestra/testbench": "^7.35|^8.15|^9.0",
+                "phpunit/phpunit": "^9.3|^10.4|^11.0"
+>>>>>>> 7d8ca2440c1d0686d9d66a8c77d1b5adc9bf6331
             },
             "type": "library",
             "extra": {
@@ -2063,9 +2121,15 @@
                 "ui"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/laravel/ui/tree/v4.6.1"
             },
             "time": "2025-01-28T15:15:29+00:00"
+=======
+                "source": "https://github.com/laravel/ui/tree/v4.6.0"
+            },
+            "time": "2024-11-21T15:06:41+00:00"
+>>>>>>> 7d8ca2440c1d0686d9d66a8c77d1b5adc9bf6331
         },
         {
             "name": "league/commonmark",
@@ -8811,12 +8875,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

@@ -2,7 +2,7 @@
     <div class="flex container justify-between items-center">
         <div class="logo">
             <a href="/">
-                <img src="/logo.avif" alt="Logo" />
+                <img src="/assets/img/logoheader.png" class="w-full" alt="Logo" />
             </a>
         </div>
         <button class="menu-toggle lg:hidden" aria-label="Toggle Menu">
@@ -12,39 +12,40 @@
             </svg>
         </button>
         <nav class="hidden lg:flex">
-            <ul class="flex gap-6 text-base font-bold transition-all">
-                <li class="py-4"><a class="hover:text-rose-900" href="/">Trang chủ</a></li>
-                <li class="group py-4 relative">
-                    <a class="hover:text-rose-900" href="/thi-thu">Các khóa học</a>
-                    <!-- Dropdown Menu -->
-                    <ul
-                        class="hidden absolute -left-[100px] mt-2 bg-white border-t-0 border-gray-300 rounded shadow-lg group-hover:grid grid-cols-2 min-w-[400px]">
-                        <li><a class="block px-4 py-2 hover:bg-gray-100" href="/khoa-hoc/khoa-hoc-thieu-nhi">Tiếng anh
-                                thiếu nhi</a></li>
-                        <li><a class="block px-4 py-2 hover:bg-gray-100" href="/course-2">Tiếng anh giao tiếp</a></li>
-                        <li><a class="block px-4 py-2 hover:bg-gray-100" href="/course-3">Khóa học phát âm</a></li>
-                    </ul>
+            <ul class="flex lg:gap-4 xl:gap-6 text-base font-bold transition-all">
+                <li><a class="hover:text-rose-900 text-gray-500 font-semibold" href="/">Trang chủ</a></li>
+                <li>
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
+                        >Các khóa học</a
+                    >
                 </li>
-
-                <li class="py-4">
-                    <a class="hover:text-rose-900" href="/thi-thu">Chúng tôi là ai</a>
+                <li>
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
+                        >Chúng tôi là ai</a
+                    >
                 </li>
-                <li class="py-4">
-                    <a class="hover:text-rose-900" href="/thi-thu">Đối tác</a>
+                <li>
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu">Đối tác</a>
                 </li>
-                <li class="py-4">
-                    <a class="hover:text-rose-900" href="/thi-thu">Cơ hội việc làm</a>
+                <li>
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
+                        >Chương trình online</a
+                    >
                 </li>
-                <li class="py-4">
-                    <a class="hover:text-rose-900" href="/thi-thu">Chương trình online</a>
+                <li>
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/news"
+                        >Cơ hội việc làm</a
+                    >
                 </li>
-                <li class="py-4">
-                    <a class="hover:text-rose-900" href="/blog">Blog</a>
+                <li>
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/blog"
+                        >Blog</a
+                    >
                 </li>
             </ul>
         </nav>
         <div class="hidden lg:flex">
-            <button class="btn-primary"><span class="relative z-10">Đăng ký ngay</span></button>
+            <button class="btn-primary"><span class="relative z-10">Liên hệ ngay</span></button>
         </div>
     </div>
     <div class="overlay hidden"></div>
