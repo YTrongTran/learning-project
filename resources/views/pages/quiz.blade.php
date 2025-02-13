@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="w-full">
-                <div class="sticky top-10">
+                <div class="sticky top-[6.5rem]">
                     <!-- Timer -->
                     <div class="mb-4 shadow-md rounded-md border p-3">
                         <div class="text-[13px] text-rose-600 mb-2 font-bold">Thời gian còn lại</div>
@@ -102,7 +102,7 @@
     </div>
 </div>
 <div class="fixed inset-0 bg-black bg-opacity-50 hidden z-50" id="modal-result-test">
-    <div class="bg-white w-[800px] z-40 rounded-lg shadow-xl fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div class="bg-white w-[800px] z-40 rounded-lg shadow-xl fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 m-6">
         <!-- Close Button -->
         <button id="close-modal-result-test" class="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,6 +208,7 @@
 
         let currentPage = 1;
         let totalPages = {{ $data['totalPages'] }}; 
+        let selectedAnswers = {};
 
         // Function to scroll to question
         function scrollToQuestion(questionId) {
@@ -228,6 +229,12 @@
 
             // Highlight the selected question button
             $(`.question-button[data-question="${questionIndex}"]`).addClass('bg-rose-700 text-white');
+
+            const answerValue = $(this).val();
+            if (!selectedAnswers[currentPage]) {
+                selectedAnswers[currentPage] = {};
+            }
+            selectedAnswers[currentPage][questionIndex] = answerValue;
         });
 
         // Attach click event to question buttons
@@ -255,18 +262,25 @@
                 type: "GET",
                 data: { page: page },
                 beforeSend: function() {
-                    // $("#quiz-container").html("<p>Loading...</p>");
                     $("#overlay").show();
                 },
                 success: function (response) {
                     $("#overlay").hide();
                     $("#quiz-container").html(response.html);
                     currentPage = response.currentPage;
-                    console.log("Current:", currentPage);
-                    console.log("Total:", totalPages);
-                    updateButtons();                
+                    updateButtons();        
+                    restoreAnswers(currentPage); 
                 }
             });
+        }
+
+        function restoreAnswers(page) {
+            if (selectedAnswers[page]) {
+                for (let questionIndex in selectedAnswers[page]) {
+                    let answerValue = selectedAnswers[page][questionIndex];
+                    $(`#quiz-container input[name="q-${questionIndex}"][value="${answerValue}"]`).prop("checked", true);
+                }
+            }
         }
 
         function updateButtons() {
@@ -280,7 +294,12 @@
         });
 
         $("#nextPage").click(function () {
-            if (currentPage < totalPages) loadQuestions(currentPage + 1);
+            if (currentPage < totalPages) 
+            {
+                currentPage++;
+                loadQuestions(currentPage);
+            }
+
         });
 
         updateButtons();

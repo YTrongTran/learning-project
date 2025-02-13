@@ -5,7 +5,7 @@
     </head>
 
     <body class="antialiased">
-        <header>@include('includes.header')</header>
+        <header class="sticky top-0 z-10">@include('includes.header')</header>
         <div id="app">@yield('content')</div>
         <footer>@include('includes.footer')</footer>
     </body>
