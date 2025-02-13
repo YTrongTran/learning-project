@@ -221,6 +221,121 @@ class QuizController extends Controller
         return view('pages.quiz', compact('quiz','data', 'id'));
     }
 
+    public function toeic(Request $request, $id)
+    {
+        $quiz = [
+            'listening' => [
+                0 => [
+                    'img' => asset('assets/img/Listening.png'),
+                    'audio' => asset('assets/audio/test.mp3'),
+                    'correct' => 'A'
+                ],
+                1 => [
+                    'img' => asset('assets/img/Listening.png'),
+                    'audio' => asset('assets/audio/test.mp3'),
+                    'correct' => 'A'
+                ],
+                2 => [
+                    'img' => asset('assets/img/Listening.png'),
+                    'audio' => asset('assets/audio/test.mp3'),
+                    'correct' => 'A'
+                ],
+                3 => [
+                    'img' => asset('assets/img/Listening.png'),
+                    'audio' => asset('assets/audio/test.mp3'),
+                    'correct' => 'A'
+                ],
+                4 => [
+                    'img' => asset('assets/img/Listening.png'),
+                    'audio' => asset('assets/audio/test.mp3'),
+                    'correct' => 'A'
+                ],
+                5 => [
+                    'img' => asset('assets/img/Listening.png'),
+                    'audio' => asset('assets/audio/test.mp3'),
+                    'correct' => 'A'
+                ],
+            ],
+            'grammar' => [
+                0 => [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                1 => [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                2 => [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                3 => [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                4 => [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                5 => [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+            ],
+            'point' => 100
+        ];
+
+        $perPage = 6; 
+        $listeningQuestions  = array_chunk($quiz['listening'], $perPage); 
+        $grammarQuestions = array_chunk($quiz['grammar'], $perPage); 
+        
+        $totalPages = count($listeningQuestions) + count($grammarQuestions);
+        $page = max(1, min($request->input('page', 1), $totalPages));
+
+        $data = [
+            'questions' => $questions[$page - 1] ?? [], 
+            'listening' => $listeningQuestions[$page - 1] ?? [],
+            'grammar' => $grammarQuestions[$page - 1] ?? [],
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ];
+
+        // Returns JSON if the request is Ajax
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.quiz_questions', ['questions' => $data['questions'], 'currentPage' => $data['currentPage']])->render(),
+                'totalPages' => $data['totalPages'],
+                'currentPage' => $data['currentPage'],
+            ]);
+        }
+        
+    
+        return view('pages.quiz-toeic', compact('quiz','data', 'id'));
+    }
 
     public function submit(Request $request)
     {
