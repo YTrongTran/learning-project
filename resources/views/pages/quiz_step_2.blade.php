@@ -6,7 +6,7 @@
 
 <div class="bg-section">
     <div class="w-full custom-container flex flex-wrap bg-left-bottom bg-contain bg-no-repeat" style="background-image: url('/assets/img/bg-login.png');">
-            <div class="w-full md:w-1/2 mb-6 md:mb-0  z-10">
+            <div class="w-full md:w-1/2 mb-6 md:mb-0">
                 <div class="text-left">
                     <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-[#06052E] uppercase mb-2">Thi Thử</h1>
                     <h2 class="text-xl md:text-5xl font-semibold uppercase text-[#06052E]">Nhận Kết Quả Ngay</h2>

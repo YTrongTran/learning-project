@@ -86,6 +86,9 @@
                 {{ $item['content'] }}
             </p>
             <h2 class="font-semibold text-lg mb-2">Question {{ $questionNumber }}:</h2>
+            <p class="text-gray-700 mb-6">
+                {{ $item['question'][0] }}
+            </p>
                 {{-- @foreach ($item['question'] as $index => $item)
                     <h2 class="font-semibold text-lg mb-2">item {{ $index }}:</h2>
 

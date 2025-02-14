@@ -1,10 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Quiz')
-<pre>
-    <?php
-        // print_r($questionsMerged);
-    ?>
-</pre>
+
 @section('content')
 
     <div class="container">
