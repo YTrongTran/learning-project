@@ -1,0 +1,76 @@
+.container{
+    padding: 10px;
+}
+
+.container input[type="text"],
+.container input[type="number"],
+.container input[type="file"],
+.container select,
+.container textarea{
+    width: 542px;
+}
+
+#add-question{
+    margin-top: 10px;
+}
+
+.question{
+    margin-left: 5px;
+}
+
+.question-title{
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.question input{
+    color: #000;
+}
+
+.question input[type="file"]{
+    margin: 10px 0;
+    padding: 15px !important;
+    height: 50px;
+}
+
+.line-question{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+.line-question label,
+.line-question input{
+    padding: 0;
+    margin: 0;
+}
+
+.line-question .title-choice{
+    padding: 0;
+    margin: 0;
+    color: #000;
+    margin-top: auto; 
+    margin-bottom: 4px;
+    min-width: 32px;
+}
+
+.line-question input[type="text"]{
+    border: none;
+    outline: none;
+    width: 500px;
+    background-color: transparent;
+    box-shadow: 0 1px 0 0 #000;
+    border-radius: 0;
+}
+
+.process-exam-form{
+    margin: 20px 0;
+}
+
+#exam-visible{
+    margin-left: 10px;
+}

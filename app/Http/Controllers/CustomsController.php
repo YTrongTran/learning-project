@@ -24,7 +24,7 @@ class CustomsController extends Controller
      */
     public function create()
     {
-        return view('pages.test_step_1');
+        return view('pages.test_step_2');
     }
 
     /**

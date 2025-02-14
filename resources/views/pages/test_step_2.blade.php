@@ -14,7 +14,7 @@
                     Chọn độ tuổi, cấp độ phù hợp 👋
                 </h2>
     
-                <form action="{{ route('customes.step_2')}}" method="POST" class="space-y-6">
+                <form action="" method="POST" class="space-y-6">
                     @csrf
                     <div class="space-y-4">
                         <label class="block text-sm md:text-base font-medium text-[#06052E]">
