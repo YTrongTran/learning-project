@@ -42,11 +42,7 @@ return [
     */
 
     'models' => [
-<<<<<<< HEAD
        // 'namespace' => 'App\\Models\\',
-=======
-       'namespace' => 'App\\Models\\',
->>>>>>> 7d8ca2440c1d0686d9d66a8c77d1b5adc9bf6331
     ],
 
     /*

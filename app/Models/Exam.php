@@ -7,7 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model
 {
-    protected $fillable = ['title'];
+    protected $fillable = [
+        'title',
+        'type',
+        'duration',
+        'point',
+        'visible',
+    ];
+    
+    protected $casts = [
+        'visible' => 'boolean',
+    ];
     
     public function questions()
     {
