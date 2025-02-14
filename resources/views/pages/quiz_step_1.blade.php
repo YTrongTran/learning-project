@@ -11,7 +11,8 @@
 
             <div class="w-full md:w-1/2 bg-white shadow-lg rounded-lg p-6 md:p-10 relative">
                 <h2 class="text-xl lg:text-3xl font-bold text-blue-900 uppercase mb-4">Đăng ký/ Đăng nhập nhanh 👋</h2>
-                <form action="#" method="POST" class="space-y-6 md:space-y-8">
+                <form action="{{ route('quiz.step2') }}" method="POST" class="space-y-6 md:space-y-8">
+                    @csrf
                     <div>
                         <label for="name" class="text-sm md:text-lg font-semibold text-[#06052E] mb-2">Họ và tên</label>
                         <input type="text" id="name" name="name" placeholder="Họ và tên" required

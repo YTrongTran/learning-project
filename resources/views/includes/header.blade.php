@@ -15,20 +15,20 @@
             <ul class="flex lg:gap-4 xl:gap-6 text-base font-bold transition-all">
                 <li><a class="hover:text-rose-900 text-gray-500 font-semibold" href="/">Trang chủ</a></li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#"
                         >Các khóa học</a
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
-                        >Chúng tôi là ai</a
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="{{route('quiz.step1')}}"
+                        >Thi thử</a
                     >
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu">Đối tác</a>
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#">Đối tác</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/thi-thu"
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#"
                         >Chương trình online</a
                     >
                 </li>
@@ -55,14 +55,14 @@
         </a>
         <ul class="flex flex-col gap-4 text-xl font-bold">
             <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="/">Trang chủ</a></li>
-            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="/thi-thu">Các khóa học</a>
+            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="#">Các khóa học</a>
             </li>
-            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="/thi-thu">Chúng tôi là ai</a>
+            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="{{route('quiz.step1')}}">Thi thử</a>
             </li>
-            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="/thi-thu">Đối tác</a></li>
-            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="/thi-thu">Cơ hội việc làm</a>
+            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="#">Đối tác</a></li>
+            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="#">Cơ hội việc làm</a>
             </li>
-            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="/thi-thu">Chương trình
+            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="#">Chương trình
                     online</a></li>
             <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="/blog">Blog</a></li>
         </ul>
