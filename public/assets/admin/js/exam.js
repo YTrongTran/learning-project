@@ -64,13 +64,13 @@ jQuery(document).ready(function($) {
         .catch(error => console.error(error));
     }
 
-    $('#exam-form-edit').submit(function(e) {
+    $('#exam-form').submit(function(e) {
 
         e.preventDefault();
 
         if (isSubmitting) {
-            return;
-          }
+          return;
+        }
       
         isSubmitting = true; 
     
@@ -78,7 +78,7 @@ jQuery(document).ready(function($) {
     
         $.ajax({
           url: '/adminExams',
-          type: 'POST',
+          type: $("#exam-id").length > 0  ? 'PUT' : 'POST',
           data: formData,
           processData: false,
           contentType: false,
@@ -86,17 +86,21 @@ jQuery(document).ready(function($) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
           success: function(response) {
-            console.log(response);
             toastr.success(response.message, 'Success!' );
+            setTimeout( function(){
+              window.location.href = "/admin/exams";
+            }, 500);
           },
           error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Lỗi: ', textStatus, errorThrown);
+            // console.error('Lỗi: ', textStatus, errorThrown);
             toastr.error(errorThrown, 'Error!');
           },complete: function() {
             isSubmitting = false;
           }
         });
-      });
+    });
+
+    
 
 
 });

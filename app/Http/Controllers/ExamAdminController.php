@@ -59,7 +59,7 @@ class ExamAdminController extends Controller
                 ]);
             }
 
-            return response()->json(['message' => 'Khoog !', 'data' => $questions]);
+            return response()->json(['message' => 'Đã thêm đề thi!', 'data' => $questions]);
         } catch (\Exception $e) {
             // Log::error('error: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
 
