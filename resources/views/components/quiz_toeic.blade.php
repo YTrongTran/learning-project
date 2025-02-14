@@ -85,43 +85,40 @@
             <p class="text-gray-700 mb-6">
                 {{ $item['content'] }}
             </p>
-            <h2 class="font-semibold text-lg mb-2">Question {{ $questionNumber }}:</h2>
-            <p class="text-gray-700 mb-6">
-                {{ $item['question'][0] }}
-            </p>
-                {{-- @foreach ($item['question'] as $index => $item)
-                    <h2 class="font-semibold text-lg mb-2">item {{ $index }}:</h2>
 
-                    <div class="text-gray-700 mb-3">{{ $item }}</div>
-                            <div class="space-y-2">
-                                @foreach (['A', 'B', 'C', 'D'] as $option)
-                                    @if (!empty($item[$option]))
-                                        <label class="flex items-center gap-2 cursor-pointer">
-                                            <input type="radio" name="q-{{ $questionNumber }}" value="{{ $option }}"
-                                                class="w-4 h-4">
-                                            <span>{{ $option }}. {{ $item[$option] }}</span>
-                                        </label>
-                                    @endif
-                                @endforeach
-                            </div>
+            @foreach ($item['questions'] as $index => $itemChild)
+                <h2 class="font-semibold text-lg mb-2">Question {{ $questionNumber }}:</h2>
+                <div class="text-gray-700 mb-3">{{ $itemChild['question'] }}
+                    <div class="space-y-2">
+                        @foreach (['A', 'B', 'C', 'D'] as $option)
+                            @if (!empty($itemChild[$option]))
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="q-{{ $questionNumber }}" value="{{ $option }}"
+                                        class="w-4 h-4">
+                                    <span>{{ $option }}. {{ $itemChild[$option] }}</span>
+                                </label>
+                            @endif
+                        @endforeach
                     </div>
-                @endforeach --}}
+                </div>
+            @endforeach
 
         </div>
 
         {{-- Writing --}}
-        @elseif (!empty($item['question']) && !empty($item['desc']))
-            @if ($showHeadingWriting)
-                <div class="text-lg font-semibold mb-2">Writing:</div>
-                @php
-                    $showHeadingWriting = false;
-                @endphp
-            @endif
-            <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionNumber }}">
-                <h2 class="font-medium text-lg mb-4">{{ $item['question'] }}</h2>
-                <h2 class="text-lg mb-4">{{ $item['desc'] }}</h2>
-                <h2 class="font-medium text-lg mb-2">{{ $item['required'] }}</h2>
-                <input type="textarea" name="q-{{ $questionNumber }}" class="w-full h-[120px] p-2 border rounded" placeholder="Write 75–100 words.">
-            </div>
+    @elseif (!empty($item['question']) && !empty($item['desc']))
+        @if ($showHeadingWriting)
+            <div class="text-lg font-semibold mb-2">Writing:</div>
+            @php
+                $showHeadingWriting = false;
+            @endphp
+        @endif
+        <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionNumber }}">
+            <h2 class="font-medium text-lg mb-4">{{ $item['question'] }}</h2>
+            <h2 class="text-lg mb-4">{{ $item['desc'] }}</h2>
+            <h2 class="font-medium text-lg mb-2">{{ $item['required'] }}</h2>
+            <input type="textarea" name="q-{{ $questionNumber }}" class="w-full h-[120px] p-2 border rounded"
+                placeholder="Write 75–100 words.">
+        </div>
     @endif
 @endforeach
