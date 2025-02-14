@@ -2,7 +2,7 @@
 <div class="container">
     {{-- {{ route('examinations.store') }} --}}
     
-    <form id="exam-form-add">
+    <form id="exam-form" method="POST">
         <div class="form-group">
             <label for="exam-title">Title</label>
             <input type="text" class="form-control" name="exam-title" id="exam-title" required>
@@ -131,7 +131,7 @@
         </div>
 
         <div class="exam-superkid questions-container hidden">
-        @for ($i = 0; $i < 20; $i++)    
+        @for ($i = 0; $i < 2; $i++)    
             <div class="question">
                 <h4 class="question-title has-toggle" >Question {{$i+1}}</h4>
                 <div class="question-content">
