@@ -42,6 +42,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/frontend/blog/blog.php'))
                 ->group(base_path('routes/frontend/news/news.php'))
                 ->group(base_path('routes/frontend/meeting/meeting.php'))
+                ->group(base_path('routes/frontend/customes/customes.php'))
                 ->group(base_path('routes/frontend/practice-test/index.php'))
                 ->group(base_path('routes/admin/users/users.php'));
 
