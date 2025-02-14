@@ -13,9 +13,24 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('exam_id')->constrained('exams')->onDelete('cascade');
-            $table->string('content');
+            $table->integer('_index');
+            $table->text('question_text')->nullable();
+            $table->text('passage')->nullable();
+            $table->string('image')->nullable();
+            $table->string('audio')->nullable();
+            $table->enum('type', ['multiple_choice', 'true_false', 'short_answer'])->default('multiple_choice');
+            $table->text('answer_1');
+            $table->text('answer_2');
+            $table->text('answer_3');
+            $table->text('answer_4');
+            $table->integer('answer_correct');
             $table->timestamps();
+            $table->unsignedBigInteger('exam_id')->nullable();
+
+            $table->foreign('exam_id')
+                ->references('id')
+                ->on('exams')
+                ->onDelete('cascade');
         });
     }
 

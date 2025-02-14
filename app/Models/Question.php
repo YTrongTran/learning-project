@@ -7,10 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $fillable = ['exam_id', 'content'];
+    protected $fillable = [
+        '_index',
+        'question_text',
+        'passage',
+        'image',
+        'audio',
+        'type',
+        'answer_1',
+        'answer_2',
+        'answer_3',
+        'answer_4',
+        'answer_correct',
+        'exam_id',
+    ];
     
-    public function answers()
+    public function exam()
     {
-        return $this->hasMany(Answer::class);
+        return $this->belongsTo(Exam::class);
     }
 }
