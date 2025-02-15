@@ -15,10 +15,10 @@ jQuery(document).ready(function($) {
 
     $("#exam-type").change(function(){
         if( $(this).val() == "toeic" ){
-            // $(".exam-toeic").removeClass("hidden");
             // $(".exam-superkid").addClass("hidden");
             $(".exam-toeic").html(toeicHTML);
             $(".exam-superkid").html('');
+            $(".exam-toeic").removeClass("hidden");
         }else{
             $(".exam-toeic").html('');
             $(".exam-superkid").html(superkidHTML);
@@ -26,6 +26,8 @@ jQuery(document).ready(function($) {
             $(".exam-superkid").removeClass("hidden");
         }
     });
+
+    $("#exam-type").change();
 
     $(".add-question").click( function(){
         let question = $(this).prev(".question").clone();
@@ -75,10 +77,9 @@ jQuery(document).ready(function($) {
         isSubmitting = true; 
     
         var formData = new FormData(this);
-    
         $.ajax({
-          url: '/adminExams',
-          type: $("#exam-id").length > 0  ? 'PUT' : 'POST',
+          url: '/admin/adminExams/' + ( + $("#exam-id").length > 0 ? $("#exam-id").val() : '' ) ,
+          type: $("#exam-id").length > 0  ? 'PATCH' : 'POST',
           data: formData,
           processData: false,
           contentType: false,
@@ -86,10 +87,14 @@ jQuery(document).ready(function($) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
           success: function(response) {
-            toastr.success(response.message, 'Success!' );
-            setTimeout( function(){
-              window.location.href = "/admin/exams";
-            }, 500);
+            if( response.success ){
+              toastr.success(response.message, 'Success!' );
+              setTimeout( function(){
+                window.location.href = "/admin/exams";
+              }, 500);
+            }else{
+              toastr.error(response.message, 'Error!' );
+            }
           },
           error: function(jqXHR, textStatus, errorThrown) {
             // console.error('Lỗi: ', textStatus, errorThrown);
