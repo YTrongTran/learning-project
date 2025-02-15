@@ -236,7 +236,7 @@ class QuizController extends Controller
         // Returns JSON if the request is Ajax
         if ($request->ajax()) {
             return response()->json([
-                'html' => view('components.quiz_questions', [
+                'html' => view('components.quiz_questions_superkids', [
                     'questions' => $data['questions'], 
                     'currentPage' => $data['currentPage']
                     ])->render(),
