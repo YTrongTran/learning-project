@@ -31,21 +31,13 @@
                         <div class="shadow-md border rounded-md p-3">
                             <div class="text-[20px] mb-2 font-bold text-rose-600">Số câu hỏi</div>
                             <div class="grid grid-cols-5 gap-1">
-                                <!-- Red buttons 1-5 -->
-                                @php
-                                    $totalQuestions = array_merge($quiz['listening'], $quiz['grammar']);
-                                    // var_dump($data['totalPages']);
 
-                                @endphp
-                                
-                                @foreach ($totalQuestions as $index => $question)
-
+                                @foreach ($questionsMerged as $index => $question)
                                     <button onclick="scrollToQuestion('question-{{ $index + 1 }}')"
                                         class="question-button border border-[#E5E7EB] w-full h-full rounded p-3 text-[13px] text-gray-700"
                                         data-question="{{ $index + 1 }}">
                                         {{ $index + 1 }}
                                     </button>
-
                                 @endforeach
                             </div>
                         </div>
@@ -82,18 +74,11 @@
                         </div>
                         <div class="bg-white shadow-md border border-[#E5E7EB] rounded-lg p-6">
                             <h1 class="text-2xl font-bold mb-4">TOEIC 1</h1>
-                            <div class="text-lg font-semibold mb-2">Listening:</div>
-                            <p class="text-gray-700 mb-6">
-                                <strong>Part 1: (Questions 1–6)</strong><br>
-                                In this part, you will hear a short description of each photograph.
-                                For each question, choose the statement that best describes the photograph.
-                            </p>
-                            
+
                             {{-- Area display question --}}
                             <div id="quiz-container">
                                 @include('components.quiz_toeic', [
-                                    'listening' => $data['listening'],
-                                    'grammar' => $data['grammar'],
+                                    'questions' => $data['questions'],
                                     'currentPage' => $data['currentPage'],
                                 ])
                             </div>
@@ -229,6 +214,7 @@
 
             let currentPage = 1;
             let totalPages = {{ $data['totalPages'] }};
+            let selectedAnswers = {};
 
             // Function to scroll to question
             function scrollToQuestion(questionId) {
@@ -249,6 +235,11 @@
 
                 // Highlight the selected question button
                 $(`.question-button[data-question="${questionIndex}"]`).addClass('bg-rose-700 text-white');
+                const answerValue = $(this).val();
+                if (!selectedAnswers[currentPage]) {
+                    selectedAnswers[currentPage] = {};
+                }
+                selectedAnswers[currentPage][questionIndex] = answerValue;
             });
 
             // Attach click event to question buttons
@@ -272,24 +263,37 @@
             function loadQuestions(page) {
                 // if (page < 1 || page > totalPages) return; 
                 $.ajax({
-                    url: "{{ route('quiz', ['quiz' => $id]) }}",
+                    url: "{{ route('quiz.toeic', ['quiz' => $id]) }}",
                     type: "GET",
                     data: {
                         page: page
                     },
                     beforeSend: function() {
-                        // $("#quiz-container").html("<p>Loading...</p>");
                         $("#overlay").show();
+                    },
+                    error: function(response) {
+                        $("#overlay").hide();
+                        console.log("error: ", response.responseText);
                     },
                     success: function(response) {
                         $("#overlay").hide();
                         $("#quiz-container").html(response.html);
                         currentPage = response.currentPage;
-                        console.log("Current:", currentPage);
-                        console.log("Total:", totalPages);
                         updateButtons();
+                        restoreAnswers(currentPage);
+
                     }
                 });
+            }
+
+            function restoreAnswers(page) {
+                if (selectedAnswers[page]) {
+                    for (let questionIndex in selectedAnswers[page]) {
+                        let answerValue = selectedAnswers[page][questionIndex];
+                        $(`#quiz-container input[name="q-${questionIndex}"][value="${answerValue}"]`).prop(
+                            "checked", true);
+                    }
+                }
             }
 
             function updateButtons() {
@@ -303,7 +307,11 @@
             });
 
             $("#nextPage").click(function() {
-                if (currentPage < totalPages) loadQuestions(currentPage + 1);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    loadQuestions(currentPage);
+                }
+
             });
 
             updateButtons();

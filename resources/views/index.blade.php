@@ -17,7 +17,7 @@
                         Movers và Flyers đến khóa học ôn luyện IELTS và TOEIC, chuẩn bị hành trang cho bạn sẵn sàng vươn
                         ra thế giới.
                     </p>
-                    <a href="/test-step-1" class="btn-primary w-fit "><span class="relative z-10">Thi thử nhận kết quả
+                    <a href="{{route('quiz.step1')}}" class="btn-primary w-fit "><span class="relative z-10">Thi thử nhận kết quả
                             ngay</span></a>
                     <div class="flex items-end pl-0 h-[284px] lg:h-[552px]">
                         <img src="/images/img-home.png" id="child-home" class="" alt="" />

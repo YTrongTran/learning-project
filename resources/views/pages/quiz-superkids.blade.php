@@ -76,12 +76,10 @@
                         <div class="text-[18px] font-semibold text-[#06052E] mb-6">Complete the dialogues by choosing
                             the correct option (A-D).</div>
 
-                            {{-- Area display question --}}
                             <div id="quiz-container">
-                                @include('components.quiz_questions', ['questions' => $data['questions'], 'currentPage' => $data['currentPage']])
+                                @include('components.quiz_questions_superkids', ['questions' => $data['questions'], 'currentPage' => $data['currentPage']])
                             </div>
 
-                            {{-- Page transfer button --}}
                             <div class="flex justify-between mt-6">
                                     <button id="prevPage" class="bg-white text-[#BA121A] px-4 py-2 rounded md:rounded-3xl hidden border border-solid border-[#BA121A]">
                                         Previous Page
@@ -258,7 +256,7 @@
         function loadQuestions(page) {
             // if (page < 1 || page > totalPages) return; 
             $.ajax({
-                url: "{{ route('quiz', ['quiz' => $id]) }}",
+                url: "{{ route('quiz.superkids', ['quiz' => $id]) }}",
                 type: "GET",
                 data: { page: page },
                 beforeSend: function() {
