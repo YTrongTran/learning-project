@@ -18,6 +18,11 @@
                         <label for="name" class="text-sm md:text-lg font-semibold text-[#06052E] mb-2">Họ và tên</label>
                         <input type="text" id="name" name="name" placeholder="Họ và tên" 
                             class="text-sm md:text-base w-full h-9 md:h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        @error('name')
+                            <div class="mt-2 text-sm text-red-600">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     
                     <div>
@@ -30,18 +35,33 @@
                                 Lấy mã OTP
                             </button>
                         </div>
+                        @error('phone')
+                        <div class="mt-2 text-sm text-red-600">
+                            {{ $message }}
+                        </div>
+                        @enderror
                     </div>
 
                     <div class="mt-custom-otp">
                         {{-- <label for="otp" class="">Nhập mã OTP</label> --}}
                         <input type="text" id="otp" name="otp" placeholder="Nhập mã OTP"
                             class="text-sm md:text-base w-full h-9 md:h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            @error('otp')
+                            <div class="mt-2 text-sm text-red-600">
+                                {{ $message }}
+                            </div>
+                            @enderror   
                     </div>
 
                     <div>
                         <label for="email" class="text-sm md:text-lg font-semibold text-[#06052E] mb-2">Email</label>
                         <input type="email" id="email" name="email" placeholder="Email"
                             class="text-sm md:text-base w-full h-9 md:h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            @error('email')
+                            <div class="mt-2 text-sm text-red-600">
+                                {{ $message }}
+                            </div>
+                            @enderror     
                     </div>
 
                     <div class="text-center">

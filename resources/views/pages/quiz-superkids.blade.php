@@ -24,7 +24,7 @@
                     <!-- Timer -->
                     <div class="mb-4 shadow-md rounded-md border p-3">
                         <div class="text-[13px] text-rose-600 mb-2 font-bold">Thời gian còn lại</div>
-                        <div class="text-[24px] font-bold">0:58:16</div>
+                        <div class="text-[24px] font-bold" id="countdown"></div>
                     </div>
 
                     <!-- Questions Grid -->
@@ -49,7 +49,13 @@
                 <div class="flex-1 text-[#06052E]">
                     <div class="flex lg:flex-row flex-col lg:gap-0 gap-4 justify-between items-center mb-8">
                         <div class="flex items-center gap-3">
-                            <h1 class="text-[17px] font-semibold">Placement Test - Superkids</h1>
+                            <h1 class="text-[17px] font-semibold">
+                                @if ($title)
+                                    {{$title}}
+                                @else
+                                    Không có Tiêu đề
+                                @endif
+                            </h1>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="relative">
@@ -229,6 +235,10 @@
             $(`.question-button[data-question="${questionIndex}"]`).addClass('bg-rose-700 text-white');
 
             const answerValue = $(this).val();
+            var question_id =  questionDiv.data('id'); //lấy id
+            //nhiệm vụ ở đây là lưu giá trị và kết quả trong 1 array[ 'keys'=>['key'=>[ lúc này sẽ chứa đáp án key và value ví dụ '1'=> B] ]]
+            console.log(answerValue);
+            console.log(question_id);
             if (!selectedAnswers[currentPage]) {
                 selectedAnswers[currentPage] = {};
             }
@@ -245,6 +255,7 @@
 
         // Show result modal on next page button click
         $("#finishTest").click(function () {
+
             $("#modal-result-test").css("display", "flex");
         });
 
@@ -301,7 +312,30 @@
         });
 
         updateButtons();
+        startCountdown();
     });
+    //var duration
+    var duration = localStorage.getItem('duration')|| {{$duration}} * 60 * 60;
     
+    function startCountdown(){
+        var countdownInterval = setInterval(() => {
+            var h = Math.floor(duration/ 3600);
+            var m = Math.floor(duration % 3600 / 60);
+            var s = Math.floor(duration %  60);
+            $("#countdown").text(
+                (h < 10 ? '0' + h : h) + ":"+
+                (m < 10 ? '0' + m : m) + ":"+
+                (s < 10 ? '0' + s : s) 
+            );
+            localStorage.setItem('duration', duration);
+            if(duration <= 0){
+                clearInterval(countdownInterval);
+                $("#countdown").text("Time's up!");
+                localStorage.removeItem('duration');
+            }else{
+                duration --;
+            }
+        }, 1000);
+    }
 </script>
 @stop

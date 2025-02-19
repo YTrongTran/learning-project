@@ -24,7 +24,7 @@ class CustomsController extends Controller
      */
     public function create()
     {
-        return view('pages.test_step_2');
+       
     }
 
     /**
@@ -32,9 +32,8 @@ class CustomsController extends Controller
      */
     public function store(StoreCustomsRequest $request)
     {
-        //lưu xong rồi 
-        // dd($request->all());
-    //    return redirect()->route('test.step2');
+       
+    
     }
 
     public function step_2(StoreCustomsRequest $request)
@@ -85,8 +84,11 @@ class CustomsController extends Controller
         try {
             $client = new Client($sid, $token);
             $client->messages->create($receiverNumber, [
-                'from' => $fromNumber,
-                'body' => $message
+                '+84337930191', 
+            [
+                'from' => $fromNumber,  
+                'body' => 'Mã OTP của bạn là: 123456'
+            ]
             ]);
 
             response()->json(['message' => 'oke'], 200);

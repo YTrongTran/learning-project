@@ -1240,3 +1240,136 @@
 2025/02/13 23:18:23 [error] 17#17: *101 open() "/var/www/html/public/js/code-otp.js" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /js/code-otp.js HTTP/1.1", host: "localhost", referrer: "http://localhost/test-step-1"
 2025/02/13 23:18:37 [error] 17#17: *101 open() "/var/www/html/public/js/code-otp.js" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /js/code-otp.js HTTP/1.1", host: "localhost", referrer: "http://localhost/test-step-1"
 2025/02/13 23:20:22 [error] 17#17: *106 open() "/var/www/html/public/public/js/code-otp.js" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /public/js/code-otp.js HTTP/1.1", host: "localhost", referrer: "http://localhost/test-step-1"
+2025/02/15 01:26:36 [notice] 16#16: using the "epoll" event method
+2025/02/15 01:26:36 [notice] 16#16: nginx/1.21.6
+2025/02/15 01:26:36 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/15 01:26:36 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/15 01:26:36 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/15 01:26:36 [notice] 16#16: start worker processes
+2025/02/15 01:26:36 [notice] 16#16: start worker process 17
+2025/02/15 01:26:36 [notice] 16#16: start worker process 18
+2025/02/15 01:26:36 [notice] 16#16: start worker process 19
+2025/02/15 01:26:36 [notice] 16#16: start worker process 20
+2025/02/15 01:26:36 [notice] 16#16: start worker process 21
+2025/02/15 01:26:36 [notice] 16#16: start worker process 22
+2025/02/15 01:26:36 [notice] 16#16: start worker process 23
+2025/02/15 01:26:36 [notice] 16#16: start worker process 24
+2025/02/15 01:26:36 [notice] 16#16: start worker process 25
+2025/02/15 01:26:36 [notice] 16#16: start worker process 26
+2025/02/15 01:26:36 [notice] 16#16: start worker process 27
+2025/02/15 01:26:36 [notice] 16#16: start worker process 28
+2025/02/15 02:07:42 [notice] 16#16: using the "epoll" event method
+2025/02/15 02:07:42 [notice] 16#16: nginx/1.21.6
+2025/02/15 02:07:42 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/15 02:07:42 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/15 02:07:42 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/15 02:07:42 [notice] 16#16: start worker processes
+2025/02/15 02:07:42 [notice] 16#16: start worker process 17
+2025/02/15 02:07:42 [notice] 16#16: start worker process 18
+2025/02/15 02:07:42 [notice] 16#16: start worker process 19
+2025/02/15 02:07:42 [notice] 16#16: start worker process 20
+2025/02/15 02:07:42 [notice] 16#16: start worker process 21
+2025/02/15 02:07:42 [notice] 16#16: start worker process 22
+2025/02/15 02:07:42 [notice] 16#16: start worker process 23
+2025/02/15 02:07:42 [notice] 16#16: start worker process 24
+2025/02/15 02:07:42 [notice] 16#16: start worker process 25
+2025/02/15 02:07:42 [notice] 16#16: start worker process 26
+2025/02/15 02:07:42 [notice] 16#16: start worker process 27
+2025/02/15 02:07:42 [notice] 16#16: start worker process 28
+2025/02/15 02:15:21 [error] 17#17: *2 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin"
+2025/02/15 02:16:25 [error] 17#17: *2 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/15 02:16:58 [error] 17#17: *2 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/exams/create"
+2025/02/15 02:16:58 [error] 17#17: *2 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/exams/create"
+2025/02/15 02:17:36 [error] 17#17: *2 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/15 02:20:47 [error] 20#20: *12 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/customs/create"
+2025/02/15 02:21:15 [error] 22#22: *25 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus"
+2025/02/15 02:21:15 [error] 22#22: *25 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus"
+2025/02/15 02:21:32 [error] 20#20: *12 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/15 02:21:32 [error] 20#20: *12 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/15 02:21:32 [error] 22#22: *25 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus/1/builder"
+2025/02/15 02:21:51 [error] 22#22: *25 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/15 02:22:05 [error] 22#22: *25 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus/1/builder"
+2025/02/15 02:22:19 [error] 20#20: *12 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/15 02:22:36 [error] 20#20: *12 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/15 03:05:52 [error] 17#17: *81 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/15 03:06:01 [error] 17#17: *81 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/15 04:06:52 [error] 18#18: *113 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/15 04:12:17 [error] 18#18: *123 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/15 04:12:36 [error] 18#18: *123 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/15 04:12:36 [error] 18#18: *123 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/15 04:14:37 [error] 18#18: *129 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/15 04:19:52 [error] 19#19: *138 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/15 04:54:52 [error] 21#21: *228 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/1/edit"
+2025/02/15 04:55:14 [error] 21#21: *228 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/15 05:37:00 [error] 21#21: *245 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/15 05:37:00 [error] 21#21: *245 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/15 06:06:29 [error] 23#23: *301 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/15 06:06:36 [error] 23#23: *304 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/users"
+2025/02/15 06:06:36 [error] 23#23: *304 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/users"
+2025/02/15 07:22:33 [error] 27#27: *406 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/users"
+2025/02/15 07:22:33 [error] 27#27: *406 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/users"
+2025/02/15 08:06:10 [error] 27#27: *433 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin"
+2025/02/15 08:06:20 [error] 27#27: *433 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/users"
+2025/02/15 08:06:20 [error] 27#27: *434 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/roles"
+2025/02/15 08:07:10 [error] 27#27: *434 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/roles/create"
+2025/02/15 08:07:11 [error] 27#27: *433 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/users/create"
+2025/02/15 08:08:31 [error] 27#27: *434 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/15 08:08:47 [error] 27#27: *434 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/settings"
+2025/02/15 08:11:16 [error] 27#27: *434 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/15 08:11:30 [error] 27#27: *434 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/15 08:13:12 [error] 27#27: *454 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/15 08:13:25 [error] 27#27: *454 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/15 08:13:49 [error] 27#27: *455 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/15 08:39:06 [error] 28#28: *502 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/15 08:43:26 [error] 28#28: *509 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/roles"
+2025/02/15 08:44:33 [error] 28#28: *509 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/15 08:47:44 [error] 17#17: *514 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs/4"
+2025/02/15 08:49:42 [error] 17#17: *518 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/15 09:15:58 [error] 17#17: *521 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin"
+2025/02/17 16:33:17 [notice] 16#16: using the "epoll" event method
+2025/02/17 16:33:17 [notice] 16#16: nginx/1.21.6
+2025/02/17 16:33:17 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/17 16:33:17 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/17 16:33:17 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/17 16:33:17 [notice] 16#16: start worker processes
+2025/02/17 16:33:17 [notice] 16#16: start worker process 17
+2025/02/17 16:33:17 [notice] 16#16: start worker process 18
+2025/02/17 16:33:17 [notice] 16#16: start worker process 19
+2025/02/17 16:33:17 [notice] 16#16: start worker process 20
+2025/02/17 16:33:17 [notice] 16#16: start worker process 21
+2025/02/17 16:33:17 [notice] 16#16: start worker process 22
+2025/02/17 16:33:17 [notice] 16#16: start worker process 23
+2025/02/17 16:33:17 [notice] 16#16: start worker process 24
+2025/02/17 16:33:17 [notice] 16#16: start worker process 25
+2025/02/17 16:33:17 [notice] 16#16: start worker process 26
+2025/02/17 16:33:17 [notice] 16#16: start worker process 27
+2025/02/17 16:33:17 [notice] 16#16: start worker process 28
+2025/02/17 16:38:04 [error] 17#17: *1 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:11 [error] 18#18: *2 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:13 [error] 19#19: *3 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:14 [error] 20#20: *4 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:14 [error] 21#21: *5 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:15 [error] 22#22: *6 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:15 [error] 23#23: *7 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:16 [error] 24#24: *8 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:16 [error] 25#25: *9 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:38:38 [error] 26#26: *10 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/17 16:39:28 [error] 27#27: *11 rewrite or internal redirection cycle while internally redirecting to "/index.php", client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", host: "localhost"
+2025/02/19 11:20:47 [notice] 16#16: using the "epoll" event method
+2025/02/19 11:20:47 [notice] 16#16: nginx/1.21.6
+2025/02/19 11:20:47 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/19 11:20:47 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/19 11:20:47 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/19 11:20:47 [notice] 16#16: start worker processes
+2025/02/19 11:20:47 [notice] 16#16: start worker process 17
+2025/02/19 11:20:47 [notice] 16#16: start worker process 18
+2025/02/19 11:20:47 [notice] 16#16: start worker process 19
+2025/02/19 11:20:47 [notice] 16#16: start worker process 20
+2025/02/19 11:20:47 [notice] 16#16: start worker process 21
+2025/02/19 11:20:47 [notice] 16#16: start worker process 22
+2025/02/19 11:20:47 [notice] 16#16: start worker process 23
+2025/02/19 11:20:47 [notice] 16#16: start worker process 24
+2025/02/19 11:20:47 [notice] 16#16: start worker process 25
+2025/02/19 11:20:47 [notice] 16#16: start worker process 26
+2025/02/19 11:20:47 [notice] 16#16: start worker process 27
+2025/02/19 11:20:47 [notice] 16#16: start worker process 28

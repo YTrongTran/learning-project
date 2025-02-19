@@ -12,6 +12,9 @@ class DatabaseSeeder extends Seeder
             ExamSeeder::class,
             QuestionSeeder::class,
             AnswerSeeder::class,
+            VoyagerDummyDatabaseSeeder::class,
+            VoyagerDatabaseSeeder::class
+
         ]);
     }
 }

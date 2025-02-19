@@ -131,7 +131,7 @@
         </div>
 
         <div class="exam-superkid questions-container hidden">
-        @for ($i = 0; $i < 2; $i++)    
+        @for ($i = 0; $i < 20; $i++)    
             <div class="question">
                 <h4 class="question-title has-toggle" >Question {{$i+1}}</h4>
                 <div class="question-content">

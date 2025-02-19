@@ -19,3 +19,7 @@ yarn-error.log
 /.idea
 /.vscode
 docker/mysql/mysql.sock
+docker/mysql/*
+!docker/mysql/my.cnf
+docker/nginx_log/*
+docker/php-fpm/php-fpm.log

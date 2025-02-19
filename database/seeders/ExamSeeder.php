@@ -8,8 +8,8 @@ class ExamSeeder extends Seeder
 {
     public function run()
     {
-        Exam::create([
-            'title' => 'Sample Exam',
-        ]);
+        // Exam::create([
+        //     'title' => 'Sample Exam',
+        // ]);
     }
 }
