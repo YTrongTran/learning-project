@@ -1,124 +1,196 @@
-@php
-    $showHeadingListening = true;
-    $showHeadingReading = true;
-    $showHeadingWriting = true;
-@endphp
-@foreach ($questions as $index => $item)
-    @php
-        $questionNumber = ($currentPage - 1) * 6 + $index + 1;
-    @endphp
+{{-- Part1 --}}
+@if ($questions['part'] === 1)
+    <h2 class="text-lg font-semibold mb-2">Listening:</h2>
+    <p class="text-black mb-4">
+        <strong>Part 1: (Questions 1–6)</strong><br>
+        In this part, you will hear a short description of each photograph.
+        For each question, choose the statement that best describes the photograph.
+    </p>
 
-    {{-- Listening --}}
-    @if (!empty($item['audio']))
-        @if ($showHeadingListening)
-            <div class="text-lg font-semibold mb-2">Listening:</div>
-            <p class="text-gray-700 mb-6">
-                <strong>Part 1: (Questions 1–6)</strong><br>
-                In this part, you will hear a short description of each photograph.
-                For each question, choose the statement that best describes the photograph.
-            </p>
-            @php
-                $showHeadingListening = false;
-            @endphp
-        @endif
-        <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionNumber }}">
-            <h2 class="font-semibold text-lg mb-2">Question {{ $questionNumber }}:</h2>
+    <audio controls class="w-full mb-4">
+        <source src="{{ $questions['audio_url'] }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    @foreach ($questions['questions'] as $question)
+        <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $question['question_id'] }}"
+            data-id="question-{{ $question['question_id'] }}">
+            <h2 class="font-medium text-base mb-2">Question {{ $question['question_id'] }}:</h2>
             <div class="w-[310px] mb-2">
-                <img src="{{ $item['img'] }}" alt="Question {{ $questionNumber }}" class="w-full">
+                <img src="{{ $question['image_url'] }}" alt="Question {{ $question['question_id'] }}" class="w-full">
             </div>
-
-            <audio controls class="w-full">
-                <source src="{{ $item['audio'] }}" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
 
             <div class="mt-3 space-y-2">
                 @foreach (['A', 'B', 'C', 'D'] as $option)
                     <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="radio" name="q-{{ $questionNumber }}" value="{{ $option }}"
+                        <input type="radio" name="q-{{ $question['question_id'] }}" value="{{ $option }}"
                             class="w-4 h-4">
                         <span>{{ $option }}</span>
                     </label>
                 @endforeach
             </div>
         </div>
+    @endforeach
 
-        {{-- Grammar --}}
-    @elseif (!empty($item['question']) && !empty($item['img']))
-        <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionNumber }}">
-            <div class="font-medium text-lg mb-2">Question {{ $questionNumber }}</div>
-            <div class="flex gap-6">
-                <div class="w-[310px]">
-                    <img src="{{ $item['img'] }}" alt="Grammar Question" class="w-full">
-                </div>
-                <div class="flex-1">
-                    <div class="text-gray-700 mb-3">{{ $item['question'] }}</div>
-                    <div class="space-y-2">
-                        @foreach (['A', 'B', 'C', 'D'] as $option)
-                            @if (!empty($item[$option]))
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="q-{{ $questionNumber }}" value="{{ $option }}"
-                                        class="w-4 h-4">
-                                    <span>{{ $option }}. {{ $item[$option] }}</span>
-                                </label>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
+    {{-- Part2 --}}
+@elseif ($questions['part'] === 2)
+    <p class="text-black mb-4">
+        <strong>Part 2: (Questions 7–12)</strong><br>
+        In this part, you will hear a question followed by three possible answers. Choose the best response.
+    </p>
+    <audio controls class="w-full mb-4">
+        <source src="{{ $questions['audio_url'] }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    @foreach ($questions['questions'] as $question)
+        <div class="mb-4 border p-4 rounded shadow question"
+            id="question-{{ $question['question_id'] }}"data-id="question-{{ $question['question_id'] }}">
+            <h2 class="font-medium text-base mb-2">Question {{ $question['question_id'] }}:</h2>
+            <div class="mt-3 space-y-2">
+                @foreach (['A', 'B', 'C'] as $option)
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="q-{{ $question['question_id'] }}" value="{{ $option }}"
+                            class="w-4 h-4">
+                        <span>{{ $option }}</span>
+                    </label>
+                @endforeach
             </div>
         </div>
+    @endforeach
 
-        {{-- Reading --}}
-    @elseif (!empty($item['title']) && !empty($item['content']))
-        @if ($showHeadingReading)
-            <div class="text-lg font-semibold mb-2">Reading:</div>
-            <p class="text-gray-700 mb-6">
-                Read the text below. For questions 61–65, choose the best answer (A, B or C)
-            </p>
-            @php
-                $showHeadingReading = false;
-            @endphp
-        @endif
+    {{-- Part3 --}}
+@elseif ($questions['part'] === 3)
+    <p class="text-black mb-4">
+        <strong>Part 3: (Questions 13–18)</strong><br>
+        You will hear a conversation between two people. For each question, choose the best answer.
+    </p>
+    <audio controls class="w-full mb-4">
+        <source src="{{ $questions['audio_url'] }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    @foreach ($questions['questions'] as $question)
+        <div class="mb-4 border p-4 rounded shadow question"
+            id="question-{{ $question['question_id'] }}"data-id="question-{{ $question['question_id'] }}">
+            <h2 class="font-medium text-base mb-2">Question {{ $question['question_id'] }}:
+                {{ $question['question'] }}</h2>
+            <div class="mt-3 space-y-2">
+                @foreach ($question['options'] as $questionchild)
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="q-{{ $question['question_id'] }}"
+                            value="{{ $questionchild['option'] }}" class="w-4 h-4">
+                        <span>{{ $questionchild['option'] }}) {{ $questionchild['description'] }}</span>
+                    </label>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
 
-        <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionNumber }}">
-            <h2 class="font-semibold text-xl mb-2">{{ $item['title'] }}</h2>
-            <p class="text-gray-700 mb-6">
-                {{ $item['content'] }}
-            </p>
+    {{-- Part4 --}}
+@elseif ($questions['part'] === 4)
+    <p class="text-black mb-4">
+        <strong>Part 4: (Questions 19-25)</strong><br>
+        You will hear a short talk. For each question, choose the best answer.
+    </p>
+    <audio controls class="w-full mb-4">
+        <source src="{{ $questions['audio_url'] }}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    @foreach ($questions['questions'] as $question)
+        <div class="mb-4 border p-4 rounded shadow question"
+            id="question-{{ $question['question_id'] }}"data-id="question-{{ $question['question_id'] }}">
+            <h2 class="font-medium text-base mb-2">Question {{ $question['question_id'] }}:
+                {{ $question['question'] }}</h2>
+            <div class="mt-3 space-y-2">
+                @foreach ($question['options'] as $questionchild)
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="q-{{ $question['question_id'] }}"
+                            value="{{ $questionchild['option'] }}" class="w-4 h-4">
+                        <span>{{ $questionchild['option'] }}) {{ $questionchild['description'] }}</span>
+                    </label>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
 
-            @foreach ($item['questions'] as $index => $itemChild)
-                <h2 class="font-semibold text-lg mb-2">Question {{ $questionNumber }}:</h2>
-                <div class="text-gray-700 mb-3">{{ $itemChild['question'] }}
-                    <div class="space-y-2">
-                        @foreach (['A', 'B', 'C', 'D'] as $option)
-                            @if (!empty($itemChild[$option]))
-                                <label class="flex items-center gap-2 cursor-pointer">
-                                    <input type="radio" name="q-{{ $questionNumber }}" value="{{ $option }}"
-                                        class="w-4 h-4">
-                                    <span>{{ $option }}. {{ $itemChild[$option] }}</span>
-                                </label>
-                            @endif
-                        @endforeach
-                    </div>
+    {{-- Part5 --}}
+@elseif ($questions['part'] === 5)
+    <h2 class="text-lg font-semibold mb-2">Reading:</h2>
+    <p class="text-black mb-4">
+        <strong>Part 5: (Questions 26-35)</strong><br>
+        For each question, choose the best answer to complete the sentence.
+    </p>
+
+    @foreach ($questions['questions'] as $question)
+        <div class="mb-4 border p-4 rounded shadow question"
+            id="question-{{ $question['question_id'] }}"data-id="question-{{ $question['question_id'] }}">
+            <p class="font-medium text-base mb-2">{{ $question['question_id'] }}. {{ $question['text'] }}</p>
+            <div class="mt-3 space-y-2">
+                @foreach ($question['options'] as $questionchild)
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="radio" name="q-{{ $question['question_id'] }}"
+                            value="{{ $questionchild['option'] }}" class="w-4 h-4">
+                        <span>{{ $questionchild['option'] }}) {{ $questionchild['description'] }}</span>
+                    </label>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
+
+    {{-- Part6 --}}
+@elseif ($questions['part'] === 6)
+    <p class="text-black mb-4">
+        <strong>Part 6: (Questions 36-40)</strong><br>
+        Read the text and choose the best answer to fill each blank.
+    </p>
+
+    @foreach ($questions['passages'] as $question)
+        <h3 class="text-base font-semibold mb-2">Passage:</h3>
+        <p class="mb-4">{{ $question['text'] }}</p>
+
+        @foreach ($question['questions'] as $questionChild1)
+            <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionChild1['question_id'] }}"
+                data-id="question-{{ $questionChild1['question_id'] }}">
+                <p class="font-medium text-base mb-2">{{ $questionChild1['question_id'] }}.</p>
+                <div class="mt-3 space-y-2">
+                    @foreach ($questionChild1['options'] as $questionChild2)
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="q-{{ $questionChild1['question_id'] }}"
+                                value="{{ $questionChild2['option'] }}" class="w-4 h-4">
+                            <span>{{ $questionChild2['option'] }}) {{ $questionChild2['description'] }} </span>
+                        </label>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
+        @endforeach
+    @endforeach
 
-        </div>
+    {{-- Part7 --}}
+@elseif ($questions['part'] === 7)
+    <p class="text-black mb-4">
+        <strong>Part 7: (Questions 40-50)</strong><br>
+        Read the passage and answer the questions that follow.
+    </p>
 
-        {{-- Writing --}}
-    @elseif (!empty($item['question']) && !empty($item['desc']))
-        @if ($showHeadingWriting)
-            <div class="text-lg font-semibold mb-2">Writing:</div>
-            @php
-                $showHeadingWriting = false;
-            @endphp
-        @endif
-        <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionNumber }}">
-            <h2 class="font-medium text-lg mb-4">{{ $item['question'] }}</h2>
-            <h2 class="text-lg mb-4">{{ $item['desc'] }}</h2>
-            <h2 class="font-medium text-lg mb-2">{{ $item['required'] }}</h2>
-            <input type="textarea" name="q-{{ $questionNumber }}" class="w-full h-[120px] p-2 border rounded"
-                placeholder="Write 75–100 words.">
-        </div>
-    @endif
-@endforeach
+    @foreach ($questions['passages'] as $question)
+        <h3 class="text-base font-semibold mb-2">Passage {{ $question['passage_id'] }}:</h3>
+        <p class="mb-4">{{ $question['text'] }}</p>
+
+        @foreach ($question['questions'] as $questionChild1)
+            <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionChild1['question_id'] }}"
+                data-id="question-{{ $questionChild1['question_id'] }}">
+                <p class="font-medium text-base mb-2">{{ $questionChild1['question_id'] }}.
+                    {{ $questionChild1['question'] }}</p>
+                <div class="mt-3 space-y-2">
+                    @foreach ($questionChild1['options'] as $questionChild2)
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="q-{{ $questionChild1['question_id'] }}"
+                                value="{{ $questionChild2['option'] }}" class="w-4 h-4">
+                            <span>{{ $questionChild2['option'] }}) {{ $questionChild2['description'] }}</span>
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+        @endforeach
+    @endforeach
+
+@endif

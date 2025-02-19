@@ -133,7 +133,6 @@ html {
 body {
     /* font-family: 'Bricolage Grotesque', sans-serif; */
     font-family: "Roboto", sans-serif;
-    
 }
 input[type="radio"] {
     appearance: none;
@@ -180,7 +179,7 @@ input[type="radio"]:checked::after {
     @apply pb-8 md:pb-0;
 }
 
-.mt-custom-otp{
+.mt-custom-otp {
     @apply mt-4 !important;
 }
 
@@ -192,14 +191,14 @@ input[type="radio"]:checked::after {
     @apply text-[#2E3E5C];
 }
 
-.h-custom-line{
+.h-custom-line {
     height: 1px;
-    background-color: #5A5A5A;
+    background-color: #5a5a5a;
     margin-top: 24px !important;
     margin-bottom: 24px !important;
 }
-.bg-image-login{
-    background-image: url('/assets/img/bg-login.png');
+.bg-image-login {
+    background-image: url("/assets/img/bg-login.png");
     background-repeat: no-repeat;
 }
 
@@ -220,60 +219,66 @@ input[type="radio"]:checked::after {
     display: block;
 }
 
-.grid-cols-custom{
+.grid-cols-custom {
     grid-template-columns: 120px 1fr 120px 120px;
 }
 
-.bg-section{
-    background-color: #F9FAFC;
+.bg-section {
+    background-color: #f9fafc;
 }
 
-.logo{
+.logo {
     width: 120px;
 }
 
-#child-home{
+#child-home {
     width: 50%;
     margin: 0 auto;
     transform-origin: bottom center;
     transition: transform 0.3s ease-out;
 }
 
-@media only screen and (max-width: 768px){
-    .grid-cols-custom{
+@media only screen and (max-width: 768px) {
+    .grid-cols-custom {
         grid-template-columns: 1fr;
     }
-    .logo{
+    .logo {
         width: 80px;
     }
 }
 
-
-#overlay{	
+#overlay {
     position: fixed;
     top: 0;
     z-index: 100;
     width: 100%;
-    height:100%;
+    height: 100%;
     display: none;
-    background: rgba(0,0,0,0.6);
-  }
-  .cv-spinner {
+    background: rgba(0, 0, 0, 0.6);
+}
+.cv-spinner {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;  
-  }
-  .spinner {
+    align-items: center;
+}
+.spinner {
     width: 40px;
     height: 40px;
     border: 4px #ddd solid;
     border-top: 4px #2e93e6 solid;
     border-radius: 50%;
     animation: sp-anime 0.8s infinite linear;
-  }
-  @keyframes sp-anime {
-    100% { 
-      transform: rotate(360deg); 
+}
+@keyframes sp-anime {
+    100% {
+        transform: rotate(360deg);
     }
-  }
+}
+
+.pink-color {
+    color: #ffd6e4;
+}
+.red-color {
+    color: #e21033;
+}

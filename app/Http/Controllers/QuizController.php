@@ -6,8 +6,13 @@ use App\Http\Requests\CustomesRequest;
 use Illuminate\Http\Request;
 use App\Models\Exam;
 use App\Models\Question;
+<<<<<<< HEAD
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\DB;
+=======
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
+>>>>>>> 4305b8fd40aea5b4ad6cdbb094d2212dab657b01
 
 class QuizController extends Controller
 {
@@ -32,7 +37,7 @@ class QuizController extends Controller
     }
     public function step3(Request $request)
     {
-        $level = $request->input('level'); 
+        $level = $request->input('level');
         $levelText = $request->input('level_text');
 
         if (!$level) {
@@ -61,6 +66,7 @@ class QuizController extends Controller
             'point' => 0
         ];
 
+<<<<<<< HEAD
         foreach ($getQuestionsAll as $question) {
             $quiz['questions'][$question->_index]= [
                 'question' => $question->question_text,
@@ -76,339 +82,1084 @@ class QuizController extends Controller
         // return view('pages.quiz', compact('quiz', 'questions'));
         $perPage = 6; // Number of questions each page
         $questions = array_chunk($quiz['questions'], $perPage); // Divide the list into groups of 6 sentences
+=======
+        $perPage = 6;
+        $questions = array_chunk($quiz['questions'], $perPage);
+>>>>>>> 4305b8fd40aea5b4ad6cdbb094d2212dab657b01
         $totalPages = count($questions);
         $page = max(1, min($request->input('page', 1), $totalPages));
-        $data = [
-            'questions' => $questions[$page - 1] ?? [], // Get the question group of the current page
-            'totalPages' => $totalPages, // Total number of pages
-            'currentPage' => $page // Current page
-        ];
-
-        // Returns JSON if the request is Ajax
-        if ($request->ajax()) {
-            return response()->json([
-                'html' => view('components.quiz_questions_superkids', [
-                    'questions' => $data['questions'], 
-                    'currentPage' => $data['currentPage']
-                    ])->render(),
-                'totalPages' => $data['totalPages'],
-                'currentPage' => $data['currentPage'],
-            ]);
-        }
-
-
-        return view('pages.quiz-superkids', compact('quiz', 'data', 'id','title','duration'));
-    }
-
-    public function toeic(Request $request, $id)
-    {
-        $quiz = [
-            'listening' => [
-                0 => [
-                    'img' => asset('assets/img/Listening.png'),
-                    'audio' => asset('assets/audio/test.mp3'),
-                    'correct' => 'A'
-                ],
-                1 => [
-                    'img' => asset('assets/img/Listening.png'),
-                    'audio' => asset('assets/audio/test.mp3'),
-                    'correct' => 'A'
-                ],
-                2 => [
-                    'img' => asset('assets/img/Listening.png'),
-                    'audio' => asset('assets/audio/test.mp3'),
-                    'correct' => 'A'
-                ],
-                3 => [
-                    'img' => asset('assets/img/Listening.png'),
-                    'audio' => asset('assets/audio/test.mp3'),
-                    'correct' => 'A'
-                ],
-                4 => [
-                    'img' => asset('assets/img/Listening.png'),
-                    'audio' => asset('assets/audio/test.mp3'),
-                    'correct' => 'A'
-                ],
-                5 => [
-                    'img' => asset('assets/img/Listening.png'),
-                    'audio' => asset('assets/audio/test.mp3'),
-                    'correct' => 'A'
-                ],
-            ],
-            'grammar' => [
-                0 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                1 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                2 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                3 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                4 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                5 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                6 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                7 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                8 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                9 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                10 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                11 => [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-            ],
-            'reading' => [
-                0 => [
-                    'title' => 'Bike Sharing',
-                    'content' => "If you travel to a big city, you will see many people riding public bikes. This isn't a new idea. The first public bike sharing system began in Amsterdam in the 1960s. The organisers painted the bikes white and many people used them. After one person finished their journey they left the bike for the next person. Unfortunately, people stole many of the bikes or threw them in the rivers, and so the system was stopped.
-
-                    In 1974, the city of La Rochelle, in France, started its own system of free public bicycles. Their bikes were yellow and the system was successful. Today, there are more than 300 bikes and the city is famous for its yellow bikes. You have to pay to use the bikes now, but they aren't expensive and they are very popular.
-
-                    Today, technology has changed public bike sharing systems. There are now special stations for people to put the bikes so they are safe and computer systems that record the location of the bikes at the bike stations. In most bike sharing systems, the riders use a special card to pay for the bike. Public bike sharing systems are popular in Europe, but (11) they are also becoming popular in Asia. In fact, the biggest bike sharing system is in the city of Hangzhou, in China. There are over 84,000 bicycles and over 3,000 stations!
-
-                    Cities don't have bike sharing systems to make money, but the city benefits because there are fewer cars on the roads, less noise and less pollution. Public bike sharing systems are also becoming very popular with tourists.
-
-                    Local people are happy because a shared bike is cheaper than using a car, it is good for the environment and it is good exercise. With over 500 bike sharing systems in the world today it looks like they are here to stay.",
-                    'questions' => [
-                        0 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                        1 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                        2 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                    ],
-                ],
-                1 => [
-                    'title' => 'Bike Sharing 2',
-                    'content' => "If you travel to a big city, you will see many people riding public bikes. This isn't a new idea. The first public bike sharing system began in Amsterdam in the 1960s. The organisers painted the bikes white and many people used them. After one person finished their journey they left the bike for the next person. Unfortunately, people stole many of the bikes or threw them in the rivers, and so the system was stopped.
-
-                    In 1974, the city of La Rochelle, in France, started its own system of free public bicycles. Their bikes were yellow and the system was successful. Today, there are more than 300 bikes and the city is famous for its yellow bikes. You have to pay to use the bikes now, but they aren't expensive and they are very popular.
-
-                    Today, technology has changed public bike sharing systems. There are now special stations for people to put the bikes so they are safe and computer systems that record the location of the bikes at the bike stations. In most bike sharing systems, the riders use a special card to pay for the bike. Public bike sharing systems are popular in Europe, but (11) they are also becoming popular in Asia. In fact, the biggest bike sharing system is in the city of Hangzhou, in China. There are over 84,000 bicycles and over 3,000 stations!
-
-                    Cities don't have bike sharing systems to make money, but the city benefits because there are fewer cars on the roads, less noise and less pollution. Public bike sharing systems are also becoming very popular with tourists.
-
-                    Local people are happy because a shared bike is cheaper than using a car, it is good for the environment and it is good exercise. With over 500 bike sharing systems in the world today it looks like they are here to stay.",
-                    'questions' => [
-                        0 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                        1 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                        2 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                    ],
-                ],
-                2 => [
-                    'title' => 'Bike Sharing 2',
-                    'content' => "If you travel to a big city, you will see many people riding public bikes. This isn't a new idea. The first public bike sharing system began in Amsterdam in the 1960s. The organisers painted the bikes white and many people used them. After one person finished their journey they left the bike for the next person. Unfortunately, people stole many of the bikes or threw them in the rivers, and so the system was stopped.
-
-                    In 1974, the city of La Rochelle, in France, started its own system of free public bicycles. Their bikes were yellow and the system was successful. Today, there are more than 300 bikes and the city is famous for its yellow bikes. You have to pay to use the bikes now, but they aren't expensive and they are very popular.
-
-                    Today, technology has changed public bike sharing systems. There are now special stations for people to put the bikes so they are safe and computer systems that record the location of the bikes at the bike stations. In most bike sharing systems, the riders use a special card to pay for the bike. Public bike sharing systems are popular in Europe, but (11) they are also becoming popular in Asia. In fact, the biggest bike sharing system is in the city of Hangzhou, in China. There are over 84,000 bicycles and over 3,000 stations!
-
-                    Cities don't have bike sharing systems to make money, but the city benefits because there are fewer cars on the roads, less noise and less pollution. Public bike sharing systems are also becoming very popular with tourists.
-
-                    Local people are happy because a shared bike is cheaper than using a car, it is good for the environment and it is good exercise. With over 500 bike sharing systems in the world today it looks like they are here to stay.",
-                    'questions' => [
-                        0 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                        1 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                        2 => [
-                            'question' => 'What was one of the problems with the first bike sharing system?',
-                            'A' => 'answer 1',
-                            'B' => 'answer 2',
-                            'C' => 'answer 2',
-                            'D' => 'answer 2',
-                            'correct' => 'A'
-                        ],
-                    ],
-                ],
-            ],
-            'writing' => [
-                0 => [
-                    'question' => 'Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.',
-                    'desc' => 'In your next email, please tell me about your favourite kind of music or favourite singers or group. What type of music do they play? Why do you like them?',
-                    'required' => "Write 75–100 words.",
-                    'content' => ''
-                ],
-                1 => [
-                    'question' => 'Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.',
-                    'desc' => 'In your next email, please tell me about your favourite kind of music or favourite singers or group. What type of music do they play? Why do you like them?',
-                    'required' => "Write 75–100 words.",
-                    'content' => ''
-                ],
-                2 => [
-                    'question' => 'Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.',
-                    'desc' => 'In your next email, please tell me about your favourite kind of music or favourite singers or group. What type of music do they play? Why do you like them?',
-                    'required' => "Write 75–100 words.",
-                    'content' => ''
-                ],
-                3 => [
-                    'question' => 'Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.',
-                    'desc' => 'In your next email, please tell me about your favourite kind of music or favourite singers or group. What type of music do they play? Why do you like them?',
-                    'required' => "Write 75–100 words.",
-                    'content' => ''
-                ],
-                4 => [
-                    'question' => 'Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.',
-                    'desc' => 'In your next email, please tell me about your favourite kind of music or favourite singers or group. What type of music do they play? Why do you like them?',
-                    'required' => "Write 75–100 words.",
-                    'content' => ''
-                ],
-                5 => [
-                    'question' => 'Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.',
-                    'desc' => 'In your next email, please tell me about your favourite kind of music or favourite singers or group. What type of music do they play? Why do you like them?',
-                    'required' => "Write 75–100 words.",
-                    'content' => ''
-                ],
-            ],
-            'point' => 100
-        ];
-
-        $perPage = 6;
-        $listeningQuestions  = array_chunk($quiz['listening'], $perPage);
-        $grammarQuestions = array_chunk($quiz['grammar'], $perPage);
-        $readingQuestions = array_chunk($quiz['reading'], $perPage);
-        $writingQuestions = array_chunk($quiz['writing'], $perPage);
-
-        $totalPages = count($listeningQuestions) + count($grammarQuestions) + count($readingQuestions) + count($writingQuestions);
-        $page = max(1, min($request->input('page', 1), $totalPages));
-        
-        $questionsMerged = array_merge($quiz['listening'], $quiz['grammar'], $quiz['reading'], $quiz['writing']);
-        $questions = array_chunk($questionsMerged, $perPage);
-
-
         $data = [
             'questions' => $questions[$page - 1] ?? [],
             'totalPages' => $totalPages,
             'currentPage' => $page
         ];
-        
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.quiz_questions_superkids', [
+<<<<<<< HEAD
+                    'questions' => $data['questions'], 
+=======
+                    'questions' => $data['questions'],
+>>>>>>> 4305b8fd40aea5b4ad6cdbb094d2212dab657b01
+                    'currentPage' => $data['currentPage']
+                ])->render(),
+                'totalPages' => $data['totalPages'],
+                'currentPage' => $data['currentPage'],
+            ]);
+        }
+
+<<<<<<< HEAD
+
+        return view('pages.quiz-superkids', compact('quiz', 'data', 'id','title','duration'));
+=======
+        return view('pages.quiz-superkids', compact('quiz', 'data', 'id'));
+>>>>>>> 4305b8fd40aea5b4ad6cdbb094d2212dab657b01
+    }
+
+    public function toeic(Request $request, $id)
+    {
+        $quiz = [
+            "test_id" => 1,
+            "title" => "TOEIC 1",
+            "description" => "Official TOEIC test from 2023",
+            "parts" => [
+                [
+                    "part" => 1,
+                    "description" => "Photographs",
+                    "audio_url" => asset('assets/audio/NES_TOEIC_Listening_Part_1.mp3'),
+                    "questions" => [
+                        [
+                            "question_id" => 1,
+                            "image_url" => asset('assets/img/Listening.png'),
+                            "options" => ["A", "B", "C", "D"],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 2,
+                            "image_url" => asset('assets/img/Listening.png'),
+                            "options" => ["A", "B", "C", "D"],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 3,
+                            "image_url" => asset('assets/img/Listening.png'),
+                            "options" => ["A", "B", "C", "D"],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 4,
+                            "image_url" => asset('assets/img/Listening.png'),
+                            "options" => ["A", "B", "C", "D"],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 5,
+                            "image_url" => asset('assets/img/Listening.png'),
+                            "options" => ["A", "B", "C", "D"],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 6,
+                            "image_url" => asset('assets/img/Listening.png'),
+                            "options" => ["A", "B", "C", "D"],
+                            "correct_answer" => "B"
+                        ],
+                    ]
+                ],
+                [
+                    "part" => 2,
+                    "description" => "Question-Response",
+                    "audio_url" => asset('assets/audio/NES_TOEIC_Listening_Part_2.mp3'),
+                    "questions" => [
+                        [
+                            "question_id" => 7,
+                            "options" => ["A", "B", "C"],
+                            "correct_answer" => "C"
+                        ],
+                        [
+                            "question_id" => 8,
+                            "options" => ["A", "B", "C"],
+                            "correct_answer" => "C"
+                        ],
+                        [
+                            "question_id" => 9,
+                            "options" => ["A", "B", "C"],
+                            "correct_answer" => "C"
+                        ],
+                        [
+                            "question_id" => 10,
+                            "options" => ["A", "B", "C"],
+                            "correct_answer" => "C"
+                        ],
+                        [
+                            "question_id" => 11,
+                            "options" => ["A", "B", "C"],
+                            "correct_answer" => "C"
+                        ],
+                        [
+                            "question_id" => 12,
+                            "options" => ["A", "B", "C"],
+                            "correct_answer" => "C"
+                        ],
+                    ]
+                ],
+                [
+                    "part" => 3,
+                    "description" => "Conversations",
+                    "audio_url" => asset('assets/audio/NES_TOEIC_Listening_Part _3_1.mp3'),
+                    "questions" => [
+                        [
+                            "question_id" => 13,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 14,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 15,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 16,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 17,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 18,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                    ]
+                ],
+                [
+                    "part" => 4,
+                    "description" => "Talks",
+                    "audio_url" => asset('assets/audio/NES_TOEIC_Listening_Part_4_1.mp3'),
+                    "questions" => [
+                        [
+                            "question_id" => 19,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 20,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 21,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 22,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 23,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 24,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                        [
+                            "question_id" => 25,
+                            "question" => "What is the woman going to do?",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "B"
+                        ],
+                    ]
+                ],
+                [
+                    "part" => 5,
+                    "description" => "Incomplete Sentences",
+                    "questions" => [
+                        [
+                            "question_id" => 26,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 27,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 28,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 29,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 30,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 31,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 32,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 33,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 34,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                        [
+                            "question_id" => 35,
+                            "text" => "The manager ____ the report before submitting it.",
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => "A chef is preparing food in the kitchen."
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => "A waiter is taking an order from customers."
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => "Two people are shaking hands in an office."
+                                ],
+                                [
+                                    "option" => "D",
+                                    "description" => "A woman is reading a book at a café."
+                                ]
+                            ],
+                            "correct_answer" => "A"
+                        ],
+                    ]
+                ],
+                [
+                    "part" => 6,
+                    "description" => "Text Completion",
+                    "passages" => [
+                        [
+                            "passage_id" => 1,
+                            "text" => "Our company has recently implemented a new system to improve customer support. The system is designed to help our staff _______ customer inquiries more quickly and accurately. We have already seen a significant improvement in response time, and we expect the new system to enhance customer satisfaction even further. All employees will undergo training next week _______ they can make the most of the new features. In addition, we are working on expanding the system to _______ other customer needs, such as managing orders and processing returns. We believe that _______ system will _______ efficiency and productivity across all departments.",
+                            "questions" => [
+                                [
+                                    "question_id" => 36,
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 37,
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "C"
+                                ],
+                                [
+                                    "question_id" => 38,
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "C"
+                                ],
+                                [
+                                    "question_id" => 39,
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "C"
+                                ],
+                                [
+                                    "question_id" => 40,
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "C"
+                                ],
+                            ]
+                        ]
+                    ]
+                ],
+                [
+                    "part" => 7,
+                    "description" => "Reading Comprehension",
+                    "passages" => [
+                        [
+                            "passage_id" => 1,
+                            "text" => "Dear Mr. Thompson,\nI hope this message finds you well. I am writing to inform you that the shipment of your order has been delayed due to unexpected customs clearance procedures. Our team is working hard to resolve the issue, and we expect the shipment to arrive within the next 5 business days. We apologize for any inconvenience this may cause and assure you that we are doing everything we can to expedite the process.\nPlease feel free to contact us with any further questions.\nBest Regards,\nSusan Park\nCustomer Service Manager",
+                            "questions" => [
+                                [
+                                    "question_id" => 41,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 42,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 43,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                            ]
+                        ],
+                        [
+                            "passage_id" => 2,
+                            "text" => "Dear Mr. Thompson,\nI hope this message finds you well. I am writing to inform you that the shipment of your order has been delayed due to unexpected customs clearance procedures. Our team is working hard to resolve the issue, and we expect the shipment to arrive within the next 5 business days. We apologize for any inconvenience this may cause and assure you that we are doing everything we can to expedite the process.\nPlease feel free to contact us with any further questions.\nBest Regards,\nSusan Park\nCustomer Service Manager",
+                            "questions" => [
+                                [
+                                    "question_id" => 44,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 45,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 46,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 47,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                            ]
+                        ],
+                        [
+                            "passage_id" => 3,
+                            "text" => "Dear Mr. Thompson,\n\nI hope this message finds you well. I am writing to inform you that the shipment of your order has been delayed due to unexpected customs clearance procedures. Our team is working hard to resolve the issue, and we expect the shipment to arrive within the next 5 business days. We apologize for any inconvenience this may cause and assure you that we are doing everything we can to expedite the process.\nPlease feel free to contact us with any further questions.\n\nBest Regards,\nSusan Park\nCustomer Service Manager",
+                            "questions" => [
+                                [
+                                    "question_id" => 48,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 49,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 50,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                        [
+                                            "option" => "D",
+                                            "description" => "A woman is reading a book at a café."
+                                        ]
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                            ]
+                        ],
+                    ]
+                ]
+            ]
+        ];
+
+        $correct_answers = [];
+
+        foreach ($quiz["parts"] as $part) {
+            if (isset($part["questions"])) {
+                foreach ($part["questions"] as $question) {
+                    $correct_answers[] = $question["correct_answer"];
+                }
+            } elseif (isset($part["passages"])) {
+                foreach ($part["passages"] as $passage) {
+                    foreach ($passage["questions"] as $question) {
+                        $correct_answers[] = $question["correct_answer"];
+                    }
+                }
+            }
+        }
+
+        Session::put('correct_answers', $correct_answers);
+
+        $totalPages = count($quiz['parts']);
+        $page = max(1, min($request->input('page', 1), $totalPages));
+        $data = [
+            'title' => $quiz['title'],
+            'desc' => $quiz['description'],
+            'questions' => $quiz['parts'][$page - 1] ?? [],
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ];
+
         if ($request->ajax()) {
             return response()->json([
                 'html' => view('components.quiz_toeic', [
@@ -421,8 +1172,60 @@ class QuizController extends Controller
         }
 
 
-        return view('pages.quiz-toeic', compact('questionsMerged', 'data', 'id'));
+        return view('pages.quiz-toeic', compact('quiz', 'data', 'id'));
     }
+
+    public function submitQuizToeic(Request $request)
+    {
+        $user_answers = $request->input('answers', []);
+        $correct_answers = Session::get('correct_answers', []);
+
+        $currentDateTime = Carbon::now()->format('d-m-Y H:i:s');
+        $totalQuestions = 50;
+        $correctCount = 0;
+        foreach ($user_answers as $page => $questions) {
+            foreach ($questions as $question_id => $answer) {
+                if (isset($correct_answers[$question_id - 1]) && $correct_answers[$question_id - 1] == $answer) {
+                    $correctCount++;
+                }
+            }
+        }
+
+        // $scoreLevels = [
+        //     ['min' => 0, 'max' => 20, 'level' => 'Sơ cấp (Beginner)', 'class' => 'Lớp TOEIC 300', 'comment' => 'Phù hợp với học viên mới bắt đầu, cần củng cố kiến thức cơ bản về từ vựng, ngữ pháp và kỹ năng nghe/đọc.'],
+        //     ['min' => 21, 'max' => 30, 'level' => 'Cấp độ trung cấp thấp (Low Intermediate)', 'class' => 'Lớp TOEIC 350–400', 'comment' => 'Học viên đã có một số nền tảng nhưng cần cải thiện kỹ năng đọc hiểu và nghe hiểu cơ bản để đạt điểm cao hơn.'],
+        //     ['min' => 31, 'max' => 40, 'level' => 'Cấp độ trung cấp (Intermediate)', 'class' => 'Lớp TOEIC 450–500', 'comment' => 'Học viên có thể nghe và đọc được các thông tin cơ bản, nhưng vẫn cần nâng cao khả năng làm bài thi và hiểu các chủ đề phức tạp hơn.'],
+        //     ['min' => 41, 'max' => 50, 'level' => 'Cấp độ trung cấp cao (Upper Intermediate)', 'class' => 'Lớp TOEIC 500+', 'comment' => 'Học viên đã có khả năng làm bài thi TOEIC ở mức trung cấp và gần đạt được điểm số TOEIC mục tiêu 500. Cần luyện tập thêm để đạt điểm cao hơn trong các bài thi thực tế.']
+        // ];
+
+        if ($correctCount <= 20) {
+            $userLevel = "Sơ cấp (Beginner)";
+            $userClass = "Lớp TOEIC 300";
+            $userComment = "Phù hợp với học viên mới bắt đầu, cần củng cố kiến thức cơ bản về từ vựng, ngữ pháp và kỹ năng nghe/đọc.";
+        } elseif ($correctCount <= 30) {
+            $userLevel = "Cấp độ trung cấp thấp (Low Intermediate)";
+            $userClass = "Lớp TOEIC 350–400";
+            $userComment = "Học viên đã có một số nền tảng nhưng cần cải thiện k�� năng đ��c hiểu và nghe hiểu cơ bản để đạt điểm cao hơn.";
+        } elseif ($correctCount <= 40) {
+            $userLevel = "Cấp độ trung cấp (Intermediate)";
+            $userClass = "Lớp TOEIC 450–500";
+            $userComment = "Học viên có thể nghe và đọc được các thông tin cơ bản, nhưng vẫn cần nâng cao khả năng làm bài thi và hiểu các chủ đề phức tạp hơn.";
+        } else {
+            $userLevel = "Cấp độ trung cấp cao (Upper Intermediate)";
+            $userClass = "Lớp TOEIC 500+";
+            $userComment = "Học viên đã có khả năng làm bài thi TOEIC ở mức trung cấp và gần đạt được điểm số TOEIC mục tiêu 500. Cần luyện tập thêm để đạt điểm cao hơn trong các bài thi thực tế.";
+        }
+
+        return response()->json([
+            'totalQuestions' => $totalQuestions,
+            'correctCount' => $correctCount,
+            'userLevel' => $userLevel,
+            'userClass' => $userClass,
+            'userComment' => $userComment,
+            'submitted_at' => $currentDateTime,
+        ]);
+    }
+
 
     // public function submit(Request $request)
     // {
