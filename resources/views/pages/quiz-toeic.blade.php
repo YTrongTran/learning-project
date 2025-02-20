@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Quiz')
+@section('title', 'Quiz TOEIC')
 
 @section('content')
 

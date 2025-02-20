@@ -282,3 +282,7 @@ input[type="radio"]:checked::after {
 .red-color {
     color: #e21033;
 }
+
+.page-link-2 {
+    display: none;
+}

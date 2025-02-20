@@ -1,4 +1,4 @@
-<div class="bg-white border-gray-200 border shadow-lg">
+<div class="bg-white header-div">
     <div class="flex container justify-between items-center">
         <div class="logo">
             <a href="/">
@@ -15,32 +15,23 @@
             <ul class="flex lg:gap-4 xl:gap-6 text-base font-bold transition-all">
                 <li><a class="hover:text-rose-900 text-gray-500 font-semibold" href="/">Trang chủ</a></li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#"
-                        >Các khóa học</a
-                    >
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#">Các khóa học</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="{{route('quiz.step1')}}"
-                        >Thi thử</a
-                    >
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="{{ route('quiz.step1') }}">Thi
+                        thử</a>
                 </li>
                 <li>
                     <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#">Đối tác</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#"
-                        >Chương trình online</a
-                    >
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#">Chương trình online</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/news"
-                        >Cơ hội việc làm</a
-                    >
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/news">Cơ hội việc làm</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/blog"
-                        >Blog</a
-                    >
+                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/blog">Blog</a>
                 </li>
             </ul>
         </nav>
@@ -57,7 +48,8 @@
             <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="/">Trang chủ</a></li>
             <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="#">Các khóa học</a>
             </li>
-            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="{{route('quiz.step1')}}">Thi thử</a>
+            <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2"
+                    href="{{ route('quiz.step1') }}">Thi thử</a>
             </li>
             <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="#">Đối tác</a></li>
             <li><a class="hover:text-rose-900 block border-b-2 border-rose-900 pb-2" href="#">Cơ hội việc làm</a>
@@ -72,8 +64,8 @@
 
 <style>
     .container {
-        padding: 0 16px;
-        max-width: 1200px;
+        padding: 0;
+        max-width: 1280px;
         margin: 0 auto;
     }
 
@@ -121,7 +113,15 @@
         display: block;
     }
 
+    .text-gray-500 {
+        color: #474747;
+    }
+
     @media (min-width: 1024px) {
+        .container {
+            padding: 0 16px;
+        }
+
         .menu-toggle {
             display: none;
         }
@@ -130,26 +130,39 @@
             display: none !important;
         }
     }
+
+    @media (max-width: 1024px) {
+        .container {
+            padding: 0 16px;
+        }
+    }
 </style>
 
 
 <script>
-    jQuery(document).ready(function () {
-    const $menuToggle = $('.menu-toggle');
-    const $mobileMenu = $('.mobile-menu');
-    const $overlay = $('.overlay');
+    jQuery(document).ready(function() {
+        const $menuToggle = $('.menu-toggle');
+        const $mobileMenu = $('.mobile-menu');
+        const $overlay = $('.overlay');
 
-    $menuToggle.on('click', () => {
-        $("body").addClass('overflow-hidden');
-        $mobileMenu.toggleClass('active');
-        $overlay.toggleClass('active');
-    });
+        $menuToggle.on('click', () => {
+            $("body").addClass('overflow-hidden');
+            $mobileMenu.toggleClass('active');
+            $overlay.toggleClass('active');
+        });
 
-    $overlay.on('click', () => {
-        $("body").removeClass('overflow-hidden');
-        $mobileMenu.removeClass('active');
-        $overlay.removeClass('active');
-    });
-    });
+        $overlay.on('click', () => {
+            $("body").removeClass('overflow-hidden');
+            $mobileMenu.removeClass('active');
+            $overlay.removeClass('active');
+        });
 
+        $(window).on("scroll", function() {
+            if ($(this).scrollTop() > 0) {
+                $(".header-div").addClass("border-gray-200 border shadow-lg");
+            } else {
+                $(".header-div").removeClass("border-gray-200 border shadow-lg");
+            }
+        });
+    });
 </script>

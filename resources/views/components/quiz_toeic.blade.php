@@ -173,7 +173,7 @@
 
     @foreach ($questions['passages'] as $question)
         <h3 class="text-base font-semibold mb-2">Passage {{ $question['passage_id'] }}:</h3>
-        <p class="mb-4">{{ $question['text'] }}</p>
+        <p class="mb-4 border border-solid border-gray-800 p-2 rounded">{!! nl2br(e($question['text'])) !!}</p>
 
         @foreach ($question['questions'] as $questionChild1)
             <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionChild1['question_id'] }}"

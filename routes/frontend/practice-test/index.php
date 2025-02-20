@@ -11,3 +11,6 @@ Route::get('/quiz-superkids/{quiz}', [QuizController::class, 'superkids'])->name
 
 Route::get('/quiz-toeic/{quiz}', [QuizController::class, 'toeic'])->name('quiz.toeic');
 Route::post('/quiz-submit-toeic', [QuizController::class, 'submitQuizToeic'])->name('quiz.submitToeic');
+
+Route::get('/quiz-ielts/{quiz}', [QuizController::class, 'quizIelts'])->name('quiz.ielts');
+Route::post('/quiz-submit-ielts', [QuizController::class, 'submitQuizIelts'])->name('quiz.submitIelts');
