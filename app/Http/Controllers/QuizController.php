@@ -2159,17 +2159,18 @@ class QuizController extends Controller
         $correctCountReading = 0;
         $correctCountListening = 0;
         foreach ($user_answers as $page => $questions) {
-            $answers = isset($questions["3"]) ? $questions["3"] : $questions;
-            $type = isset($questions["3"]) ? "reading" : "listening";
-            if (!is_array($answers)) {
+            $type = ($page == "3") ? "reading" : "listening";
+
+            if (!is_array($questions)) {
                 continue;
             }
-            foreach ($answers as $question_id => $answer) {
+            foreach ($questions as $question_id => $answer) {
                 if (isset($correct_answers[$type][$question_id - 1]) && $correct_answers[$type][$question_id - 1] == $answer) {
                     $type === "reading" ? $correctCountReading++ : $correctCountListening++;
                 }
             }
         }
+
         $listeningScore = $this->calculateIELTSScore($correctCountListening, "listening");
         $readingScore = $this->calculateIELTSScore($correctCountReading, "reading");
 

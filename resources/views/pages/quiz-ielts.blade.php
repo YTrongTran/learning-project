@@ -228,7 +228,7 @@
                 if ($(`#quiz-container #${questionId}`).length) {
                     scrollToQuestion(questionId);
                 } else {
-                    if (partId == 1) {
+                    if (partId == 1 && questionIndex > 13) {
                         partId = 2;
                     }
                     if (partId !== null && partId !== currentPage) {
@@ -321,12 +321,15 @@
                 $(`.page-link[data-page="${page}"]`).removeClass('bg-gray-200 text-black').addClass(
                     'bg-rose-700 text-white');
                 if (selectedAnswers[page]) {
-
-
                     for (let questionIndex in selectedAnswers[page]) {
                         let answerValue = selectedAnswers[page][questionIndex];
-                        $(`#quiz-container input[name="q-${questionIndex}"][value="${answerValue}"]`).prop(
-                            "checked", true);
+                        let $input = $(`#quiz-container input[name="q-${questionIndex}"]`);
+
+                        if ($input.attr("type") === "radio") {
+                            $input.filter(`[value="${answerValue}"]`).prop("checked", true);
+                        } else if ($input.attr("type") === "text") {
+                            $input.val(answerValue);
+                        }
                     }
                 }
             }
@@ -400,6 +403,8 @@
 
                     $(this).addClass('hidden');
                     $('#stop-recording').removeClass('hidden');
+                    $("#prevPage").addClass('cursor-not-allowed');
+                    $("#finishTest").addClass('cursor-not-allowed');
                 });
             });
 
@@ -411,13 +416,17 @@
                 $('#countdown-timer').addClass('hidden');
                 $(this).addClass('hidden');
                 $('#start-recording').removeClass('hidden');
-                // cursor-not-allowed
+                $("#prevPage").removeClass('cursor-not-allowed');
+                $("#finishTest").removeClass('cursor-not-allowed');
             });
 
             //writing content
             $('#quiz-container').on('input', '#writing-textarea', function() {
                 writingAnswer = $(this).val().trim();
             });
+            if (writingAnswer) {
+                $('#quiz-container #writing-textarea').val(writingAnswer);
+            }
         });
     </script>
 @stop
