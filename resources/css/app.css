@@ -175,6 +175,10 @@ input[type="radio"]:checked::after {
     @apply max-w-[1440px] m-auto px-4 md:px-[60px] lg:px-[80px] py-8 md:py-[60px] lg:py-[80px];
 }
 
+.navbar {
+    @apply hover:bg-gray-100 text-rose-900 font-bold;
+}
+
 .padding-bottom-none {
     @apply pb-8 md:pb-0;
 }

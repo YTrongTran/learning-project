@@ -29,8 +29,15 @@ class QuizController extends Controller
             return back()->with('error', 'Vui lòng chọn một cấp độ.');
         }
 
-        // return redirect()->route('quiz.toeic',1)->with('level', $level);
+        $tests = [
+            ['id' => 1],
+            ['id' => 2],
+            ['id' => 3],
+            ['id' => 10],
+        ];
+
         return view('pages.quiz_step_3')->with([
+            'tests' => $tests,
             'level' => $level,
             'level_text' => $levelText
         ]);
@@ -39,187 +46,252 @@ class QuizController extends Controller
     public function superkids(Request $request, $id)
     {
         $quiz = [
+            "test_id" => 1,
+            'type' => "superkids",
+            "title" => "TEST KIDS 1",
+            "desc" => "Official test kids from 2023",
             'questions' => [
-                0 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?</br>
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                1 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                2 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                3 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                4 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                5 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                6 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                7 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                8 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                9 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                10 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                11 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                12 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                13 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                14 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                15 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                16 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                17 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                18 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                19 => [
-                    'question' => 'Manager: Where’s Mr. Davidson?
-                                    Assistant: Oh, he’s _______ London today.',
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
                     'A' => 'answer 1',
                     'B' => 'answer 2',
                     'C' => 'answer 2',
-                    'D' => 'answer 2',
                     'correct' => 'A'
-                ]
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                    'img' => asset('assets/img/Listening.png'),
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'correct' => 'A'
+                ],
+
             ],
             'point' => 100
         ];
@@ -238,7 +310,8 @@ class QuizController extends Controller
 
         if ($request->ajax()) {
             return response()->json([
-                'html' => view('components.quiz_questions_superkids', [
+                'html' => view('components.quiz-question-component', [
+                    'type' => $quiz['type'],
                     'questions' => $data['questions'],
                     'currentPage' => $data['currentPage']
                 ])->render(),
@@ -247,7 +320,507 @@ class QuizController extends Controller
             ]);
         }
 
-        return view('pages.quiz-superkids', compact('quiz', 'data', 'id'));
+        return view('pages.quiz-questions', compact('quiz', 'data', 'id'));
+    }
+    public function teen(Request $request, $id)
+    {
+        $quiz = [
+            "test_id" => 1,
+            'title' => "TEST TEEN 1",
+            "type" => "teen",
+            "desc" => "Official test teen from 2023",
+            'questions' => [
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+            ],
+            'point' => 100
+        ];
+        // $questions = Question::where('exam_id', $id)->get();
+        // return view('pages.quiz', compact('quiz', 'questions'));
+
+        $perPage = 6;
+        $questions = array_chunk($quiz['questions'], $perPage);
+        $totalPages = count($questions);
+        $page = max(1, min($request->input('page', 1), $totalPages));
+        $data = [
+            'questions' => $questions[$page - 1] ?? [],
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ];
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.quiz-question-component', [
+                    'type' => $quiz['type'],
+                    'questions' => $data['questions'],
+                    'currentPage' => $data['currentPage']
+                ])->render(),
+                'totalPages' => $data['totalPages'],
+                'currentPage' => $data['currentPage'],
+            ]);
+        }
+
+        return view('pages.quiz-questions', compact('quiz', 'data', 'id'));
+    }
+    public function communicate(Request $request, $id)
+    {
+        $quiz = [
+            "test_id" => 1,
+            'title' => "COMMUNICATE 1",
+            'type' => "communicate",
+            "desc" => "Official COMMUNICATE test from 2023",
+            'questions' => [
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+                [
+                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                    'A' => 'answer 1',
+                    'B' => 'answer 2',
+                    'C' => 'answer 2',
+                    'D' => 'answer 2',
+                    'correct' => 'A'
+                ],
+
+            ],
+            'point' => 100
+        ];
+        // $questions = Question::where('exam_id', $id)->get();
+        // return view('pages.quiz', compact('quiz', 'questions'));
+
+        $perPage = 6;
+        $questions = array_chunk($quiz['questions'], $perPage);
+        $totalPages = count($questions);
+        $page = max(1, min($request->input('page', 1), $totalPages));
+        $data = [
+            'questions' => $questions[$page - 1] ?? [],
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ];
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.quiz-question-component', [
+                    'type' => $quiz['type'],
+                    'questions' => $data['questions'],
+                    'currentPage' => $data['currentPage']
+                ])->render(),
+                'totalPages' => $data['totalPages'],
+                'currentPage' => $data['currentPage'],
+            ]);
+        }
+
+        return view('pages.quiz-questions', compact('quiz', 'data', 'id'));
     }
 
     public function toeic(Request $request, $id)

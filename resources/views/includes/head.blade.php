@@ -6,13 +6,10 @@
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.bunny.net" />
-<link
-    href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap"
-    rel="stylesheet"
-/>
-
-<link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet"/>
-<link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css" rel="stylesheet"/>
+<link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+<link rel="icon" href="{{ asset('/assets/img/logoheader.png') }}">
+<link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css" rel="stylesheet" />
+<link href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css" rel="stylesheet" />
 
 
 

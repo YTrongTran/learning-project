@@ -33,8 +33,8 @@
                         <button
                             class="flex items-center gap-2 rounded-full bg-red-500 px-6 py-2 text-white transition hover:bg-red-600">
                             ĐỌC THÊM
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-4 h-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347c-.75.412-1.667-.13-1.667-.986V5.653Z" />
                             </svg>
@@ -78,7 +78,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Card 1 -->
                 <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-                    <img src="{{asset('images/card-blog.webp')}}" alt="Student learning"
+                    <img src="{{ asset('images/card-blog.webp') }}" alt="Student learning"
                         class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-2">Học tiếng Anh cho bé liệu có thực sự cần thiết cho bé
@@ -86,8 +86,7 @@
                         <p class="text-gray-600 text-sm mb-4">Bạn có biết, chỉ mới 3 phút không học tiếng Anh cho bé sẽ
                             phụ hục có thể khiến con bạn bỏng cơ hội mà bé đáng có bởi khi các bạn trẻ con thế giới...
                         </p>
-                        <a
-                            href="{{route('blog.detail-1') }}"
+                        <a href="{{ route('blog.detail-1') }}"
                             class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 flex items-center w-fit transition-colors">
                             Xem thêm
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
@@ -101,7 +100,7 @@
 
                 <!-- Card 2 -->
                 <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-                    <img src="{{asset('images/card-blog.webp')}}" alt="Classroom" class="w-full h-48 object-cover">
+                    <img src="{{ asset('images/card-blog.webp') }}" alt="Classroom" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-2">Tổng hợp toàn bộ 10 vựng tiếng Anh lớp 6 Global Success,
                             Friend Plus và Expert English</h3>
@@ -121,7 +120,7 @@
 
                 <!-- Card 3 -->
                 <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-                    <img src="{{asset('images/card-blog.webp')}}" alt="Writing" class="w-full h-48 object-cover">
+                    <img src="{{ asset('images/card-blog.webp') }}" alt="Writing" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-2">App học tiếng Anh cho bé: Liệu có đủ sức mạnh mê lôi học
                             truyền thống?</h3>
@@ -151,8 +150,10 @@
         </div>
     </div>
 
-    <div class="bg-rose-50 lg:p-20 px-4 py-10">
-        <x-form-contact-component></x-form-contact-component>
+    <div class="bg-section">
+        <div class="w-full custom-container padding-bottom-none">
+            <x-form-contact-component></x-form-contact-component>
+        </div>
     </div>
 </div>
 
