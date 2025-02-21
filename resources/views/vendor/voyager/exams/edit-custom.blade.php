@@ -1,8 +1,9 @@
 {{-- @extends('layouts.app') --}}
 <div class="container">
     {{-- {{ route('examinations.store') }} --}}
-    Edit id- {{ $dataTypeContent->getKey() }}
-    <form id="exam-form-edit">
+    
+    <form id="exam-form" method="POST">
+        <input type="hidden" name="exam-id" id="exam-id" value="{{ $dataTypeContent->getKey() }}" />
         <div class="form-group">
             <label for="exam-title">Title</label>
             <input type="text" class="form-control" name="exam-title" id="exam-title" required>
