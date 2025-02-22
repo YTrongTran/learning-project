@@ -1,8 +1,9 @@
 @foreach ($questions as $index => $item)
+
     @php
         $questionNumber = ($currentPage - 1) * 6 + $index + 1;
     @endphp
-    <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionNumber }}">
+    <div class="mb-4 border p-4 rounded shadow question" id="question-{{ $questionNumber }}" data-id="{{$item['question_id']}}">
         <div class="font-medium text-lg mb-2">Câu hỏi {{ $questionNumber }}</div>
         <div class="text-gray-700 mb-3">{!! $item['question'] !!}</div>
         <div class="space-y-2">
@@ -25,6 +26,9 @@
                     <input type="radio" name="q-{{ $questionNumber }}" value="D" class="w-4 h-4">
                     <span>D. {{ $item['D'] }}</span>
                 </label>
+            @endif
+            @if (isset($item['correct']))
+                    <input type="hidden" name="correct" value="{{$item['correct']}}" >
             @endif
         </div>
     </div>

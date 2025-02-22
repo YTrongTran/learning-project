@@ -1,4 +1,4 @@
-@extends('layouts.main') @section('title', 'Login') @section('content')
+@extends('layouts.main') @section('title', 'Welcome to') @section('content')
 
 <div class="bg-section">
     <div class="w-full custom-container ">
