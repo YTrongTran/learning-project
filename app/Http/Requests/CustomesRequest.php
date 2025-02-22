@@ -37,7 +37,6 @@ class CustomesRequest extends FormRequest
             'email.required' => 'Vui lòng nhập thư điện tử',
             'email.email' => 'Vui lòng nhập đúng định dạng email',
             'email.unique' => 'Email này đã được sử dụng',
-
         ];
     }
 }

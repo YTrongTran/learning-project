@@ -150,3 +150,17 @@
 [21-Feb-2025 13:00:25] NOTICE: fpm is running, pid 15
 [21-Feb-2025 13:00:25] NOTICE: ready to handle connections
 [21-Feb-2025 13:00:25] NOTICE: systemd monitor interval set to 10000ms
+[21-Feb-2025 14:04:48] NOTICE: fpm is running, pid 15
+[21-Feb-2025 14:04:48] NOTICE: ready to handle connections
+[21-Feb-2025 14:04:48] NOTICE: systemd monitor interval set to 10000ms
+[21-Feb-2025 15:31:10] WARNING: [pool www] server reached pm.max_children setting (4), consider raising it
+[22-Feb-2025 04:32:09] NOTICE: fpm is running, pid 15
+[22-Feb-2025 04:32:09] NOTICE: ready to handle connections
+[22-Feb-2025 04:32:09] NOTICE: systemd monitor interval set to 10000ms
+[22-Feb-2025 04:50:39] NOTICE: fpm is running, pid 16
+[22-Feb-2025 04:50:39] NOTICE: ready to handle connections
+[22-Feb-2025 04:50:39] NOTICE: systemd monitor interval set to 10000ms
+[22-Feb-2025 06:02:07] NOTICE: fpm is running, pid 15
+[22-Feb-2025 06:02:07] NOTICE: ready to handle connections
+[22-Feb-2025 06:02:07] NOTICE: systemd monitor interval set to 10000ms
+[22-Feb-2025 07:18:49] WARNING: [pool www] server reached pm.max_children setting (4), consider raising it
