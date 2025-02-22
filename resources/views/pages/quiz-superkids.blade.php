@@ -24,7 +24,7 @@
                         <!-- Timer -->
                         <div class="mb-4 shadow-md rounded-md border p-3">
                             <div class="text-[13px] text-rose-600 mb-2 font-bold">Thời gian còn lại</div>
-                            <div class="text-[24px] font-bold">0:58:16</div>
+                            <div class="text-[24px] font-bold" id="countdown"></div>
                         </div>
 
                         <!-- Questions Grid -->
@@ -49,7 +49,13 @@
                     <div class="flex-1 text-[#06052E]">
                         <div class="flex lg:flex-row flex-col lg:gap-0 gap-4 justify-between items-center mb-8">
                             <div class="flex items-center gap-3">
-                                <h1 class="text-[17px] font-semibold">Placement Test - Superkids</h1>
+                                <h1 class="text-[17px] font-semibold">
+                                    @if ($title)
+                                        {{$title}}
+                                    @else
+                                        Không có Tiêu đề
+                                    @endif
+                                </h1>
                             </div>
                             <div class="flex items-center gap-4">
                                 <div class="relative">
@@ -94,10 +100,11 @@
                                     Next Page
                                 </button>
 
-                                <button id="finishTest"
+                                <button  id="finishTest" 
                                     class="bg-[#BA121A] text-white px-4 py-2 rounded md:rounded-3xl hidden">
                                     Finish attempt...
                                 </button>
+                                
                             </div>
                         </div>
                     </div>
@@ -105,6 +112,8 @@
             </div>
         </div>
     </div>
+    @include('components.popup-yes-no-component')
+    {{-- popup  --}}
     <div class="fixed inset-0 bg-black bg-opacity-50 hidden z-50" id="modal-result-test">
         <div
             class="bg-white w-[800px] z-40 rounded-lg shadow-xl fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 m-6">
@@ -252,11 +261,48 @@
 
             // Show result modal on next page button click
             $("#finishTest").click(function() {
+                $("#popup-modal").css("display", "flex");
+            });
+            
+            //show popup
+            $("#popup-modal-yes").click(function() {
+                duration = 0; // Đặt về 0 thay vì xóa
+                localStorage.setItem('duration', duration);
+                $("#popup-modal").css("display", "none");
+                
                 $("#modal-result-test").css("display", "flex");
+                //lấy giá trị
+                
+                
+                let questionDivs = $('#app .question');
+                let questionIds = [];
+                
+                questionDivs.each(function() {
+                    let keyid = $(this).data('id'); 
+                    let selectedValues = $(this).find('input[type="radio"]:checked').map(function() {
+                        return $(this).val(); 
+                    }).get();
+
+                    selectedValues.forEach(value => {
+                            questionIds.push(keyid + '-' + value);
+                    });
+                });
+                $.ajax({
+                    url: "{{ route('quiz.englishHub')}}",
+                    type: "POST",
+                    data: {
+                        questionIds:questionIds
+                    },
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+                
             });
 
             // Close modal when clicking outside or on close button
             $("#close-modal-result-test, #overlay-modal-result-test").click(function() {
+
                 $("#modal-result-test").css("display", "none");
             });
 
@@ -310,6 +356,33 @@
             });
 
             updateButtons();
+            startCountdown();
+           //var duration
+            
         });
+        var duration = localStorage.getItem('duration')|| {{$duration}} * 60 * 60;
+            
+            function startCountdown(){
+                var countdownInterval = setInterval(() => {
+                    var h = Math.floor(duration/ 3600);
+                    var m = Math.floor(duration % 3600 / 60);
+                    var s = Math.floor(duration %  60);
+                    $("#countdown").text(
+                        (h < 10 ? '0' + h : h) + ":"+
+                        (m < 10 ? '0' + m : m) + ":"+
+                        (s < 10 ? '0' + s : s) 
+                    );
+                    localStorage.setItem('duration', duration);
+                    
+                    if(duration <= 0){
+                        clearInterval(countdownInterval);
+                        $("#countdown").text("Time's up!");
+                        localStorage.removeItem('duration');
+                        $("#finishTest").css('pointer-events','none');
+                    }else{
+                        duration --;
+                    }
+                }, 1000);
+            } 
     </script>
 @stop

@@ -1,8 +1,6 @@
-@extends('layouts.main') @section('title', 'Login') @section('content')
+@extends('layouts.main') @section('title', 'Nhận Kết Quả Ngay') @section('content')
 
-@if(session('error'))
-    <p class="text-red-500">{{ session('error') }}</p>
-@endif
+
 
 <div class="bg-section">
     <div class="w-full custom-container flex flex-wrap bg-left-bottom bg-contain bg-no-repeat" style="background-image: url('/assets/img/bg-login.png');">
@@ -21,6 +19,9 @@
                 <form action="{{ route('quiz.step3') }}" method="POST" class="space-y-6">
                     @csrf
                     <div class="space-y-4">
+                        @if(session('error'))
+                            <p class="text-red-500">{{ session('error') }}</p>
+                        @endif
                         <label class="block text-sm md:text-base font-medium text-[#06052E]">
                             <input type="radio" name="level" value="superkids" class="mr-2">
                             Tiếng Anh Thiếu Nhi Superkids (6-11 Tuổi)
@@ -63,7 +64,6 @@
     </div>
 </div>   
 
-
 <script>
     $(document).ready(function() {
         $('input[name="level"]').change(function() {
@@ -77,4 +77,5 @@
         });
     });
 </script>
+
 @stop

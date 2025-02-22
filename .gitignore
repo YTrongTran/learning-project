@@ -21,3 +21,5 @@ yarn-error.log
 docker/mysql/mysql.sock
 
 /docker
+docker/nginx_log/error.log
+docker/nginx_log/access.log

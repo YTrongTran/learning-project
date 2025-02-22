@@ -12,12 +12,17 @@
             <div class="w-full md:w-1/2 bg-white shadow-lg rounded-lg p-6 md:p-10 relative">
                 <h2 class="text-xl lg:text-3xl font-bold text-blue-900 uppercase mb-4">Đăng ký/ Đăng nhập nhanh 👋</h2>
 
-                <form action="{{ route('quiz.step2') }}" method="POST" class="space-y-6 md:space-y-8">
+                <form action="{{ route('quiz.registerInfor') }}" method="POST" class="space-y-6 md:space-y-8">
                     @csrf
                     <div>
                         <label for="name" class="text-sm md:text-lg font-semibold text-[#06052E] mb-2">Họ và tên</label>
                         <input type="text" id="name" name="name" placeholder="Họ và tên" 
                             class="text-sm md:text-base w-full h-9 md:h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        @error('name')
+                        <div class="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                            <span class="font-medium">{{ $message }}</span> 
+                          </div>
+                        @enderror    
                     </div>
                     
                     <div>
@@ -30,18 +35,33 @@
                                 Lấy mã OTP
                             </button>
                         </div>
+                        @error('phone')
+                        <div class="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                            <span class="font-medium">{{ $message }}</span> 
+                          </div>
+                        @enderror
                     </div>
 
                     <div class="mt-custom-otp">
                         {{-- <label for="otp" class="">Nhập mã OTP</label> --}}
                         <input type="text" id="otp" name="otp" placeholder="Nhập mã OTP"
                             class="text-sm md:text-base w-full h-9 md:h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        @error('otp')
+                        <div class="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                            <span class="font-medium">{{ $message }}</span> 
+                            </div>
+                        @enderror    
                     </div>
 
                     <div>
                         <label for="email" class="text-sm md:text-lg font-semibold text-[#06052E] mb-2">Email</label>
                         <input type="email" id="email" name="email" placeholder="Email"
                             class="text-sm md:text-base w-full h-9 md:h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        @error('email')
+                        <div class="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                            <span class="font-medium">{{ $message }}</span> 
+                            </div>
+                        @enderror     
                     </div>
 
                     <div class="text-center">
@@ -54,5 +74,22 @@
                 </form>
             </div>
     </div>
-</div>   
+</div>
+@if(session('success'))
+<script>
+    $(document).ready(function() {
+        Toastify({
+            text: '{{session('success')}}',
+            duration: 3000,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+        }).showToast();
+    });
+</script>
+@endif
 @stop
