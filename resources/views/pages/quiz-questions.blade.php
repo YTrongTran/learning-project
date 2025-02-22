@@ -165,9 +165,10 @@
                 const questionIndex = $(this).data('question');
                 const targetPage = Math.ceil(questionIndex / 6);
 
-                console.log("Target question:", questionIndex, "Target page:", targetPage);
+                // console.log("Target question:", questionIndex, "Target page:", targetPage);
+                // console.log("current page:", currentPage)
 
-                if (targetPage !== currentPage) {
+                if (targetPage != currentPage) {
                     currentPage = targetPage;
                     loadQuestions(targetPage, function() {
                         scrollToQuestion(`question-${questionIndex}`);

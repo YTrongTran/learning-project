@@ -235,6 +235,10 @@ input[type="radio"]:checked::after {
     width: 120px;
 }
 
+.slick-slide {
+    margin: 0 16px;
+}
+
 #child-home {
     width: 50%;
     margin: 0 auto;

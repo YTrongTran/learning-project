@@ -45,81 +45,41 @@
         </div>
     </div>
 
-    <div class="">
-        <nav class="bg-rose-700 px-4 py-8">
+    <div class="bg-section">
+        <nav class="px-4 py-8">
             <div class="container mx-auto flex flex-wrap justify-center gap-4">
                 <a href="#"
-                    class="rounded-full bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-gray-100 transition-colors">
+                    class="rounded-full border shadow bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-rose-700 hover:text-white transition-colors">
                     IELTS
                 </a>
                 <a href="#"
-                    class="rounded-full bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-gray-100 transition-colors">
+                    class="rounded-full border shadow bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-rose-700 hover:text-white transition-colors">
                     Học Tiếng Anh Cùng Bé
                 </a>
                 <a href="#"
-                    class="rounded-full bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-gray-100 transition-colors">
+                    class="rounded-full border shadow bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-rose-700 hover:text-white transition-colors">
                     Tiếng Anh Cơ Bản
                 </a>
                 <a href="#"
-                    class="rounded-full bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-gray-100 transition-colors">
+                    class="rounded-full border shadow bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-rose-700 hover:text-white transition-colors">
                     Tiếng Anh Nâng Cao
                 </a>
                 <a href="#"
-                    class="rounded-full bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-gray-100 transition-colors">
+                    class="rounded-full border shadow bg-white px-6 py-2 text-[#1e2f6f] font-medium hover:bg-rose-700 hover:text-white transition-colors">
                     Tiếng Anh Giao Tiếp
                 </a>
             </div>
         </nav>
     </div>
 
-    <div class=" bg-[#7dd3fc] p-8">
-        <div class="container mx-auto">
+    <div class=" bg-white p-8">
+        <div class="container mx-auto py-6">
+            <h1 class="text-xl lg:text-2xl font-bold mb-8 text-center uppercase">Blog Detail</h1>
+
             <!-- Grid Container -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-                    <img src="{{ asset('images/card-blog.webp') }}" alt="Student learning"
-                        class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2">Học tiếng Anh cho bé liệu có thực sự cần thiết cho bé
-                            giao tiếp với người nói?</h3>
-                        <p class="text-gray-600 text-sm mb-4">Bạn có biết, chỉ mới 3 phút không học tiếng Anh cho bé sẽ
-                            phụ hục có thể khiến con bạn bỏng cơ hội mà bé đáng có bởi khi các bạn trẻ con thế giới...
-                        </p>
-                        <a href="{{ route('blog.detail-1') }}"
-                            class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 flex items-center w-fit transition-colors">
-                            Xem thêm
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-                    <img src="{{ asset('images/card-blog.webp') }}" alt="Classroom" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-lg font-semibold mb-2">Tổng hợp toàn bộ 10 vựng tiếng Anh lớp 6 Global Success,
-                            Friend Plus và Expert English</h3>
-                        <p class="text-gray-600 text-sm mb-4">Khi bước vào lớp 6, việc học tiếng Anh không chỉ dừng
-                            thuần là học từ vựng mà còn là cách sử dụng các đơn vị...</p>
-                        <button
-                            class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
-                            Xem thêm
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5l7 7-7 7" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
+            <div class="slick-slider">
+                <!-- Card -->
+                <div class="bg-white border p-4 rounded shadow overflow-hidden">
                     <img src="{{ asset('images/card-blog.webp') }}" alt="Writing" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-lg font-semibold mb-2">App học tiếng Anh cho bé: Liệu có đủ sức mạnh mê lôi học
@@ -137,16 +97,65 @@
                         </button>
                     </div>
                 </div>
+
+                <div class="bg-white border p-4 rounded shadow overflow-hidden">
+                    <img src="{{ asset('images/card-blog.webp') }}" alt="Writing" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">App học tiếng Anh cho bé: Liệu có đủ sức mạnh mê lôi học
+                            truyền thống?</h3>
+                        <p class="text-gray-600 text-sm mb-4">Trước khi quyết định chọn một app học tiếng Anh cho bé,
+                            các bậc phụ huynh nên tìm hiểu kỹ những ưu và nhược điểm của từng app học...</p>
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
+                            Xem thêm
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white border p-4 rounded shadow overflow-hidden">
+                    <img src="{{ asset('images/card-blog.webp') }}" alt="Writing" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">App học tiếng Anh cho bé: Liệu có đủ sức mạnh mê lôi học
+                            truyền thống?</h3>
+                        <p class="text-gray-600 text-sm mb-4">Trước khi quyết định chọn một app học tiếng Anh cho bé,
+                            các bậc phụ huynh nên tìm hiểu kỹ những ưu và nhược điểm của từng app học...</p>
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
+                            Xem thêm
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white border p-4 rounded shadow overflow-hidden">
+                    <img src="{{ asset('images/card-blog.webp') }}" alt="Writing" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold mb-2">App học tiếng Anh cho bé: Liệu có đủ sức mạnh mê lôi học
+                            truyền thống?</h3>
+                        <p class="text-gray-600 text-sm mb-4">Trước khi quyết định chọn một app học tiếng Anh cho bé,
+                            các bậc phụ huynh nên tìm hiểu kỹ những ưu và nhược điểm của từng app học...</p>
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition-colors flex items-center gap-2">
+                            Xem thêm
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Navigation Dots -->
-            <div class="flex justify-center gap-2 mt-8">
-                <button class="w-3 h-3 rounded-full bg-white"></button>
-                <button class="w-3 h-3 rounded-full bg-blue-600"></button>
-                <button class="w-3 h-3 rounded-full bg-white"></button>
-                <button class="w-3 h-3 rounded-full bg-white"></button>
-                <button class="w-3 h-3 rounded-full bg-white"></button>
-            </div>
         </div>
     </div>
 
@@ -156,5 +165,21 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+        $('.slick-slider').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            dots: true,
+            // autoplay: true,
+            // autoplaySpeed: 3000,
+            // prevArrow: '<button type="button" class="slick-prev">&#10094;</button>',
+            // nextArrow: '<button type="button" class="slick-next">&#10095;</button>'
+        });
+    });
+</script>
 
 @stop

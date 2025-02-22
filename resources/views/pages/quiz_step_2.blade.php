@@ -23,27 +23,27 @@
             <form action="{{ route('quiz.step3') }}" method="POST" class="space-y-6">
                 @csrf
                 <div class="space-y-4">
-                    <label class="block text-sm md:text-base font-medium text-[#06052E]">
+                    <label class="block text-sm md:text-base font-medium text-[#06052E] hover:cursor-pointer">
                         <input type="radio" name="level" value="superkids" class="mr-2 align-middle">
                         Tiếng Anh Thiếu Nhi Superkids (6-11 Tuổi)
                     </label>
                     <div class="w-full h-custom-line"></div>
-                    <label class="block text-sm md:text-base font-medium text-[#06052E]">
+                    <label class="block text-sm md:text-base font-medium text-[#06052E] hover:cursor-pointer">
                         <input type="radio" name="level" value="teen" class="mr-2 align-middle">
                         Tiếng Anh Thiếu Niên Young Leaders (11-15 Tuổi)
                     </label>
                     <div class="w-full h-custom-line"></div>
-                    <label class="block text-sm md:text-base font-medium text-[#06052E]">
+                    <label class="block text-sm md:text-base font-medium text-[#06052E] hover:cursor-pointer">
                         <input type="radio" name="level" value="communicate" class="mr-2 align-middle">
                         Tiếng Anh Người Lớn English Hub
                     </label>
                     <div class="w-full h-custom-line"></div>
-                    <label class="block text-sm md:text-base font-medium text-[#06052E]">
+                    <label class="block text-sm md:text-base font-medium text-[#06052E] hover:cursor-pointer">
                         <input type="radio" name="level" value="ielts" class="mr-2 align-middle">
                         Luyện Thi IELTS
                     </label>
                     <div class="w-full h-custom-line"></div>
-                    <label class="block text-sm md:text-base font-medium text-[#06052E]">
+                    <label class="block text-sm md:text-base font-medium text-[#06052E] hover:cursor-pointer">
                         <input type="radio" name="level" value="toeic" class="mr-2 align-middle">
                         Luyện Thi TOEIC
                     </label>
