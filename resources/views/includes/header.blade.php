@@ -118,10 +118,6 @@
     }
 
     @media (min-width: 1024px) {
-        .container {
-            padding: 0 16px;
-        }
-
         .menu-toggle {
             display: none;
         }

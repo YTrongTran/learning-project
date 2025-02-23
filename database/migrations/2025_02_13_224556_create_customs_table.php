@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('otp');
             $table->string('email')->unique();
+            // $table->integer('exam_id');
+            // $table->double('pointQuiz');
             $table->timestamps();
         });
     }
