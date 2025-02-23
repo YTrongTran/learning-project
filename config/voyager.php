@@ -27,7 +27,8 @@ return [
     */
 
     'controllers' => [
-        'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+        // 'namespace' => 'TCG\\Voyager\\Http\\Controllers',
+        'namespace' => 'App\\Http\\Controllers\\Voyager',
     ],
 
     /*
@@ -42,7 +43,7 @@ return [
     */
 
     'models' => [
-        'namespace' => 'App\\Models\\',
+       'namespace' => 'App\\Models\\',
     ],
 
     /*
@@ -230,6 +231,7 @@ return [
           'image/gif',
           'image/bmp',
           'video/mp4',
+          'audio/mpeg'
         ],
         //Path for media-manager. Relative to the filesystem.
         'path'                => '/',
