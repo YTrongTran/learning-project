@@ -10,41 +10,34 @@ jQuery(document).ready(function($) {
         // }
     });
 
-    let toeicHTML = $(".exam-toeic").html(),
-        superkidHTML= $(".exam-superkid").html();
 
     $("#exam-type").change(function(){
-        if( $(this).val() == "toeic" ){
-            // $(".exam-superkid").addClass("hidden");
-            $(".exam-toeic").html(toeicHTML);
-            $(".exam-superkid").html('');
-            $(".exam-toeic").removeClass("hidden");
-        }else{
-            $(".exam-toeic").html('');
-            $(".exam-superkid").html(superkidHTML);
-            // $(".exam-toeic").addClass("hidden");
-            $(".exam-superkid").removeClass("hidden");
-        }
+        $(".exam-form").addClass("hidden");
+        $(`.exam-form-${ $(this).val() }`).removeClass("hidden");
     });
 
     $("#exam-type").change();
 
-    $(".add-question").click( function(){
-        let question = $(this).prev(".question").clone();
-        let title = $(".question-title", $(question) );
-        let question_id = title.data("question-id");
-        question_id++;
-        title.attr("data-question-id", question_id);
-        title.text( "Question " + ( question_id + 1 )  );
-        question.find("input,select").val("").change();
-        $(".question-content", question).show();
-        $(this).before(question);
-    });
-
-    // $(".process-exam-form").click( function(e){
-    //     e.preventDefault();
-    //     handleSubmit();
+    // $(".add-question").click( function(){
+    //     let question = $(this).prev(".question").clone();
+    //     let title = $(".question-title", $(question) );
+    //     let question_id = title.data("question-id");
+    //     question_id++;
+    //     title.attr("data-question-id", question_id);
+    //     title.text( "Question " + ( question_id + 1 )  );
+    //     question.find("input,select").val("").change();
+    //     $(".question-content", question).show();
+    //     $(this).before(question);
     // });
+
+    $(".process-exam-form").click( function(e){
+        e.preventDefault();
+        if ($("#general-form")[0].reportValidity()) {
+            if( $(`.exam-form-${$("#exam-type").val()}`)[0].reportValidity() ){
+              $(`.exam-form-${$("#exam-type").val()}`).trigger('submit');
+            }
+        }
+    });
 
     function handleSubmit() {
         var form = $('exam-form');
@@ -66,7 +59,7 @@ jQuery(document).ready(function($) {
         .catch(error => console.error(error));
     }
 
-    $('#exam-form').submit(function(e) {
+    $('.exam-form').submit(function(e) {
 
         e.preventDefault();
 
@@ -77,9 +70,22 @@ jQuery(document).ready(function($) {
         isSubmitting = true; 
     
         var formData = new FormData(this);
+
+        if( $("#exam-id").length > 0 ){
+          formData.append('exam-id', $("#exam-id").val() );
+        }
+
+        formData.append('exam-type', $("#exam-type").val() );
+        formData.append('exam-title', $("#exam-title").val() );
+        formData.append('exam-duration', $("#exam-duration").val() );
+        formData.append('exam-point', $("#exam-point").val() );
+        formData.append('exam-visible', $("#exam-visible").val() );
+
         $.ajax({
-          url: '/admin/adminExams/' + ( + $("#exam-id").length > 0 ? $("#exam-id").val() : '' ) ,
-          type: $("#exam-id").length > 0  ? 'PATCH' : 'POST',
+          url: '/admin/adminExams',
+          // url: '/admin/adminExams/' + ( + $("#exam-id").length > 0 ? $("#exam-id").val() : '' ) ,
+          type: 'POST',
+          // type: $("#exam-id").length > 0  ? 'PATCH' : 'POST',
           data: formData,
           processData: false,
           contentType: false,
@@ -104,8 +110,5 @@ jQuery(document).ready(function($) {
           }
         });
     });
-
-    
-
 
 });

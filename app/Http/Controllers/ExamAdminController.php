@@ -15,6 +15,11 @@ class ExamAdminController extends Controller
 
     public function store(Request $request)
     {
+        $examID = $request->input('exam-id', '');
+        if( !empty($examID) ){
+            return $this->update( $request, $examID );
+        }
+
         try {
             $examTitle = $request->input('exam-title', '');
             $examType = $request->input('exam-type', '');
@@ -24,12 +29,8 @@ class ExamAdminController extends Controller
 
             $questions = $request->input('questions', []);
 
-            if( $examType == "superkid"){
-                $questions = $questions['kid'];
-            // }elseif( $examType == "toeic"){
-            //     $questions = $questions['toeic'];
-            }else{
-                $questions = [];
+            if( !empty( $questions[$examType] ) ){
+                $questions = $questions[$examType];
             }
 
             if( empty($questions) ){
@@ -55,6 +56,8 @@ class ExamAdminController extends Controller
                     'answer_2' => $question['answers'][1],
                     'answer_3' => $question['answers'][2],
                     'answer_4' => $question['answers'][3],
+                    'image' => $question['image'],
+                    'audio' => $question['sound'],
                     'exam_id' => $exam_id
                 ]);
             }
@@ -67,7 +70,7 @@ class ExamAdminController extends Controller
         }
     }
 
-    public function update(Request $request, $examID){
+    public function update(Request $request,String $examID){
         try {
             $exam = Exam::findOrFail($examID);
 
@@ -79,12 +82,8 @@ class ExamAdminController extends Controller
 
             $questions = $request->input('questions', []);
 
-            if( $examType == "superkid"){
-                $questions = $questions['kid'];
-            // }elseif( $examType == "toeic"){
-            //     $questions = $questions['toeic'];
-            }else{
-                $questions = [];
+            if( !empty( $questions[$examType] ) ){
+                $questions = $questions[$examType];
             }
 
             if( empty($questions) ){
@@ -99,16 +98,18 @@ class ExamAdminController extends Controller
                 'visible' => empty($examVisible) ? 0 : 1
             ]);
 
-            // foreach( $exam->questions as $question){
-            //     $question->update([
-            //         'question_text' => $questions[$question->_index]['text'],
-            //         'answer_correct' => $questions[$question->_index]['correct'],
-            //         'answer_1' => $$questions[$question->_index]['answers'][0],
-            //         'answer_2' => $$questions[$question->_index]['answers'][1],
-            //         'answer_3' => $$questions[$question->_index]['answers'][2],
-            //         'answer_4' => $$questions[$question->_index]['answers'][3],
-            //     ]);
-            // }
+            foreach( $exam->questions as $question){
+                $question->update([
+                    'question_text' => $questions[$question->_index]['text'],
+                    'answer_correct' => $questions[$question->_index]['correct'],
+                    'answer_1' => $questions[$question->_index]['answers'][0],
+                    'answer_2' => $questions[$question->_index]['answers'][1],
+                    'answer_3' => $questions[$question->_index]['answers'][2],
+                    'answer_4' => $questions[$question->_index]['answers'][3],
+                    'image' => $questions[$question->_index]['image'],
+                    'audio' => $questions[$question->_index]['sound'],
+                ]);
+            }
 
             // foreach( $questions as $key => $question ){
             //     $questionDB = Question::where('id', $examID)

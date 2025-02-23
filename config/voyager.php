@@ -43,7 +43,7 @@ return [
     */
 
     'models' => [
-        'namespace' => 'App\\Models\\',
+       'namespace' => 'App\\Models\\',
     ],
 
     /*
@@ -231,6 +231,7 @@ return [
           'image/gif',
           'image/bmp',
           'video/mp4',
+          'audio/mpeg'
         ],
         //Path for media-manager. Relative to the filesystem.
         'path'                => '/',
