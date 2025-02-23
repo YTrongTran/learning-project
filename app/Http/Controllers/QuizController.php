@@ -147,150 +147,7 @@ class QuizController extends Controller
                     'C' => 'answer 2',
                     'correct' => 'A'
                 ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => 'I ……………. got a computer but I’ve got a tablet.',
-                    'img' => asset('assets/img/Listening.png'),
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'correct' => 'A'
-                ],
+
 
             ],
             'point' => 100
@@ -322,197 +179,7 @@ class QuizController extends Controller
 
         return view('pages.quiz-questions', compact('quiz', 'data', 'id'));
     }
-    public function teen(Request $request, $id)
-    {
-        $quiz = [
-            "test_id" => 1,
-            'title' => "TEST TEEN 1",
-            "type" => "teen",
-            "desc" => "Official test teen from 2023",
-            'questions' => [
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-            ],
-            'point' => 100
-        ];
-        // $questions = Question::where('exam_id', $id)->get();
-        // return view('pages.quiz', compact('quiz', 'questions'));
 
-        $perPage = 6;
-        $questions = array_chunk($quiz['questions'], $perPage);
-        $totalPages = count($questions);
-        $page = max(1, min($request->input('page', 1), $totalPages));
-        $data = [
-            'questions' => $questions[$page - 1] ?? [],
-            'totalPages' => $totalPages,
-            'currentPage' => $page
-        ];
-
-        if ($request->ajax()) {
-            return response()->json([
-                'html' => view('components.quiz-question-component', [
-                    'type' => $quiz['type'],
-                    'questions' => $data['questions'],
-                    'currentPage' => $data['currentPage']
-                ])->render(),
-                'totalPages' => $data['totalPages'],
-                'currentPage' => $data['currentPage'],
-            ]);
-        }
-
-        return view('pages.quiz-questions', compact('quiz', 'data', 'id'));
-    }
     public function communicate(Request $request, $id)
     {
         $quiz = [
@@ -638,159 +305,6 @@ class QuizController extends Controller
                     'D' => 'answer 2',
                     'correct' => 'A'
                 ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
 
             ],
             'point' => 100
@@ -823,10 +337,462 @@ class QuizController extends Controller
         return view('pages.quiz-questions', compact('quiz', 'data', 'id'));
     }
 
+    public function teen(Request $request, $id)
+    {
+        $quiz = [
+            "test_id" => 1,
+            'title' => "TEST TEEN 1",
+            "type" => "teen",
+            "description" => "Official test teen from 2023",
+            'parts' =>
+            [
+                [
+                    'part' => 1,
+                    'description' => "Grammar",
+                    'questions' =>
+                    [
+                        [
+                            'question_id' => 1,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 2,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 3,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 4,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 5,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 6,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 7,
+                            'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                            'img' => asset('assets/img/Listening.png'),
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 8,
+                            'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                            'img' => asset('assets/img/Listening.png'),
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 9,
+                            'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                            'img' => asset('assets/img/Listening.png'),
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 10,
+                            'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                            'img' => asset('assets/img/Listening.png'),
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 11,
+                            'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                            'img' => asset('assets/img/Listening.png'),
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 12,
+                            'question' => 'I ……………. got a computer but I’ve got a tablet.',
+                            'img' => asset('assets/img/Listening.png'),
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 13,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 14,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 15,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 16,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 17,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                        [
+                            'question_id' => 18,
+                            'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
+                                            <strong>Assistant:</strong> Oh, he’s _______ London today.',
+                            'A' => 'answer 1',
+                            'B' => 'answer 2',
+                            'C' => 'answer 2',
+                            'D' => 'answer 2',
+                            'correct' => 'A'
+                        ],
+                    ]
+                ],
+                [
+                    "part" => 2,
+                    "description" => "Reading",
+                    "passages" => [
+                        [
+                            "passage_id" => 1,
+                            'title' => "Read the text below. For questions 61–65, choose the best answer (A, B or C).",
+                            'heading' => "The Rise of Urban Agriculture",
+                            "text" => "Urban agriculture has gained significant traction over the last two decades, transforming how cities think about food production. Initially viewed as a niche activity for hobbyists, urban farming now plays a pivotal role in creating sustainable cities. With the world's population continuing to grow and urbanize, cities are under increasing pressure to produce food locally to minimize the environmental and economic costs of transportation. Urban agriculture can take many forms, from rooftop gardens in dense metropolitan areas to vertical farming systems in vacant warehouses. The central aim is to bring food production closer to consumers, thereby reducing the carbon footprint associated with the food supply chain.\n
+                            In a typical urban farming setup, land that would otherwise be left vacant or underutilized is converted into green spaces. The potential for this type of agriculture to flourish is tied to the availability of empty lots, as well as the willingness of local governments to support such ventures through favorable policies or incentives. Indeed, many cities are incorporating urban farming into their planning strategies, with some even offering tax breaks to businesses that implement green roofs or invest in hydroponic farming.\n
+                            However, the success of urban farming is not without its challenges. One of the major obstacles is securing land. In many urban areas, vacant lots are often owned by private investors or are designated for future commercial or residential development. While some advocates argue that unused or poorly maintained land should be repurposed for farming, others contend that such spaces should remain available for future construction, particularly in fast-growing cities.\n
+                            Moreover, the financial sustainability of urban farms remains a topic of debate. While small-scale urban farming can be relatively inexpensive, the high initial costs associated with installing specialized infrastructure—such as irrigation systems, greenhouses, and vertical farming equipment—can be prohibitive. Additionally, urban farms often face logistical difficulties, such as a lack of access to affordable resources like water or quality soil, and issues related to the complexity of obtaining permits.\n
+                            Despite these challenges, urban agriculture has brought tangible benefits to cities. It fosters community engagement, reduces food insecurity, and can serve as an educational tool for urban dwellers. In some places, urban farms have provided affordable fresh produce to low-income communities, which previously had limited access to healthy food options. They have also helped to raise awareness about the environmental impact of conventional agricultural practices, encouraging a shift toward more sustainable food production methods.\n
+                            The long-term success of urban agriculture will depend on a combination of factors, including technological innovation, governmental support, and public interest. Advances in hydroponics, for example, offer a promising future for urban farming, as they allow for more efficient use of space and resources. At the same time, it will be crucial for urban agriculture projects to balance environmental benefits with economic realities, ensuring that they remain financially viable in the long run.
+                            ",
+                            "questions" => [
+                                [
+                                    "question_id" => 19,
+                                    "question" => "What is the main aim of urban agriculture?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 20,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 21,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 22,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 23,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                            ]
+                        ],
+                        [
+                            "passage_id" => 2,
+                            'title' => "Read the text below. For questions 66–70, choose the best answer (A, B or C).",
+                            'heading' => "The Rise of Urban Agriculture",
+                            "text" => "Urban agriculture has gained significant traction over the last two decades, transforming how cities think about food production. Initially viewed as a niche activity for hobbyists, urban farming now plays a pivotal role in creating sustainable cities. With the world's population continuing to grow and urbanize, cities are under increasing pressure to produce food locally to minimize the environmental and economic costs of transportation. Urban agriculture can take many forms, from rooftop gardens in dense metropolitan areas to vertical farming systems in vacant warehouses. The central aim is to bring food production closer to consumers, thereby reducing the carbon footprint associated with the food supply chain.\n
+                            In a typical urban farming setup, land that would otherwise be left vacant or underutilized is converted into green spaces. The potential for this type of agriculture to flourish is tied to the availability of empty lots, as well as the willingness of local governments to support such ventures through favorable policies or incentives. Indeed, many cities are incorporating urban farming into their planning strategies, with some even offering tax breaks to businesses that implement green roofs or invest in hydroponic farming.\n
+                            However, the success of urban farming is not without its challenges. One of the major obstacles is securing land. In many urban areas, vacant lots are often owned by private investors or are designated for future commercial or residential development. While some advocates argue that unused or poorly maintained land should be repurposed for farming, others contend that such spaces should remain available for future construction, particularly in fast-growing cities.\n
+                            Moreover, the financial sustainability of urban farms remains a topic of debate. While small-scale urban farming can be relatively inexpensive, the high initial costs associated with installing specialized infrastructure—such as irrigation systems, greenhouses, and vertical farming equipment—can be prohibitive. Additionally, urban farms often face logistical difficulties, such as a lack of access to affordable resources like water or quality soil, and issues related to the complexity of obtaining permits.\n
+                            Despite these challenges, urban agriculture has brought tangible benefits to cities. It fosters community engagement, reduces food insecurity, and can serve as an educational tool for urban dwellers. In some places, urban farms have provided affordable fresh produce to low-income communities, which previously had limited access to healthy food options. They have also helped to raise awareness about the environmental impact of conventional agricultural practices, encouraging a shift toward more sustainable food production methods.\n
+                            The long-term success of urban agriculture will depend on a combination of factors, including technological innovation, governmental support, and public interest. Advances in hydroponics, for example, offer a promising future for urban farming, as they allow for more efficient use of space and resources. At the same time, it will be crucial for urban agriculture projects to balance environmental benefits with economic realities, ensuring that they remain financially viable in the long run.
+                            ",
+                            "questions" => [
+                                [
+                                    "question_id" => 24,
+                                    "question" => "What is the main aim of urban agriculture?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 25,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 26,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 27,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                                [
+                                    "question_id" => 28,
+                                    "question" => "Why was the shipment delayed?",
+                                    "options" => [
+                                        [
+                                            "option" => "A",
+                                            "description" => "A chef is preparing food in the kitchen."
+                                        ],
+                                        [
+                                            "option" => "B",
+                                            "description" => "A waiter is taking an order from customers."
+                                        ],
+                                        [
+                                            "option" => "C",
+                                            "description" => "Two people are shaking hands in an office."
+                                        ],
+                                    ],
+                                    "correct_answer" => "A"
+                                ],
+                            ]
+                        ],
+                    ]
+                ],
+                [
+                    "part" => 3,
+                    "description" => "Writing",
+                    'title' => "Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.",
+                    "question" => "Some people believe that the most important function of music is to help people relax, while others think that it serves a more meaningful purpose. Discuss both views and give your own opinion.\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+                    "at_least_words" => 150,
+                ],
+            ],
+            'point' => 100
+        ];
+
+        $totalPages = count($quiz['parts']);
+        $page = max(1, min($request->input('page', 1), $totalPages));
+        $data = [
+            'title' => $quiz['title'],
+            'desc' => $quiz['description'],
+            'questions' => $quiz['parts'][$page - 1] ?? [],
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ];
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.quiz-toeic-question-component', [
+                    'type' => $quiz['type'],
+                    'questions' => $data['questions'],
+                    'currentPage' => $data['currentPage']
+                ])->render(),
+                'totalPages' => $data['totalPages'],
+                'currentPage' => $data['currentPage'],
+            ]);
+        }
+
+
+        return view('pages.quiz-toeic', compact('quiz', 'data', 'id'));
+    }
+
     public function toeic(Request $request, $id)
     {
         $quiz = [
             "test_id" => 1,
+            "type" => "toeic",
             "title" => "TOEIC 1",
             "description" => "Official TOEIC test from 2023",
             "parts" => [
@@ -1868,7 +1834,8 @@ class QuizController extends Controller
 
         if ($request->ajax()) {
             return response()->json([
-                'html' => view('components.quiz_toeic', [
+                'html' => view('components.quiz-toeic-question-component', [
+                    'type' => $quiz['type'],
                     'questions' => $data['questions'],
                     'currentPage' => $data['currentPage']
                 ])->render(),

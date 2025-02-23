@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Quiz TOEIC')
+@section('title', 'Quiz ' . $quiz['type'])
 
 @section('content')
 
@@ -25,35 +25,48 @@
                                             stroke-linejoin="round" stroke-width="2" />
                                     </svg>
                                 </div>
-                                <span class="text-gray-600">
+                                <a href="/profile" class="text-gray-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1" stroke="currentColor" class="size-12">
+                                        stroke-width="1" stroke="currentColor" class="size-12 hover:text-rose-700">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
-                                </span>
+                                </a>
 
                             </div>
                         </div>
                         <div class="bg-white shadow-md border border-[#E5E7EB] rounded-lg p-6">
                             <h1 class="text-xl lg:text-2xl font-bold mb-4">{{ $data['title'] }}</h1>
 
-                            <div class="pagination mb-6">
+                            <div class="pagination mb-6 grid grid-cols-4 gap-2 lg:block">
                                 @for ($i = 1; $i <= $data['totalPages']; $i++)
                                     <a href="#" data-page="{{ $i }}"
-                                        class="page-link rounded-lg p-2 mr-2 hover:bg-rose-700 hover:text-white   {{ $i == $data['currentPage'] ? 'bg-rose-700 text-white' : ' bg-gray-200 text-black' }}">Part
-                                        {{ $i }}</a>
+                                        class="page-link rounded-lg p-2 mr-2 hover:bg-rose-700 hover:text-white   {{ $i == $data['currentPage'] ? 'bg-rose-700 text-white' : ' bg-gray-200 text-black' }}">
+                                        @if ($quiz['type'] == 'teen')
+                                            @if ($i == 1)
+                                                Grammar
+                                            @elseif($i == 2)
+                                                Reading
+                                            @elseif($i == 3)
+                                                Writing
+                                            @endif
+                                        @else
+                                            Part {{ $i }}
+                                        @endif
+                                    </a>
                                 @endfor
                             </div>
 
                             {{-- Area display question --}}
                             <div id="quiz-container">
-                                @include('components.quiz_toeic', [
+                                @include('components.quiz-toeic-question-component', [
+                                    'type' => $quiz['type'],
                                     'questions' => $data['questions'],
                                     'currentPage' => $data['currentPage'],
                                 ])
                             </div>
 
+                            <input type="hidden" name="type-quiz" id="type-quiz" value="{{ $quiz['type'] }}">
 
                             {{-- Page transfer button --}}
                             <div class="flex justify-between mt-6">
@@ -89,13 +102,22 @@
                             <div class="text-[20px] font-bold text-rose-600">Số câu hỏi</div>
 
                             @foreach ($quiz['parts'] as $partIndex => $part)
-                                <h6 id="part-{{ $partIndex + 1 }}" class="font-medium text-base my-2">
-                                    Part {{ $partIndex + 1 }}
-                                </h6>
+                                @if ($quiz['type'] == 'teen')
+                                    <h6 id="part-{{ $partIndex + 1 }}" class="font-medium text-base my-2">
+                                        @if ($partIndex == 0)
+                                            Grammar
+                                        @elseif($partIndex == 1)
+                                            Reading
+                                        @elseif($partIndex == 2)
+                                            Writing
+                                        @endif
+                                    </h6>
+                                @else
+                                    <h6 id="part-{{ $partIndex + 1 }}" class="font-medium text-base my-2">
+                                        Part {{ $partIndex + 1 }}
+                                    </h6>
+                                @endif
                                 <div class="question-part" data-part="{{ $partIndex + 1 }}">
-                                    <?php
-                                    // print_r($part['description']);
-                                    ?>
                                     <div class="question-list grid grid-cols-6 gap-2">
                                         @if (!empty($part['questions']))
                                             @foreach ($part['questions'] as $questionIndex => $question)
@@ -146,6 +168,8 @@
 
             let currentPage = 1;
             let totalPages = {{ $data['totalPages'] }};
+            let typeQuiz = $("#type-quiz").val();
+            let urlAjax = "route('quiz." + typeQuiz + "'" + ",['quiz'=>$id])";
             let selectedAnswers = {};
 
             $(".page-link").on("click", function(e) {
@@ -274,7 +298,7 @@
             function loadQuestions(page, callback = null) {
                 // if (page < 1 || page > totalPages) return; 
                 $.ajax({
-                    url: "{{ route('quiz.toeic', ['quiz' => $id]) }}",
+                    url: urlAjax,
                     type: "GET",
                     data: {
                         page: page
