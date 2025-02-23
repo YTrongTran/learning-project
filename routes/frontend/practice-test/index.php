@@ -3,16 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 
-Route::get('/test-step-1', function () {
-    return view('pages.test_step_1');
-});
-Route::get('/test-step-2', function () {
-    return view('pages.test_step_2');
-});
-Route::get('/test-step-3', function () {
-    return view('pages.test_step_3');
-});
-Route::get('/test/{quiz}', [QuizController::class, 'index'])->name('quiz');
+Route::get('/quiz-step-1', [QuizController::class, 'step1'])->name('quiz.step1');
+Route::post('/quiz-step-2', [QuizController::class, 'step2'])->name('quiz.step2');
+Route::post('/quiz-step-3', [QuizController::class, 'step3'])->name('quiz.step3');
 
-Route::get('/test-toeic/{quiz}', [QuizController::class, 'toeic'])->name('quiz.toeic');
-?>
+Route::get('/quiz-superkids/{quiz}', [QuizController::class, 'superkids'])->name('quiz.superkids');
+//call ajax submit form superkids
+Route::post('/quiz-submit-english-hub', [QuizController::class, 'submitQuizEnglishHub'])->name('quiz.englishHub');
+
+Route::get('/quiz-toeic/{quiz}', [QuizController::class, 'toeic'])->name('quiz.toeic');
+Route::post('/quiz-submit-toeic', [QuizController::class, 'submitQuizToeic'])->name('quiz.submitToeic');
+
+Route::get('/quiz-ielts/{quiz}', [QuizController::class, 'quizIelts'])->name('quiz.ielts');
+Route::post('/quiz-submit-ielts', [QuizController::class, 'submitQuizIelts'])->name('quiz.submitIelts');
+
+

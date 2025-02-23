@@ -50,3 +50,29 @@
         </div>
     </div>
 </div>
+
+<script>
+     $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+            });
+
+        $('#code-otp').click(function(){
+            let phone  = $('#phone').val();
+           
+            $.ajax({
+                type:'POST',
+                url :  "{{ route('customes.getcode') }}",
+                data:{
+                    'phone': phone,
+                }
+                }).done(function(result){
+                console.log(result);
+           });
+
+        });
+     })
+</script>
+
