@@ -166,6 +166,7 @@
 [22-Feb-2025 06:02:07] NOTICE: ready to handle connections
 [22-Feb-2025 06:02:07] NOTICE: systemd monitor interval set to 10000ms
 [22-Feb-2025 07:18:49] WARNING: [pool www] server reached pm.max_children setting (4), consider raising it
+<<<<<<< HEAD
 >>>>>>> c88f4e4a2f685ebcb08957f7137c9fa7dfc57826
 [23-Feb-2025 02:42:32] NOTICE: fpm is running, pid 15
 [23-Feb-2025 02:42:32] NOTICE: ready to handle connections
@@ -177,3 +178,5 @@
 [23-Feb-2025 02:50:46] NOTICE: ready to handle connections
 [23-Feb-2025 02:50:46] NOTICE: systemd monitor interval set to 10000ms
 [23-Feb-2025 03:48:33] WARNING: [pool www] server reached pm.max_children setting (4), consider raising it
+=======
+>>>>>>> 344fd79 (update submit)

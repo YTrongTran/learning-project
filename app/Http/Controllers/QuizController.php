@@ -20,9 +20,21 @@ class QuizController extends Controller
         
         return view('pages.quiz_step_1');
     }
-    public function step2(Request $request)
+    public function step2(CustomesRequest $request)
     {
-        return view('pages.quiz_step_2');
+        $succes =  DB::table('Customs')->insert([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'otp' => $request->otp,
+            'email' => $request->email,
+            'created_at' => now()
+            
+        ]);
+        if($succes){
+            session()->flash('success', 'Đăng ký tài khoản thành công!!!');
+            return view('pages.quiz_step_2');
+        }
+        
     }
     public function registerInfor(CustomesRequest $request)
     {
@@ -374,6 +386,21 @@ class QuizController extends Controller
             ],
             'point' => 100
         ];
+
+        foreach ($getQuestionsAll as $question) {
+            
+            $quiz['questions'][$question->_index]= [
+                'question' => $question->question_text,
+                'A' => $question->answer_1,
+                'B' => $question->answer_2,
+                'C' => $question->answer_3,
+                'D' => $question->answer_4,
+                'correct' => $question->answer_correct,
+                'question_id'=> $question->id
+            ];
+            $quiz['point'] = $question->point;
+            $quiz['exam_id'] = $question->exam_id;
+         }
         // $questions = Question::where('exam_id', $id)->get();
         // return view('pages.quiz', compact('quiz', 'questions'));
 

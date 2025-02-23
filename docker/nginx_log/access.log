@@ -2662,6 +2662,7 @@
 172.18.0.1 - - [22/Feb/2025:10:18:39 +0000] "GET /quiz-superkids/1 HTTP/1.1" 499 0 "http://localhost/quiz-superkids/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
 172.18.0.1 - - [22/Feb/2025:10:18:42 +0000] "GET /quiz-superkids/1 HTTP/1.1" 499 0 "http://localhost/quiz-superkids/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
 172.18.0.1 - - [22/Feb/2025:10:18:44 +0000] "GET /quiz-superkids/1 HTTP/1.1" 200 9203 "http://localhost/quiz-superkids/1" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
+<<<<<<< HEAD
 172.18.0.1 - - [22/Feb/2025:10:19:22 +0000] "POST /admin/exams/5 HTTP/1.1" 302 370 "http://localhost/admin/exams" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
 172.18.0.1 - - [22/Feb/2025:10:19:26 +0000] "GET /admin/exams HTTP/1.1" 200 13506 "http://localhost/admin/exams" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
 172.18.0.1 - - [22/Feb/2025:10:19:26 +0000] "GET /storage/users/default.png HTTP/1.1" 404 555 "http://localhost/admin/exams" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
@@ -3052,3 +3053,5 @@
 172.18.0.1 - - [23/Feb/2025:09:22:53 +0000] "GET /storage/users/default.png HTTP/1.1" 404 555 "http://localhost/admin/bread" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
 172.18.0.1 - - [23/Feb/2025:09:23:14 +0000] "GET /admin/customs HTTP/1.1" 200 15526 "http://localhost/admin/bread" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
 172.18.0.1 - - [23/Feb/2025:09:23:14 +0000] "GET /storage/users/default.png HTTP/1.1" 404 555 "http://localhost/admin/customs" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" "-"
+=======
+>>>>>>> 344fd79 (update submit)
