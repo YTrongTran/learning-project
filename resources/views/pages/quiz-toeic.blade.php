@@ -41,7 +41,7 @@
                             <div class="pagination mb-6 grid grid-cols-4 gap-2 lg:block">
                                 @for ($i = 1; $i <= $data['totalPages']; $i++)
                                     <a href="#" data-page="{{ $i }}"
-                                        class="page-link rounded-lg p-2 mr-2 hover:bg-rose-700 hover:text-white   {{ $i == $data['currentPage'] ? 'bg-rose-700 text-white' : ' bg-gray-200 text-black' }}">
+                                        class="page-link rounded-lg p-2 mr-0 lg:mr-2 hover:bg-rose-700 hover:text-white {{ $i == $data['currentPage'] ? 'bg-rose-700 text-white' : ' bg-gray-200 text-black' }}">
                                         @if ($quiz['type'] == 'teen')
                                             @if ($i == 1)
                                                 Grammar

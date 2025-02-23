@@ -39,7 +39,7 @@
                         <div class="bg-white shadow-md border border-[#E5E7EB] rounded-lg p-6">
                             <h1 class="text-xl lg:text-2xl font-bold mb-4">{{ $data['title'] }}</h1>
 
-                            <div class="pagination mb-6 grid grid-cols-4 gap-2 lg:flex">
+                            <div class="pagination mb-6 grid grid-cols-2 gap-2 lg:flex">
                                 @for ($i = 1; $i <= $data['totalPages']; $i++)
                                     <a href="#" data-page="{{ $i }}"
                                         class="page-link page-link-{{ $i }} block text-center rounded-lg p-2 mr-2 hover:bg-rose-700 hover:text-white {{ $i == $data['currentPage'] ? 'bg-rose-700 text-white' : ' bg-gray-200 text-black' }}">
