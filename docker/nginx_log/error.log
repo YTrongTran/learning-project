@@ -1240,3 +1240,518 @@
 2025/02/13 23:18:23 [error] 17#17: *101 open() "/var/www/html/public/js/code-otp.js" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /js/code-otp.js HTTP/1.1", host: "localhost", referrer: "http://localhost/test-step-1"
 2025/02/13 23:18:37 [error] 17#17: *101 open() "/var/www/html/public/js/code-otp.js" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /js/code-otp.js HTTP/1.1", host: "localhost", referrer: "http://localhost/test-step-1"
 2025/02/13 23:20:22 [error] 17#17: *106 open() "/var/www/html/public/public/js/code-otp.js" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /public/js/code-otp.js HTTP/1.1", host: "localhost", referrer: "http://localhost/test-step-1"
+2025/02/20 14:02:39 [notice] 16#16: using the "epoll" event method
+2025/02/20 14:02:39 [notice] 16#16: nginx/1.21.6
+2025/02/20 14:02:39 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/20 14:02:39 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/20 14:02:39 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/20 14:02:39 [notice] 16#16: start worker processes
+2025/02/20 14:02:39 [notice] 16#16: start worker process 17
+2025/02/20 14:02:39 [notice] 16#16: start worker process 18
+2025/02/20 14:02:39 [notice] 16#16: start worker process 19
+2025/02/20 14:02:39 [notice] 16#16: start worker process 20
+2025/02/20 14:02:39 [notice] 16#16: start worker process 21
+2025/02/20 14:02:39 [notice] 16#16: start worker process 22
+2025/02/20 14:02:39 [notice] 16#16: start worker process 23
+2025/02/20 14:02:39 [notice] 16#16: start worker process 24
+2025/02/20 14:02:39 [notice] 16#16: start worker process 25
+2025/02/20 14:02:39 [notice] 16#16: start worker process 26
+2025/02/20 14:02:39 [notice] 16#16: start worker process 27
+2025/02/20 14:02:39 [notice] 16#16: start worker process 28
+2025/02/21 03:27:06 [notice] 16#16: using the "epoll" event method
+2025/02/21 03:27:06 [notice] 16#16: nginx/1.21.6
+2025/02/21 03:27:06 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 03:27:06 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 03:27:06 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 03:27:06 [notice] 16#16: start worker processes
+2025/02/21 03:27:06 [notice] 16#16: start worker process 17
+2025/02/21 03:27:06 [notice] 16#16: start worker process 18
+2025/02/21 03:27:06 [notice] 16#16: start worker process 19
+2025/02/21 03:27:06 [notice] 16#16: start worker process 20
+2025/02/21 03:27:06 [notice] 16#16: start worker process 21
+2025/02/21 03:27:06 [notice] 16#16: start worker process 22
+2025/02/21 03:27:06 [notice] 16#16: start worker process 23
+2025/02/21 03:27:06 [notice] 16#16: start worker process 24
+2025/02/21 03:27:06 [notice] 16#16: start worker process 25
+2025/02/21 03:27:06 [notice] 16#16: start worker process 26
+2025/02/21 03:27:06 [notice] 16#16: start worker process 27
+2025/02/21 03:27:06 [notice] 16#16: start worker process 28
+2025/02/21 11:47:39 [notice] 16#16: using the "epoll" event method
+2025/02/21 11:47:39 [notice] 16#16: nginx/1.21.6
+2025/02/21 11:47:39 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 11:47:39 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 11:47:39 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 11:47:39 [notice] 16#16: start worker processes
+2025/02/21 11:47:39 [notice] 16#16: start worker process 17
+2025/02/21 11:47:39 [notice] 16#16: start worker process 18
+2025/02/21 11:47:39 [notice] 16#16: start worker process 19
+2025/02/21 11:47:39 [notice] 16#16: start worker process 20
+2025/02/21 11:47:39 [notice] 16#16: start worker process 21
+2025/02/21 11:47:39 [notice] 16#16: start worker process 22
+2025/02/21 11:47:39 [notice] 16#16: start worker process 23
+2025/02/21 11:47:39 [notice] 16#16: start worker process 24
+2025/02/21 11:47:39 [notice] 16#16: start worker process 25
+2025/02/21 11:47:39 [notice] 16#16: start worker process 26
+2025/02/21 11:47:39 [notice] 16#16: start worker process 27
+2025/02/21 11:47:39 [notice] 16#16: start worker process 28
+2025/02/21 11:49:14 [notice] 16#16: using the "epoll" event method
+2025/02/21 11:49:14 [notice] 16#16: nginx/1.21.6
+2025/02/21 11:49:14 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 11:49:14 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 11:49:14 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 11:49:14 [notice] 16#16: start worker processes
+2025/02/21 11:49:14 [notice] 16#16: start worker process 17
+2025/02/21 11:49:14 [notice] 16#16: start worker process 18
+2025/02/21 11:49:14 [notice] 16#16: start worker process 19
+2025/02/21 11:49:14 [notice] 16#16: start worker process 20
+2025/02/21 11:49:14 [notice] 16#16: start worker process 21
+2025/02/21 11:49:14 [notice] 16#16: start worker process 22
+2025/02/21 11:49:14 [notice] 16#16: start worker process 23
+2025/02/21 11:49:14 [notice] 16#16: start worker process 24
+2025/02/21 11:49:14 [notice] 16#16: start worker process 25
+2025/02/21 11:49:14 [notice] 16#16: start worker process 26
+2025/02/21 11:49:14 [notice] 16#16: start worker process 27
+2025/02/21 11:49:14 [notice] 16#16: start worker process 28
+2025/02/21 11:51:00 [notice] 16#16: using the "epoll" event method
+2025/02/21 11:51:00 [notice] 16#16: nginx/1.21.6
+2025/02/21 11:51:00 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 11:51:00 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 11:51:00 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 11:51:00 [notice] 16#16: start worker processes
+2025/02/21 11:51:00 [notice] 16#16: start worker process 17
+2025/02/21 11:51:00 [notice] 16#16: start worker process 18
+2025/02/21 11:51:00 [notice] 16#16: start worker process 19
+2025/02/21 11:51:00 [notice] 16#16: start worker process 20
+2025/02/21 11:51:00 [notice] 16#16: start worker process 21
+2025/02/21 11:51:00 [notice] 16#16: start worker process 22
+2025/02/21 11:51:00 [notice] 16#16: start worker process 23
+2025/02/21 11:51:00 [notice] 16#16: start worker process 24
+2025/02/21 11:51:00 [notice] 16#16: start worker process 25
+2025/02/21 11:51:00 [notice] 16#16: start worker process 26
+2025/02/21 11:51:00 [notice] 16#16: start worker process 27
+2025/02/21 11:51:00 [notice] 16#16: start worker process 28
+2025/02/21 11:52:15 [notice] 16#16: using the "epoll" event method
+2025/02/21 11:52:15 [notice] 16#16: nginx/1.21.6
+2025/02/21 11:52:15 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 11:52:15 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 11:52:15 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 11:52:15 [notice] 16#16: start worker processes
+2025/02/21 11:52:15 [notice] 16#16: start worker process 20
+2025/02/21 11:52:15 [notice] 16#16: start worker process 21
+2025/02/21 11:52:15 [notice] 16#16: start worker process 22
+2025/02/21 11:52:15 [notice] 16#16: start worker process 23
+2025/02/21 11:52:15 [notice] 16#16: start worker process 24
+2025/02/21 11:52:15 [notice] 16#16: start worker process 25
+2025/02/21 11:52:15 [notice] 16#16: start worker process 26
+2025/02/21 11:52:15 [notice] 16#16: start worker process 27
+2025/02/21 11:52:15 [notice] 16#16: start worker process 28
+2025/02/21 11:52:15 [notice] 16#16: start worker process 29
+2025/02/21 11:52:15 [notice] 16#16: start worker process 30
+2025/02/21 11:52:15 [notice] 16#16: start worker process 31
+2025/02/21 11:54:51 [notice] 16#16: using the "epoll" event method
+2025/02/21 11:54:51 [notice] 16#16: nginx/1.21.6
+2025/02/21 11:54:51 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 11:54:51 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 11:54:51 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 11:54:51 [notice] 16#16: start worker processes
+2025/02/21 11:54:51 [notice] 16#16: start worker process 17
+2025/02/21 11:54:51 [notice] 16#16: start worker process 18
+2025/02/21 11:54:51 [notice] 16#16: start worker process 19
+2025/02/21 11:54:51 [notice] 16#16: start worker process 20
+2025/02/21 11:54:51 [notice] 16#16: start worker process 21
+2025/02/21 11:54:51 [notice] 16#16: start worker process 22
+2025/02/21 11:54:51 [notice] 16#16: start worker process 23
+2025/02/21 11:54:51 [notice] 16#16: start worker process 24
+2025/02/21 11:54:51 [notice] 16#16: start worker process 25
+2025/02/21 11:54:51 [notice] 16#16: start worker process 26
+2025/02/21 11:54:51 [notice] 16#16: start worker process 27
+2025/02/21 11:54:51 [notice] 16#16: start worker process 28
+2025/02/21 12:08:09 [notice] 16#16: using the "epoll" event method
+2025/02/21 12:08:09 [notice] 16#16: nginx/1.21.6
+2025/02/21 12:08:09 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 12:08:09 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 12:08:09 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 12:08:09 [notice] 16#16: start worker processes
+2025/02/21 12:08:09 [notice] 16#16: start worker process 17
+2025/02/21 12:08:09 [notice] 16#16: start worker process 18
+2025/02/21 12:08:09 [notice] 16#16: start worker process 19
+2025/02/21 12:08:09 [notice] 16#16: start worker process 20
+2025/02/21 12:08:09 [notice] 16#16: start worker process 21
+2025/02/21 12:08:09 [notice] 16#16: start worker process 22
+2025/02/21 12:08:09 [notice] 16#16: start worker process 23
+2025/02/21 12:08:09 [notice] 16#16: start worker process 24
+2025/02/21 12:08:09 [notice] 16#16: start worker process 25
+2025/02/21 12:08:09 [notice] 16#16: start worker process 26
+2025/02/21 12:08:09 [notice] 16#16: start worker process 27
+2025/02/21 12:08:09 [notice] 16#16: start worker process 28
+2025/02/21 12:09:01 [notice] 16#16: using the "epoll" event method
+2025/02/21 12:09:01 [notice] 16#16: nginx/1.21.6
+2025/02/21 12:09:01 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 12:09:01 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 12:09:01 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 12:09:01 [notice] 16#16: start worker processes
+2025/02/21 12:09:01 [notice] 16#16: start worker process 17
+2025/02/21 12:09:01 [notice] 16#16: start worker process 18
+2025/02/21 12:09:01 [notice] 16#16: start worker process 19
+2025/02/21 12:09:01 [notice] 16#16: start worker process 20
+2025/02/21 12:09:01 [notice] 16#16: start worker process 21
+2025/02/21 12:09:01 [notice] 16#16: start worker process 22
+2025/02/21 12:09:01 [notice] 16#16: start worker process 23
+2025/02/21 12:09:01 [notice] 16#16: start worker process 24
+2025/02/21 12:09:01 [notice] 16#16: start worker process 25
+2025/02/21 12:09:01 [notice] 16#16: start worker process 26
+2025/02/21 12:09:01 [notice] 16#16: start worker process 27
+2025/02/21 12:09:01 [notice] 16#16: start worker process 28
+2025/02/21 12:11:43 [notice] 16#16: using the "epoll" event method
+2025/02/21 12:11:43 [notice] 16#16: nginx/1.21.6
+2025/02/21 12:11:43 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 12:11:43 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 12:11:43 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 12:11:43 [notice] 16#16: start worker processes
+2025/02/21 12:11:43 [notice] 16#16: start worker process 17
+2025/02/21 12:11:43 [notice] 16#16: start worker process 18
+2025/02/21 12:11:43 [notice] 16#16: start worker process 19
+2025/02/21 12:11:43 [notice] 16#16: start worker process 20
+2025/02/21 12:11:43 [notice] 16#16: start worker process 21
+2025/02/21 12:11:43 [notice] 16#16: start worker process 22
+2025/02/21 12:11:43 [notice] 16#16: start worker process 23
+2025/02/21 12:11:43 [notice] 16#16: start worker process 24
+2025/02/21 12:11:43 [notice] 16#16: start worker process 25
+2025/02/21 12:11:43 [notice] 16#16: start worker process 26
+2025/02/21 12:11:43 [notice] 16#16: start worker process 27
+2025/02/21 12:11:43 [notice] 16#16: start worker process 28
+2025/02/21 12:13:18 [notice] 16#16: using the "epoll" event method
+2025/02/21 12:13:18 [notice] 16#16: nginx/1.21.6
+2025/02/21 12:13:18 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 12:13:18 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 12:13:18 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 12:13:18 [notice] 16#16: start worker processes
+2025/02/21 12:13:18 [notice] 16#16: start worker process 17
+2025/02/21 12:13:18 [notice] 16#16: start worker process 18
+2025/02/21 12:13:18 [notice] 16#16: start worker process 19
+2025/02/21 12:13:18 [notice] 16#16: start worker process 20
+2025/02/21 12:13:18 [notice] 16#16: start worker process 21
+2025/02/21 12:13:18 [notice] 16#16: start worker process 22
+2025/02/21 12:13:18 [notice] 16#16: start worker process 23
+2025/02/21 12:13:18 [notice] 16#16: start worker process 24
+2025/02/21 12:13:18 [notice] 16#16: start worker process 25
+2025/02/21 12:13:18 [notice] 16#16: start worker process 26
+2025/02/21 12:13:18 [notice] 16#16: start worker process 27
+2025/02/21 12:13:18 [notice] 16#16: start worker process 28
+2025/02/21 12:14:15 [notice] 16#16: using the "epoll" event method
+2025/02/21 12:14:15 [notice] 16#16: nginx/1.21.6
+2025/02/21 12:14:15 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 12:14:15 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 12:14:15 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 12:14:15 [notice] 16#16: start worker processes
+2025/02/21 12:14:15 [notice] 16#16: start worker process 17
+2025/02/21 12:14:15 [notice] 16#16: start worker process 18
+2025/02/21 12:14:15 [notice] 16#16: start worker process 19
+2025/02/21 12:14:15 [notice] 16#16: start worker process 20
+2025/02/21 12:14:15 [notice] 16#16: start worker process 21
+2025/02/21 12:14:15 [notice] 16#16: start worker process 22
+2025/02/21 12:14:15 [notice] 16#16: start worker process 23
+2025/02/21 12:14:15 [notice] 16#16: start worker process 24
+2025/02/21 12:14:15 [notice] 16#16: start worker process 25
+2025/02/21 12:14:15 [notice] 16#16: start worker process 26
+2025/02/21 12:14:15 [notice] 16#16: start worker process 27
+2025/02/21 12:14:15 [notice] 16#16: start worker process 28
+2025/02/21 12:15:07 [notice] 16#16: using the "epoll" event method
+2025/02/21 12:15:07 [notice] 16#16: nginx/1.21.6
+2025/02/21 12:15:07 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 12:15:07 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 12:15:07 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 12:15:07 [notice] 16#16: start worker processes
+2025/02/21 12:15:07 [notice] 16#16: start worker process 17
+2025/02/21 12:15:07 [notice] 16#16: start worker process 18
+2025/02/21 12:15:07 [notice] 16#16: start worker process 19
+2025/02/21 12:15:07 [notice] 16#16: start worker process 20
+2025/02/21 12:15:07 [notice] 16#16: start worker process 21
+2025/02/21 12:15:07 [notice] 16#16: start worker process 22
+2025/02/21 12:15:07 [notice] 16#16: start worker process 23
+2025/02/21 12:15:07 [notice] 16#16: start worker process 24
+2025/02/21 12:15:07 [notice] 16#16: start worker process 25
+2025/02/21 12:15:07 [notice] 16#16: start worker process 26
+2025/02/21 12:15:07 [notice] 16#16: start worker process 27
+2025/02/21 12:15:07 [notice] 16#16: start worker process 28
+2025/02/21 12:33:00 [notice] 16#16: using the "epoll" event method
+2025/02/21 12:33:00 [notice] 16#16: nginx/1.21.6
+2025/02/21 12:33:00 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 12:33:00 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 12:33:00 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 12:33:00 [notice] 16#16: start worker processes
+2025/02/21 12:33:00 [notice] 16#16: start worker process 17
+2025/02/21 12:33:00 [notice] 16#16: start worker process 18
+2025/02/21 12:33:00 [notice] 16#16: start worker process 19
+2025/02/21 12:33:00 [notice] 16#16: start worker process 20
+2025/02/21 12:33:00 [notice] 16#16: start worker process 21
+2025/02/21 12:33:00 [notice] 16#16: start worker process 22
+2025/02/21 12:33:00 [notice] 16#16: start worker process 23
+2025/02/21 12:33:00 [notice] 16#16: start worker process 24
+2025/02/21 12:33:00 [notice] 16#16: start worker process 25
+2025/02/21 12:33:00 [notice] 16#16: start worker process 26
+2025/02/21 12:33:00 [notice] 16#16: start worker process 27
+2025/02/21 12:33:00 [notice] 16#16: start worker process 28
+2025/02/21 12:56:23 [notice] 16#16: using the "epoll" event method
+2025/02/21 12:56:23 [notice] 16#16: nginx/1.21.6
+2025/02/21 12:56:23 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 12:56:23 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 12:56:23 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 12:56:23 [notice] 16#16: start worker processes
+2025/02/21 12:56:23 [notice] 16#16: start worker process 17
+2025/02/21 12:56:23 [notice] 16#16: start worker process 18
+2025/02/21 12:56:23 [notice] 16#16: start worker process 19
+2025/02/21 12:56:23 [notice] 16#16: start worker process 20
+2025/02/21 12:56:23 [notice] 16#16: start worker process 21
+2025/02/21 12:56:23 [notice] 16#16: start worker process 22
+2025/02/21 12:56:23 [notice] 16#16: start worker process 23
+2025/02/21 12:56:23 [notice] 16#16: start worker process 24
+2025/02/21 12:56:23 [notice] 16#16: start worker process 25
+2025/02/21 12:56:23 [notice] 16#16: start worker process 26
+2025/02/21 12:56:23 [notice] 16#16: start worker process 27
+2025/02/21 12:56:23 [notice] 16#16: start worker process 28
+2025/02/21 13:00:25 [notice] 16#16: using the "epoll" event method
+2025/02/21 13:00:25 [notice] 16#16: nginx/1.21.6
+2025/02/21 13:00:25 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 13:00:25 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 13:00:25 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 13:00:25 [notice] 16#16: start worker processes
+2025/02/21 13:00:25 [notice] 16#16: start worker process 17
+2025/02/21 13:00:25 [notice] 16#16: start worker process 18
+2025/02/21 13:00:25 [notice] 16#16: start worker process 19
+2025/02/21 13:00:25 [notice] 16#16: start worker process 20
+2025/02/21 13:00:25 [notice] 16#16: start worker process 21
+2025/02/21 13:00:25 [notice] 16#16: start worker process 22
+2025/02/21 13:00:25 [notice] 16#16: start worker process 23
+2025/02/21 13:00:25 [notice] 16#16: start worker process 24
+2025/02/21 13:00:25 [notice] 16#16: start worker process 25
+2025/02/21 13:00:25 [notice] 16#16: start worker process 26
+2025/02/21 13:00:25 [notice] 16#16: start worker process 27
+2025/02/21 13:00:25 [notice] 16#16: start worker process 28
+2025/02/21 14:04:48 [notice] 16#16: using the "epoll" event method
+2025/02/21 14:04:48 [notice] 16#16: nginx/1.21.6
+2025/02/21 14:04:48 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/21 14:04:48 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/21 14:04:48 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/21 14:04:48 [notice] 16#16: start worker processes
+2025/02/21 14:04:48 [notice] 16#16: start worker process 17
+2025/02/21 14:04:48 [notice] 16#16: start worker process 18
+2025/02/21 14:04:48 [notice] 16#16: start worker process 19
+2025/02/21 14:04:48 [notice] 16#16: start worker process 20
+2025/02/21 14:04:48 [notice] 16#16: start worker process 21
+2025/02/21 14:04:48 [notice] 16#16: start worker process 22
+2025/02/21 14:04:48 [notice] 16#16: start worker process 23
+2025/02/21 14:04:48 [notice] 16#16: start worker process 24
+2025/02/21 14:04:48 [notice] 16#16: start worker process 25
+2025/02/21 14:04:48 [notice] 16#16: start worker process 26
+2025/02/21 14:04:48 [notice] 16#16: start worker process 27
+2025/02/21 14:04:48 [notice] 16#16: start worker process 28
+2025/02/21 14:06:54 [error] 17#17: *2 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.18.0.1, server: learning.local, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/run/php/php8.1-fpm.sock", host: "localhost"
+2025/02/21 14:11:03 [error] 20#20: *15 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin"
+2025/02/21 14:11:03 [error] 20#20: *15 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin"
+2025/02/21 14:11:18 [error] 21#21: *23 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:11:46 [error] 21#21: *23 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/answers/create"
+2025/02/21 14:11:46 [error] 21#21: *23 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/answers/create"
+2025/02/21 14:12:59 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:12:59 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:13:11 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/answers"
+2025/02/21 14:13:19 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:13:34 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/exams/create"
+2025/02/21 14:13:54 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:13:54 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:14:14 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/customs/create"
+2025/02/21 14:14:30 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:15:34 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/questions/create"
+2025/02/21 14:15:51 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:15:51 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/21 14:16:07 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus"
+2025/02/21 14:16:16 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus/1/builder"
+2025/02/21 14:16:33 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus/1/builder"
+2025/02/21 14:16:51 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus/1/builder"
+2025/02/21 14:17:11 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus/1/builder"
+2025/02/21 14:17:23 [error] 24#24: *28 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/21 14:17:30 [error] 27#27: *55 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/21 14:24:33 [error] 17#17: *67 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/21 14:27:11 [error] 17#17: *76 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/21 14:28:58 [error] 17#17: *84 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions"
+2025/02/21 14:29:09 [error] 17#17: *84 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/21 14:30:23 [error] 17#17: *84 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/21 14:30:49 [error] 17#17: *84 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/21 15:58:55 [error] 21#21: *227 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions"
+2025/02/21 15:59:56 [error] 21#21: *227 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions/create"
+2025/02/21 16:00:11 [error] 21#21: *227 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions"
+2025/02/21 16:00:26 [error] 21#21: *227 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions/1"
+2025/02/22 04:32:09 [notice] 16#16: using the "epoll" event method
+2025/02/22 04:32:09 [notice] 16#16: nginx/1.21.6
+2025/02/22 04:32:09 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/22 04:32:09 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/22 04:32:09 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/22 04:32:09 [notice] 16#16: start worker processes
+2025/02/22 04:32:09 [notice] 16#16: start worker process 17
+2025/02/22 04:32:09 [notice] 16#16: start worker process 18
+2025/02/22 04:32:09 [notice] 16#16: start worker process 19
+2025/02/22 04:32:09 [notice] 16#16: start worker process 20
+2025/02/22 04:32:09 [notice] 16#16: start worker process 21
+2025/02/22 04:32:09 [notice] 16#16: start worker process 22
+2025/02/22 04:32:09 [notice] 16#16: start worker process 23
+2025/02/22 04:32:09 [notice] 16#16: start worker process 24
+2025/02/22 04:32:09 [notice] 16#16: start worker process 25
+2025/02/22 04:32:09 [notice] 16#16: start worker process 26
+2025/02/22 04:32:09 [notice] 16#16: start worker process 27
+2025/02/22 04:32:09 [notice] 16#16: start worker process 28
+2025/02/22 04:50:39 [notice] 17#17: using the "epoll" event method
+2025/02/22 04:50:39 [notice] 17#17: nginx/1.21.6
+2025/02/22 04:50:39 [notice] 17#17: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/22 04:50:39 [notice] 17#17: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/22 04:50:39 [notice] 17#17: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/22 04:50:39 [notice] 17#17: start worker processes
+2025/02/22 04:50:39 [notice] 17#17: start worker process 18
+2025/02/22 04:50:39 [notice] 17#17: start worker process 19
+2025/02/22 04:50:39 [notice] 17#17: start worker process 20
+2025/02/22 04:50:39 [notice] 17#17: start worker process 21
+2025/02/22 04:50:39 [notice] 17#17: start worker process 22
+2025/02/22 04:50:39 [notice] 17#17: start worker process 23
+2025/02/22 04:50:39 [notice] 17#17: start worker process 24
+2025/02/22 04:50:39 [notice] 17#17: start worker process 25
+2025/02/22 04:50:39 [notice] 17#17: start worker process 26
+2025/02/22 04:50:39 [notice] 17#17: start worker process 27
+2025/02/22 04:50:39 [notice] 17#17: start worker process 28
+2025/02/22 04:50:39 [notice] 17#17: start worker process 29
+2025/02/22 05:25:03 [notice] 16#16: using the "epoll" event method
+2025/02/22 05:25:03 [notice] 16#16: nginx/1.21.6
+2025/02/22 05:25:03 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/22 05:25:03 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/22 05:25:03 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/22 05:25:03 [notice] 16#16: start worker processes
+2025/02/22 05:25:03 [notice] 16#16: start worker process 20
+2025/02/22 05:25:03 [notice] 16#16: start worker process 21
+2025/02/22 05:25:03 [notice] 16#16: start worker process 22
+2025/02/22 05:25:03 [notice] 16#16: start worker process 23
+2025/02/22 05:25:03 [notice] 16#16: start worker process 24
+2025/02/22 05:25:03 [notice] 16#16: start worker process 25
+2025/02/22 05:25:03 [notice] 16#16: start worker process 26
+2025/02/22 05:25:03 [notice] 16#16: start worker process 27
+2025/02/22 05:25:03 [notice] 16#16: start worker process 28
+2025/02/22 05:25:03 [notice] 16#16: start worker process 29
+2025/02/22 05:25:03 [notice] 16#16: start worker process 30
+2025/02/22 05:25:03 [notice] 16#16: start worker process 31
+2025/02/22 05:26:51 [notice] 16#16: using the "epoll" event method
+2025/02/22 05:26:51 [notice] 16#16: nginx/1.21.6
+2025/02/22 05:26:51 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/22 05:26:51 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/22 05:26:51 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/22 05:26:51 [notice] 16#16: start worker processes
+2025/02/22 05:26:51 [notice] 16#16: start worker process 17
+2025/02/22 05:26:51 [notice] 16#16: start worker process 18
+2025/02/22 05:26:51 [notice] 16#16: start worker process 19
+2025/02/22 05:26:51 [notice] 16#16: start worker process 20
+2025/02/22 05:26:51 [notice] 16#16: start worker process 21
+2025/02/22 05:26:51 [notice] 16#16: start worker process 22
+2025/02/22 05:26:51 [notice] 16#16: start worker process 23
+2025/02/22 05:26:51 [notice] 16#16: start worker process 24
+2025/02/22 05:26:51 [notice] 16#16: start worker process 26
+2025/02/22 05:26:51 [notice] 16#16: start worker process 27
+2025/02/22 05:26:51 [notice] 16#16: start worker process 30
+2025/02/22 05:26:51 [notice] 16#16: start worker process 31
+2025/02/22 05:38:11 [notice] 16#16: using the "epoll" event method
+2025/02/22 05:38:11 [notice] 16#16: nginx/1.21.6
+2025/02/22 05:38:11 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/22 05:38:11 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/22 05:38:11 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/22 05:38:11 [notice] 16#16: start worker processes
+2025/02/22 05:38:11 [notice] 16#16: start worker process 17
+2025/02/22 05:38:11 [notice] 16#16: start worker process 18
+2025/02/22 05:38:11 [notice] 16#16: start worker process 19
+2025/02/22 05:38:11 [notice] 16#16: start worker process 20
+2025/02/22 05:38:11 [notice] 16#16: start worker process 21
+2025/02/22 05:38:11 [notice] 16#16: start worker process 22
+2025/02/22 05:38:11 [notice] 16#16: start worker process 23
+2025/02/22 05:38:11 [notice] 16#16: start worker process 24
+2025/02/22 05:38:11 [notice] 16#16: start worker process 25
+2025/02/22 05:38:11 [notice] 16#16: start worker process 26
+2025/02/22 05:38:11 [notice] 16#16: start worker process 27
+2025/02/22 05:38:11 [notice] 16#16: start worker process 28
+2025/02/22 06:02:07 [notice] 16#16: using the "epoll" event method
+2025/02/22 06:02:07 [notice] 16#16: nginx/1.21.6
+2025/02/22 06:02:07 [notice] 16#16: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2025/02/22 06:02:07 [notice] 16#16: OS: Linux 5.15.167.4-microsoft-standard-WSL2
+2025/02/22 06:02:07 [notice] 16#16: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2025/02/22 06:02:07 [notice] 16#16: start worker processes
+2025/02/22 06:02:07 [notice] 16#16: start worker process 17
+2025/02/22 06:02:07 [notice] 16#16: start worker process 18
+2025/02/22 06:02:07 [notice] 16#16: start worker process 19
+2025/02/22 06:02:07 [notice] 16#16: start worker process 20
+2025/02/22 06:02:07 [notice] 16#16: start worker process 21
+2025/02/22 06:02:07 [notice] 16#16: start worker process 22
+2025/02/22 06:02:07 [notice] 16#16: start worker process 23
+2025/02/22 06:02:07 [notice] 16#16: start worker process 24
+2025/02/22 06:02:07 [notice] 16#16: start worker process 25
+2025/02/22 06:02:07 [notice] 16#16: start worker process 26
+2025/02/22 06:02:07 [notice] 16#16: start worker process 27
+2025/02/22 06:02:07 [notice] 16#16: start worker process 28
+2025/02/22 06:43:22 [error] 26#26: *20 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin"
+2025/02/22 06:43:22 [error] 26#26: *20 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin"
+2025/02/22 06:46:06 [error] 27#27: *31 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:46:06 [error] 27#27: *31 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:47:35 [error] 17#17: *34 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/customs/create"
+2025/02/22 06:47:35 [error] 17#17: *34 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/customs/create"
+2025/02/22 06:48:09 [error] 17#17: *34 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:48:09 [error] 17#17: *34 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:49:59 [error] 17#17: *39 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/exams/create"
+2025/02/22 06:49:59 [error] 17#17: *39 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/exams/create"
+2025/02/22 06:51:20 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:51:20 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:52:03 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/answers/create"
+2025/02/22 06:52:03 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/answers/create"
+2025/02/22 06:52:22 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:52:22 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:53:27 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread/questions/create"
+2025/02/22 06:53:42 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 06:53:57 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus"
+2025/02/22 06:54:03 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus/1/builder"
+2025/02/22 06:54:40 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/menus/1/builder"
+2025/02/22 06:54:49 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 06:54:58 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 06:55:43 [error] 17#17: *42 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 09:22:07 [error] 22#22: *274 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 09:22:14 [error] 22#22: *274 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/customs"
+2025/02/22 09:34:00 [error] 23#23: *312 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions"
+2025/02/22 09:45:06 [error] 23#23: *321 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 09:49:20 [error] 24#24: *324 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 09:49:57 [error] 24#24: *324 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 09:49:57 [error] 24#24: *324 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 09:50:30 [error] 24#24: *324 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions"
+2025/02/22 10:05:08 [error] 25#25: *348 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/bread"
+2025/02/22 10:05:13 [error] 25#25: *348 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/answers"
+2025/02/22 10:05:18 [error] 25#25: *348 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/answers/create"
+2025/02/22 10:05:36 [error] 25#25: *348 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:05:49 [error] 25#25: *348 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/2"
+2025/02/22 10:05:53 [error] 24#24: *353 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions"
+2025/02/22 10:06:08 [error] 24#24: *353 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/questions/3/edit"
+2025/02/22 10:06:36 [error] 24#24: *353 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:06:42 [error] 24#24: *353 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 10:08:21 [error] 24#24: *364 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:10:56 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 10:11:41 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:12:00 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 10:14:32 [error] 25#25: *379 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 10:14:32 [error] 25#25: *379 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 10:14:48 [error] 25#25: *379 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:15:03 [error] 25#25: *379 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:15:03 [error] 25#25: *379 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:15:56 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:15:56 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:16:04 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:16:04 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:16:14 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:16:14 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:16:19 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 10:16:58 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:16:58 [error] 25#25: *369 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:19:26 [error] 25#25: *403 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:19:26 [error] 25#25: *403 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:24:28 [error] 25#25: *409 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams/create"
+2025/02/22 10:25:07 [error] 25#25: *409 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/exams"
+2025/02/22 10:26:53 [error] 25#25: *415 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/answers"
+2025/02/22 10:27:09 [error] 25#25: *415 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/answers/create"
+2025/02/22 10:27:41 [error] 25#25: *415 open() "/var/www/html/public/storage/users/default.png" failed (2: No such file or directory), client: 172.18.0.1, server: learning.local, request: "GET /storage/users/default.png HTTP/1.1", host: "localhost", referrer: "http://localhost/admin/answers"
