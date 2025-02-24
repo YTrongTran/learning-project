@@ -111,4 +111,44 @@ jQuery(document).ready(function($) {
         });
     });
 
+    $('#csvFile').on('change', function(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      if (file.type !== "text/csv" && !file.name.endsWith(".csv")) {
+        alert("Vui lòng chọn một tệp CSV hợp lệ.");
+        return;
+      }
+      
+      Papa.parse(file, {
+          header: true,
+          skipEmptyLines: true,
+          complete: function(results) {
+            const data = results.data;
+            if (data.length === 0) return;
+
+            const currentForm = $(".exam-form:visible"),
+            questions = $(".question", currentForm);
+            console.log(currentForm);     
+            const min = Math.min(data.length, questions.length);
+            questions.each( function(index){
+              if( index >= min){
+                return false;
+              }
+              $("textarea", $(this) ).first().text(data[index]['Question']);
+              $("input[type='text']", $(this) ).eq(0).val(data[index]['Answer 1']);
+              $("input[type='text']", $(this) ).eq(1).val(data[index]['Answer 2']);
+              $("input[type='text']", $(this) ).eq(2).val(data[index]['Answer 3']);
+              $("input[type='text']", $(this) ).eq(3).val(data[index]['Answer 4']);
+
+              $("input[type='radio']", $(this) ).each( function(){
+                if( $(this).val() == data[index]['Correct'] ){
+                  $(this).prop('checked', true);
+                  return false;
+                }
+              });
+            });
+          }
+      });
+    });
+
 });

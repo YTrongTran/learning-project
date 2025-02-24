@@ -10,3 +10,6 @@
 
     <button type="submit" class="btn btn-primary process-exam-form">Lưu Đề Thi</button>
 </div>
+@push('javascript')
+    <script src="/assets/admin/js/papaparse.min.js"></script>
+@endpush
