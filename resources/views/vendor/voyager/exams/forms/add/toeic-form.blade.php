@@ -6,7 +6,7 @@
                 <h4 class="question-title has-toggle" >Question {{$i+1}}</h4>
                 <div class="question-content">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="questions[toeic][{{$i}}][text]" placeholder="Question">
+                        <textarea type="text" class="form-control" name="questions[toeic][{{$i}}][text]" placeholder="Question"></textarea>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" name="questions[toeic][{{$i}}][passage]" placeholder="Passage"></textarea>
@@ -14,21 +14,21 @@
                     <h4>Answers</h4>
                     <div class="form-group line-question">
                         <span class="title-choice">
-                            <input type="radio"  name="questions[toeic][{{$i}}][correct]" value="0">
+                            <input type="radio"  name="questions[toeic][{{$i}}][correct]" value="1">
                             A)
                         </span>
                         <input type="text" class="form-control" name="questions[toeic][{{$i}}][answers][]" placeholder="Answer" required>
                     </div>
                     <div class="form-group line-question">
                         <span class="title-choice">
-                            <input type="radio" name="questions[toeic][{{$i}}][correct]" value="1">
+                            <input type="radio" name="questions[toeic][{{$i}}][correct]" value="2">
                             B)
                         </span>
                         <input type="text" class="form-control" name="questions[toeic][{{$i}}][answers][]" placeholder="Answer" required>
                     </div>
                     <div class="form-group line-question">
                         <span class="title-choice">
-                            <input type="radio"name="questions[toeic][{{$i}}][correct]" value="2">
+                            <input type="radio"name="questions[toeic][{{$i}}][correct]" value="3">
                             C)
                         </span>
                         <input type="text" class="form-control" name="questions[toeic][{{$i}}][answers][]" placeholder="Answer" required>
@@ -105,7 +105,7 @@
                 <h4 class="question-title has-toggle" >Question {{$i+1}}</h4>
                 <div class="question-content">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="questions[toeic][{{$i+25}}][text]" placeholder="Question">
+                        <textarea type="text" class="form-control" name="questions[toeic][{{$i+25}}][text]" placeholder="Question"></textarea>
                     </div>
                     <div class="form-group">
                         <textarea class="form-control" name="questions[toeic][{{$i+25}}][passage]" placeholder="Passage"></textarea>
@@ -113,21 +113,21 @@
                     <h4>Answers</h4>
                     <div class="form-group line-question">
                         <span class="title-choice">
-                            <input type="radio"  name="questions[toeic][{{$i+25}}][correct]" value="0">
+                            <input type="radio"  name="questions[toeic][{{$i+25}}][correct]" value="1">
                             A)
                         </span>
                         <input type="text"  class="form-control" name="questions[toeic][{{$i+25}}][answers][]" placeholder="Answer" required>
                     </div>
                     <div class="form-group line-question">
                         <span class="title-choice">
-                            <input type="radio" name="questions[toeic][{{$i+25}}][correct]" value="1">
+                            <input type="radio" name="questions[toeic][{{$i+25}}][correct]" value="2">
                             B)
                         </span>
                         <input type="text"   class="form-control" name="questions[toeic][{{$i+25}}][answers][]" placeholder="Answer" required>
                     </div>
                     <div class="form-group line-question">
                         <span class="title-choice">
-                            <input type="radio"name="questions[toeic][{{$i+25}}][correct]" value="2">
+                            <input type="radio"name="questions[toeic][{{$i+25}}][correct]" value="3">
                             C)
                         </span>
                         <input type="text"  class="form-control" name="questions[toeic][{{$i+25}}][answers][]" placeholder="Answer" required>
