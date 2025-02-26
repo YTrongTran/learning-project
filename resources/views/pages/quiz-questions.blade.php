@@ -119,7 +119,8 @@
             let currentPage = 1;
             let totalPages = {{ $data['totalPages'] }};
             let typeQuiz = $("#type-quiz").val();
-            let urlAjax = "route('quiz." + typeQuiz + "'" + ",['quiz'=>$id])";
+            let id = {{ $id }};
+            let urlAjax = "route('quiz." + typeQuiz + "'" + ",['quiz'=>" + id + "])";
             let selectedAnswers = {};
 
             // Function to scroll to question

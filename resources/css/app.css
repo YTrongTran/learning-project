@@ -239,6 +239,10 @@ input[type="radio"]:checked::after {
     margin: 0 16px;
 }
 
+.slick-dots {
+    bottom: -36px;
+}
+
 #child-home {
     width: 50%;
     margin: 0 auto;
@@ -252,6 +256,9 @@ input[type="radio"]:checked::after {
     }
     .logo {
         width: 80px;
+    }
+    .slick-slide {
+        margin: 0;
     }
 }
 

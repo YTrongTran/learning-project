@@ -1,4 +1,4 @@
-@extends('layouts.main') @section('title', 'Login') @section('content')
+@extends('layouts.main') @section('title', 'Quiz step 2') @section('content')
 
 @if (session('error'))
     <p class="text-red-500">{{ session('error') }}</p>
