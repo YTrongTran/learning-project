@@ -392,30 +392,6 @@ class QuizController extends Controller
         //  }
         // $questions = Question::where('exam_id', $id)->get();
         // return view('pages.quiz', compact('quiz', 'questions'));
-
-        $perPage = 6;
-        $questions = array_chunk($quiz['questions'], $perPage);
-        $totalPages = count($questions);
-        $page = max(1, min($request->input('page', 1), $totalPages));
-        $data = [
-            'questions' => $questions[$page - 1] ?? [],
-            'totalPages' => $totalPages,
-            'currentPage' => $page
-        ];
-
-        if ($request->ajax()) {
-            return response()->json([
-                'html' => view('components.quiz-question-component', [
-                    'type' => $quiz['type'],
-                    'questions' => $data['questions'],
-                    'currentPage' => $data['currentPage']
-                ])->render(),
-                'totalPages' => $data['totalPages'],
-                'currentPage' => $data['currentPage'],
-            ]);
-        }
-
-        return view('pages.quiz-questions', compact('quiz', 'data', 'id'));
     }
     public function communicate(Request $request, $id)
     {
@@ -425,159 +401,6 @@ class QuizController extends Controller
             'type' => "communicate",
             "desc" => "Official COMMUNICATE test from 2023",
             'questions' => [
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
                 [
                     'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
                                     <strong>Assistant:</strong> Oh, he’s _______ London today.',
@@ -731,6 +554,7 @@ class QuizController extends Controller
     {
         $quiz = [
             "test_id" => 1,
+            "type" => "toeic",
             "title" => "TOEIC 1",
             "description" => "Official TOEIC test from 2023",
             "parts" => [
@@ -1772,7 +1596,8 @@ class QuizController extends Controller
 
         if ($request->ajax()) {
             return response()->json([
-                'html' => view('components.quiz_toeic', [
+                'html' => view('components.quiz-toeic-question-component', [
+                    'type' => $quiz['type'],
                     'questions' => $data['questions'],
                     'currentPage' => $data['currentPage']
                 ])->render(),
