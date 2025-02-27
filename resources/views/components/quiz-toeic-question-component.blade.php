@@ -116,7 +116,7 @@
             For each question, choose the statement that best describes the photograph.
         </p>
 
-        <audio controls class="w-full mb-4">
+        <audio controls controlsList="nodownload" class="w-full mb-4">
             <source src="{{ $questions['audio_url'] }}" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
@@ -149,7 +149,7 @@
             <strong>Part 2: (Questions 7–12)</strong><br>
             In this part, you will hear a question followed by three possible answers. Choose the best response.
         </p>
-        <audio controls class="w-full mb-4">
+        <audio controls controlsList="nodownload" class="w-full mb-4">
             <source src="{{ $questions['audio_url'] }}" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
@@ -160,8 +160,8 @@
                 <div class="mt-3 space-y-2">
                     @foreach (['A', 'B', 'C'] as $option)
                         <label class="flex items-center gap-2 cursor-pointer">
-                            <input type="radio" name="q-{{ $question['question_id'] }}" value="{{ $option }}"
-                                class="w-4 h-4">
+                            <input type="radio" name="q-{{ $question['question_id'] }}"
+                                value="{{ $option }}" class="w-4 h-4">
                             <span>{{ $option }}</span>
                         </label>
                     @endforeach
@@ -176,7 +176,7 @@
             <strong>Part 3: (Questions 13–18)</strong><br>
             You will hear a conversation between two people. For each question, choose the best answer.
         </p>
-        <audio controls class="w-full mb-4">
+        <audio controls controlsList="nodownload" class="w-full mb-4">
             <source src="{{ $questions['audio_url'] }}" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
@@ -204,7 +204,7 @@
             <strong>Part 4: (Questions 19-25)</strong><br>
             You will hear a short talk. For each question, choose the best answer.
         </p>
-        <audio controls class="w-full mb-4">
+        <audio controls controlsList="nodownload" class="w-full mb-4">
             <source src="{{ $questions['audio_url'] }}" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>

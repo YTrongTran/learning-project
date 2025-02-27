@@ -9,6 +9,7 @@ use App\Models\Exam;
 use App\Models\Question;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,14 +21,15 @@ class QuizController extends Controller
         
         return view('pages.quiz_step_1');
     }
-    public function step2(CustomesRequest $request)
+    public function step2()
     {
         return view('pages.quiz_step_2');
         
     }
     public function registerInfor(CustomesRequest $request)
     {
-        $customId =  DB::table('Customs')->insertGetId([
+        // dd($request->all());
+        $customId =  DB::table('customs')->insertGetId([
             'name' => $request->name,
             'phone' => $request->phone,
             'otp' => $request->otp,
@@ -35,13 +37,15 @@ class QuizController extends Controller
             'correct_answer'=> 0,
             'total_question' => 0,
             'total_score'=>0,
-            'level'=>'',
+            'level'=>'null',
             'id_exams'=>0,
-            'finished' => now(),    
-            'created_at' => now()
+            'limit_number'=>0,
+            'finished' => now()->setTimezone('Asia/Ho_Chi_Minh'),    
+            'created_at' => now()->setTimezone('Asia/Ho_Chi_Minh'),
         ]);
-        $request->session()->put('customsId', $customId);
+    
         if($customId){
+            $request->session()->put('customsId', $customId);
             return redirect()->route('quiz.step2')->with('success', 'Đăng ký tài khoản thành công!!!');
         }
         
@@ -50,6 +54,9 @@ class QuizController extends Controller
     {
         $level = $request->input('level');
         $levelText = $request->input('level_text');
+        //get db
+        $getExamAll = DB::table('exams')->get();
+        dd($getExamAll);
 
         if (!$level) {
             return back()->with('error', 'Vui lòng chọn một cấp độ.');
@@ -2353,41 +2360,85 @@ class QuizController extends Controller
                     "questions" => [
                         [
                             'section' => 1,
-                            "title" => "",
+                            "heading" => "",
                             'question' => [
                                 [
-                                    "title" => "Topic 1: Home and Hometown",
+                                    "subheading" => "Topic 1: Home and Hometown",
                                     "content" => [
-                                        "What is your hometown like?",
-                                        "What do you like about your hometown?",
-                                        "What do you dislike about your hometown?",
+                                        [
+                                            'question_id' => 1,
+                                            'time_limit' => 1,
+                                            "title" => "What is your hometown like?",
+                                        ],
+                                        [
+                                            'question_id' => 2,
+                                            'time_limit' => 2,
+                                            "title" => "What do you like about your hometown?",
+                                        ],
+                                        [
+                                            'question_id' => 3,
+                                            'time_limit' => 1,
+                                            "title" => "What do you dislike about your hometown?",
+                                        ],
                                     ]
                                 ],
                                 [
-                                    "title" => "Topic 2: Technology and Social Media",
+                                    "subheading" => "Topic 2: Technology and Social Media",
                                     "content" => [
-                                        "What is your hometown like?",
-                                        "What do you like about your hometown?",
-                                        "What do you dislike about your hometown?",
+                                        [
+                                            'question_id' => 4,
+                                            'time_limit' => 2,
+                                            "title" => "What is your hometown like?",
+                                        ],
+                                        [
+                                            'question_id' => 5,
+                                            'time_limit' => 1,
+                                            "title" => "What do you like about your hometown?",
+                                        ],
+                                        [
+                                            'question_id' => 6,
+                                            'time_limit' => 1,
+                                            "title" => "What do you dislike about your hometown?",
+                                        ],
                                     ]
                                 ],
                             ],
                         ],
                         [
                             'section' => 2,
-                            "title" => "Describe an important event in your life. You should say:",
+                            "heading" => "Describe an important event in your life. You should say:",
                             "question" => [
-                                "What is your hometown like?",
-                                "What do you like about your hometown?",
-                                "What do you dislike about your hometown?",
+                                [
+                                    'question_id' => 7,
+                                    'time_limit' => 1,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
+                                [
+                                    'question_id' => 8,
+                                    'time_limit' => 2,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
+                                [
+                                    'question_id' => 9,
+                                    'time_limit' => 2,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
                             ]
                         ],
                         [
                             'section' => 3,
-                            "title" => "",
+                            "heading" => "",
                             "question" => [
-                                "Do you think people tend to remember positive events more than negative ones? Why?",
-                                "Do you think the way we perceive events changes as we get older?",
+                                [
+                                    'question_id' => 10,
+                                    'time_limit' => 2,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
+                                [
+                                    'question_id' => 11,
+                                    'time_limit' => 1,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
                             ]
                         ]
                     ]
@@ -2446,15 +2497,18 @@ class QuizController extends Controller
 
         $user_answers = $request->input('answers', []);
         $user_answer_writing = $request->input('answerWriting', []); // user answer for writing part
-        if (!empty($request->input('audio_data'))) {
-            $audioData = $request->input('audio_data', []); // audio data
-            $audioData = str_replace('data:audio/wav;base64,', '', $audioData);
-            $audioData = base64_decode($audioData);
-            $filename = 'recording_' . time() . '.wav';
-            $filePath = 'public/audio/' . $filename;
+        $audioData = $request->input('audio_data', []);  // audio data
 
-            // Save file into storage
-            Storage::put($filePath, $audioData);
+        Log::info('Received audio data:', $audioData);
+        if (!empty($audioData)) {
+            // $audioData = $request->input('audio_data', []); 
+            // $audioData = str_replace('data:audio/wav;base64,', '', $audioData);
+            // $audioData = base64_decode($audioData);
+            // $filename = 'recording_' . time() . '.wav';
+            // $filePath = 'public/audio/' . $filename;
+
+            // // Save file into storage
+            // Storage::put($filePath, $audioData);
         }
 
         $currentDateTime = Carbon::now()->format('d-m-Y H:i:s');
@@ -2517,22 +2571,4 @@ class QuizController extends Controller
     }
 
 
-
-
-    // public function submit(Request $request)
-    // {
-    //     $score = 0;
-    //     $total = $quiz->questions->count();
-
-    //     foreach ($quiz->questions as $question) {
-    //         $selectedAnswer = $request->input('question_' . $question->id);
-    //         if ($selectedAnswer && $selectedAnswer === $question->answer) {
-    //             $score++;
-    //         }
-    //     }
-
-    //     return response()->json([
-    //         'message' => "You scored $score out of $total!",
-    //     ]);
-    // }
 }

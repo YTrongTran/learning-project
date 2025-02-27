@@ -38,10 +38,11 @@
                         <div class="bg-white shadow-md border border-[#E5E7EB] rounded-lg p-6">
                             <h1 class="text-xl lg:text-2xl font-bold mb-4">{{ $data['title'] }}</h1>
 
-                            <div class="pagination mb-6 grid grid-cols-4 gap-2 lg:block">
+                            <div
+                                class="pagination mb-6 grid {{ $quiz['type'] == 'teen' ? 'grid-cols-3' : 'grid-cols-4' }} gap-2 lg:block">
                                 @for ($i = 1; $i <= $data['totalPages']; $i++)
                                     <a href="#" data-page="{{ $i }}"
-                                        class="page-link rounded-lg p-2 mr-0 lg:mr-2 hover:bg-rose-700 hover:text-white {{ $i == $data['currentPage'] ? 'bg-rose-700 text-white' : ' bg-gray-200 text-black' }}">
+                                        class="page-link rounded-lg p-2 mr-0 lg:mr-2 hover:bg-rose-700 text-center hover:text-white {{ $i == $data['currentPage'] ? 'bg-rose-700 text-white' : ' bg-gray-200 text-black' }}">
                                         @if ($quiz['type'] == 'teen')
                                             @if ($i == 1)
                                                 Grammar
@@ -169,7 +170,8 @@
             let currentPage = 1;
             let totalPages = {{ $data['totalPages'] }};
             let typeQuiz = $("#type-quiz").val();
-            let urlAjax = "route('quiz." + typeQuiz + "'" + ",['quiz'=>$id])";
+            let id = {{ $id }};
+            let urlAjax = "route('quiz." + typeQuiz + "'" + ",['quiz'=>" + id + "])";
             let selectedAnswers = {};
 
             $(".page-link").on("click", function(e) {
@@ -317,6 +319,14 @@
 
                         updateButtons();
                         restoreAnswers(currentPage);
+                        attachAudioEvents();
+
+                        $("#audio-container audio").each(function() {
+                            let audioSrc = $(this).find("source").attr("src");
+                            if (sessionStorage.getItem(audioSrc) === "locked") {
+                                $(this).data("locked", true);
+                            }
+                        });
 
                         if (callback && typeof callback === "function") {
                             callback();
@@ -330,7 +340,6 @@
                 $(`.page-link[data-page="${page}"]`).removeClass('bg-gray-200 text-black').addClass(
                     'bg-rose-700 text-white');
                 if (selectedAnswers[page]) {
-
 
                     for (let questionIndex in selectedAnswers[page]) {
                         let answerValue = selectedAnswers[page][questionIndex];
@@ -359,6 +368,7 @@
             });
 
             updateButtons();
+            attachAudioEvents();
         });
     </script>
 @stop

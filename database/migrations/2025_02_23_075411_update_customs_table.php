@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('total_score')->commnet('tổng điểm');
             $table->string('level')->comment('trình độ');
             $table->integer('id_exams');
+            $table->integer('limit_number')->comment('giới hạn số lần làm bài thi');
             $table->timestamp('finished')->comment('Thời điểm bài thi hoàn thành');
         });
     }

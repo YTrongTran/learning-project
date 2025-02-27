@@ -242,15 +242,11 @@
 
             let currentPage = 1;
             let totalPages = {{ $data['totalPages'] }};
+            let id = {{ $id }};
+            let urlAjax = "route('quiz.ielts',['quiz'=>" + id + "])";
             let selectedAnswers = {};
 
             let writingAnswer = "";
-            let srcAudio = "";
-            let valAudio = "";
-            let mediaRecorder;
-            let audioChunks = [];
-            let countdown;
-            let timeLeft = 300; // 5 phút = 300 giây
 
             $(".page-link").on("click", function(e) {
                 e.preventDefault();
@@ -325,13 +321,20 @@
             $("[data-modal-hide='popup-modal-yes']").click(function() {
                 $("#popup-modal").addClass("hidden").removeClass("flex");
 
+                let audioData = {};
+                Object.keys(localStorage).forEach(function(key) {
+                    if (key.startsWith("audio_data_")) {
+                        audioData[key] = localStorage.getItem(key);
+                    }
+                });
+
                 $.ajax({
                     url: "{{ route('quiz.submitIelts') }}",
                     type: "POST",
                     data: {
                         answers: selectedAnswers,
                         answerWriting: writingAnswer,
-                        audio_data: $('#audio_data').val(),
+                        audio_data: audioData,
                         _token: "{{ csrf_token() }}"
                     },
                     beforeSend: function() {
@@ -344,6 +347,12 @@
                     success: function(response) {
                         $("#overlay").hide();
                         console.log("response: ", response);
+
+                        Object.keys(localStorage).forEach(function(key) {
+                            if (key.startsWith("audio_data_")) {
+                                localStorage.removeItem(key);
+                            }
+                        });
 
                         $("#modal-result-test").removeClass("hidden").addClass("flex");
 
@@ -369,7 +378,7 @@
             function loadQuestions(page, callback = null) {
                 // if (page < 1 || page > totalPages) return; 
                 $.ajax({
-                    url: "{{ route('quiz.ielts', ['quiz' => $id]) }}",
+                    url: urlAjax,
                     type: "GET",
                     data: {
                         page: page
@@ -388,6 +397,19 @@
 
                         updateButtons();
                         restoreAnswers(currentPage);
+                        attachAudioEvents();
+
+                        if (currentPage == totalPages) {
+                            attachAudioSpeakingEvents();
+                            restoreAudio();
+                        }
+
+                        $("#audio-container audio").each(function() {
+                            let audioSrc = $(this).find("source").attr("src");
+                            if (sessionStorage.getItem(audioSrc) === "locked") {
+                                $(this).data("locked", true);
+                            }
+                        });
 
                         if (callback && typeof callback === "function") {
                             callback();
@@ -429,82 +451,10 @@
                     currentPage++;
                     loadQuestions(currentPage);
                 }
-                console.log("selectedAnswers: ", selectedAnswers);
             });
 
             updateButtons();
-
-            // audio processing
-            function updateTimerDisplay() {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                $('#countdown-timer').text(
-                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
-            }
-
-            $('#quiz-container').on('click', '#start-recording', function() {
-                navigator.mediaDevices.getUserMedia({
-                    audio: true
-                }).then(stream => {
-                    mediaRecorder = new MediaRecorder(stream);
-                    mediaRecorder.start();
-                    audioChunks = [];
-
-                    mediaRecorder.ondataavailable = event => {
-                        audioChunks.push(event.data);
-                    };
-
-                    mediaRecorder.onstop = () => {
-                        const audioBlob = new Blob(audioChunks, {
-                            type: 'audio/wav'
-                        });
-                        const reader = new FileReader();
-                        reader.readAsDataURL(audioBlob);
-                        reader.onloadend = function() {
-                            $('#audio_data').val(reader.result);
-                            srcAudio = reader.result;
-                        };
-                        const audioUrl = URL.createObjectURL(audioBlob);
-                        valAudio = audioUrl;
-                        $('#audio-playback').attr('src', audioUrl).removeClass('hidden');
-                    };
-
-                    timeLeft = 300;
-                    updateTimerDisplay();
-                    $('#countdown-timer').removeClass('hidden');
-                    countdown = setInterval(() => {
-                        timeLeft--;
-                        updateTimerDisplay();
-                        if (timeLeft <= 0) {
-                            clearInterval(countdown);
-                            mediaRecorder.stop();
-                            $('#start-recording').removeClass('hidden');
-                            $('#stop-recording').addClass('hidden');
-                        }
-                    }, 1000);
-
-                    $(this).addClass('hidden');
-                    $('#stop-recording').removeClass('hidden');
-                    $("#prevPage").addClass('cursor-not-allowed');
-                    $("#finishTest").addClass('cursor-not-allowed');
-                });
-            });
-
-            $('#quiz-container').on('click', '#stop-recording', function() {
-                if (mediaRecorder) {
-                    mediaRecorder.stop();
-                }
-
-                console.log("srcAudio: " + srcAudio);
-                console.log("valAudio: " + valAudio);
-
-                clearInterval(countdown);
-                $('#countdown-timer').addClass('hidden');
-                $(this).addClass('hidden');
-                $('#start-recording').removeClass('hidden');
-                $("#prevPage").removeClass('cursor-not-allowed');
-                $("#finishTest").removeClass('cursor-not-allowed');
-            });
+            attachAudioEvents();
 
             //writing content
             $('#quiz-container').on('input', '#writing-textarea', function() {
@@ -512,12 +462,6 @@
             });
             if (writingAnswer) {
                 $('#quiz-container #writing-textarea').val(writingAnswer);
-            }
-            if (srcAudio) {
-                $('#quiz-container #audio-playback').attr('src', valAudio).removeClass('hidden');
-            }
-            if (valAudio) {
-                $('#quiz-container #audio_data').val(valAudio);
             }
         });
     </script>

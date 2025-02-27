@@ -1,13 +1,10 @@
+
 @extends('layouts.main') @section('title', 'Nhận Kết Quả Ngay') @section('content')
-<<<<<<< HEAD
 
 @if (session('error'))
     <p class="text-red-500">{{ session('error') }}</p>
 @endif
-=======
 
-
->>>>>>> 344fd79 (update submit)
 
 <div class="bg-section">
     <div class="w-full custom-container flex flex-wrap bg-left-bottom bg-contain bg-no-repeat"

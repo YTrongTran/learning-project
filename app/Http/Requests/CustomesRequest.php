@@ -25,7 +25,7 @@ class CustomesRequest extends FormRequest
             'name'=> 'required',
             'phone'=> 'required',
             'otp'=> 'required',
-            'email'=> 'required|email|unique:customs,email',
+            'email'=> 'required|email',
         ];
     }
     public function messages()
@@ -36,7 +36,6 @@ class CustomesRequest extends FormRequest
             'otp.required' => 'Vui lòng nhập mã otp',
             'email.required' => 'Vui lòng nhập thư điện tử',
             'email.email' => 'Vui lòng nhập đúng định dạng email',
-            'email.unique' => 'Email này đã được sử dụng',
         ];
     }
 }
