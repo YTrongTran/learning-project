@@ -26,20 +26,20 @@
                                             stroke-linejoin="round" stroke-width="2" />
                                     </svg>
                                 </div>
-                                <span class="text-gray-600">
+                                <a href="/profile" class="text-gray-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1" stroke="currentColor" class="size-12">
+                                        stroke-width="1" stroke="currentColor" class="size-12 hover:text-rose-700">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
-                                </span>
+                                </a>
 
                             </div>
                         </div>
                         <div class="bg-white shadow-md border border-[#E5E7EB] rounded-lg p-6">
                             <h1 class="text-xl lg:text-2xl font-bold mb-4">{{ $data['title'] }}</h1>
 
-                            <div class="pagination mb-6 flex">
+                            <div class="pagination mb-6 grid grid-cols-2 gap-2 lg:flex">
                                 @for ($i = 1; $i <= $data['totalPages']; $i++)
                                     <a href="#" data-page="{{ $i }}"
                                         class="page-link page-link-{{ $i }} block text-center rounded-lg p-2 mr-2 hover:bg-rose-700 hover:text-white {{ $i == $data['currentPage'] ? 'bg-rose-700 text-white' : ' bg-gray-200 text-black' }}">
@@ -84,6 +84,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="w-full lg:w-[278px]">
                     <div class="sticky top-[6.5rem]">
                         <!-- Timer -->
@@ -151,8 +152,82 @@
         </div>
     </div>
 
-    {{-- <x-result-quiz-component :data="$data"></x-result-quiz-component> --}}
-    <x-result-quiz-component></x-result-quiz-component>
+    <div class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 justify-center items-center" id="modal-result-test">
+        <div class="bg-white w-[800px] max-h-[90vh] rounded-lg shadow-xl overflow-y-auto p-5 z-50 relative">
+            <!-- Close Button -->
+            <button id="close-modal-result-test" class="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Modal Header -->
+            <div class="py-6 px-10 flex items-center gap-4 border-b">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                        <path fill-rule="evenodd"
+                            d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold">IELTS Test</h2>
+                    <p class="text-sm text-gray-600 mt-1">Bài thi gồm 4 phần Listening, Reading, Writing và Speaking</p>
+                    <p class="text-sm text-gray-600">2 phần thi đầu sẽ có kết quả ngay, 2 phần thi sau sẽ có kết quả gửi về
+                        cho bạn sau.</p>
+                </div>
+            </div>
+
+            <!-- Attempt Info -->
+            <div class="px-10 py-4 bg-gray-50 text-sm">
+                <span class="mr-6">Attempts allowed: 1</span>
+                <span>Time limit: 45 mins</span>
+            </div>
+
+            <!-- Summary Table -->
+            <div class="px-10 pb-6">
+                <h3 class="text-lg font-semibold mb-4">Summary of your previous attempts</h3>
+                <div class="border rounded-lg overflow-hidden">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left">Count correct answers</th>
+                                <th class="px-6 py-3 text-left">Listening</th>
+                                <th class="px-6 py-3 text-left">Reading</th>
+                                <th class="px-6 py-3 text-left">Writing</th>
+                                <th class="px-6 py-3 text-left">Speaking</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t">
+                                <td class="px-6 py-4">
+                                    <div>Finished</div>
+                                    <div class="text-gray-500 text-xs modal-submitted-at">Submitted Wednesday, 8 January
+                                        2025, 2:16 PM</div>
+                                </td>
+                                <td class="px-6 py-4"><span class="listening-correct-count">6</span></td>
+                                <td class="px-6 py-4"><span class="reading-correct-count">6</span></td>
+                                <td class="px-6 py-4">Not permitted</td>
+                                <td class="px-6 py-4">Not permitted</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Final Grade -->
+            <div class="px-10 py-4 border-t">
+                <p class="font-medium grade-of-listening">Your grade listening for this quiz is <span>3</span>.</p>
+                <p class="font-medium grade-of-reading">Your grade reading for this quiz is <span>3</span>.</p>
+            </div>
+
+        </div>
+        <div class="bg-black bg-opacity-50 z-20 fixed top-0 right-0 bottom-0 left-0  inset-0 items-center justify-center "
+            id="overlay-modal-result-test">
+
+        </div>
+    </div>
 
     <x-popup-yes-no-component></x-popup-yes-no-component>
 
@@ -167,13 +242,11 @@
 
             let currentPage = 1;
             let totalPages = {{ $data['totalPages'] }};
+            let id = {{ $id }};
+            let urlAjax = "route('quiz.ielts',['quiz'=>" + id + "])";
             let selectedAnswers = {};
 
             let writingAnswer = "";
-            let mediaRecorder;
-            let audioChunks = [];
-            let countdown;
-            let timeLeft = 300; // 5 phút = 300 giây
 
             $(".page-link").on("click", function(e) {
                 e.preventDefault();
@@ -248,13 +321,20 @@
             $("[data-modal-hide='popup-modal-yes']").click(function() {
                 $("#popup-modal").addClass("hidden").removeClass("flex");
 
+                let audioData = {};
+                Object.keys(localStorage).forEach(function(key) {
+                    if (key.startsWith("audio_data_")) {
+                        audioData[key] = localStorage.getItem(key);
+                    }
+                });
+
                 $.ajax({
                     url: "{{ route('quiz.submitIelts') }}",
                     type: "POST",
                     data: {
                         answers: selectedAnswers,
                         answerWriting: writingAnswer,
-                        audio_data: $('#audio_data').val(),
+                        audio_data: audioData,
                         _token: "{{ csrf_token() }}"
                     },
                     beforeSend: function() {
@@ -267,6 +347,12 @@
                     success: function(response) {
                         $("#overlay").hide();
                         console.log("response: ", response);
+
+                        Object.keys(localStorage).forEach(function(key) {
+                            if (key.startsWith("audio_data_")) {
+                                localStorage.removeItem(key);
+                            }
+                        });
 
                         $("#modal-result-test").removeClass("hidden").addClass("flex");
 
@@ -289,10 +375,10 @@
                 $("#modal-result-test").addClass("hidden").removeClass("flex");
             });
 
-            function loadQuestions(page) {
+            function loadQuestions(page, callback = null) {
                 // if (page < 1 || page > totalPages) return; 
                 $.ajax({
-                    url: "{{ route('quiz.ielts', ['quiz' => $id]) }}",
+                    url: urlAjax,
                     type: "GET",
                     data: {
                         page: page
@@ -311,7 +397,23 @@
 
                         updateButtons();
                         restoreAnswers(currentPage);
+                        attachAudioEvents();
 
+                        if (currentPage == totalPages) {
+                            attachAudioSpeakingEvents();
+                            restoreAudio();
+                        }
+
+                        $("#audio-container audio").each(function() {
+                            let audioSrc = $(this).find("source").attr("src");
+                            if (sessionStorage.getItem(audioSrc) === "locked") {
+                                $(this).data("locked", true);
+                            }
+                        });
+
+                        if (callback && typeof callback === "function") {
+                            callback();
+                        }
                     }
                 });
             }
@@ -349,76 +451,10 @@
                     currentPage++;
                     loadQuestions(currentPage);
                 }
-                console.log("selectedAnswers: ", selectedAnswers);
             });
 
             updateButtons();
-
-            // audio processing
-            function updateTimerDisplay() {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                $('#countdown-timer').text(
-                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
-            }
-
-            $('#quiz-container').on('click', '#start-recording', function() {
-                navigator.mediaDevices.getUserMedia({
-                    audio: true
-                }).then(stream => {
-                    mediaRecorder = new MediaRecorder(stream);
-                    mediaRecorder.start();
-                    audioChunks = [];
-
-                    mediaRecorder.ondataavailable = event => {
-                        audioChunks.push(event.data);
-                    };
-
-                    mediaRecorder.onstop = () => {
-                        const audioBlob = new Blob(audioChunks, {
-                            type: 'audio/wav'
-                        });
-                        const reader = new FileReader();
-                        reader.readAsDataURL(audioBlob);
-                        reader.onloadend = function() {
-                            $('#audio_data').val(reader.result);
-                        };
-                        const audioUrl = URL.createObjectURL(audioBlob);
-                        $('#audio-playback').attr('src', audioUrl).removeClass('hidden');
-                    };
-
-                    timeLeft = 300;
-                    updateTimerDisplay();
-                    $('#countdown-timer').removeClass('hidden');
-                    countdown = setInterval(() => {
-                        timeLeft--;
-                        updateTimerDisplay();
-                        if (timeLeft <= 0) {
-                            clearInterval(countdown);
-                            mediaRecorder.stop();
-                            $('#start-recording').removeClass('hidden');
-                            $('#stop-recording').addClass('hidden');
-                        }
-                    }, 1000);
-
-                    $(this).addClass('hidden');
-                    $('#stop-recording').removeClass('hidden');
-                    $("#prevPage").addClass('cursor-not-allowed');
-                    $("#finishTest").addClass('cursor-not-allowed');
-                });
-            });
-
-            $('#quiz-container').on('click', '#stop-recording', function() {
-                if (mediaRecorder) {
-                    mediaRecorder.stop();
-                }
-                clearInterval(countdown);
-                $('#countdown-timer').addClass('hidden');
-                $(this).addClass('hidden');
-                $('#start-recording').removeClass('hidden');
-                $("#prevPage").removeClass('cursor-not-allowed');
-                $("#finishTest").removeClass('cursor-not-allowed');
-            });
+            attachAudioEvents();
 
             //writing content
             $('#quiz-container').on('input', '#writing-textarea', function() {

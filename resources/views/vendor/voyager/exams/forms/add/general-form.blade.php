@@ -24,6 +24,7 @@
     <div class="form-group">
         <label for="exam-visible">Visible</label>
         <input type="checkbox" name="exam-visible" id="exam-visible" value="true" checked>
+        
     </div>
     <div class="form-group">
         <label for="csvFile">Import form CSV</label>

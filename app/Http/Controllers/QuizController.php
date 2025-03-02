@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomesRequest;
+use App\Models\Customs;
 use Illuminate\Http\Request;
 use App\Models\Exam;
 use App\Models\Question;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,70 +21,169 @@ class QuizController extends Controller
         
         return view('pages.quiz_step_1');
     }
-    public function step2(CustomesRequest $request)
+    public function step2()
     {
-        $succes =  DB::table('Customs')->insert([
+        return view('pages.quiz_step_2');
+        
+    }
+    public function registerInfor(CustomesRequest $request)
+    {
+       
+        $customId =  DB::table('customs')->insertGetId([
             'name' => $request->name,
             'phone' => $request->phone,
             'otp' => $request->otp,
             'email' => $request->email,
-            'created_at' => now()
-            
+            'correct_answer'=> 0,
+            'total_question' => 0,
+            'total_score'=>0,
+            'level'=>'null',
+            'id_exams'=>0,
+            'limit_number'=>0,
+            'finished' => now()->setTimezone('Asia/Ho_Chi_Minh'),    
+            'created_at' => now()->setTimezone('Asia/Ho_Chi_Minh'),
         ]);
-        if($succes){
-            session()->flash('success', 'Đăng ký tài khoản thành công!!!');
-            return view('pages.quiz_step_2');
+    
+        if($customId){
+            $request->session()->put('customsId', $customId);
+            return redirect()->route('quiz.step2')->with('success', 'Đăng ký tài khoản thành công!!!');
         }
         
     }
     public function step3(Request $request)
     {
+
         $level = $request->input('level');
         $levelText = $request->input('level_text');
+        //check visible  = 1 thì hiển thị
+        $getExamAll = DB::table('exams')
+                ->where('exams.visible', 1)
+                ->whereNotExists(function ($query) {
+                    $query->select(DB::raw(1))
+                          ->from('customs')
+                          ->whereColumn('customs.id_exams', 'exams.id')
+                          ->where('customs.limit_number', 2);
+                })
+                ->get();
 
+        // check limit bộ đồ
         if (!$level) {
             return back()->with('error', 'Vui lòng chọn một cấp độ.');
         }
+        /**
+         *  $tests= [['id' => 1,...],['id' => 2,...],['id' => 3],['id' => 10]];
+         */
 
-        // return redirect()->route('quiz.toeic',1)->with('level', $level);
+        $data = []; 
+        if($getExamAll){
+            foreach($getExamAll as $key => $item){
+                $data[] = [
+                    'id'=>  $item->id,
+                    'type'=>  $item->type,
+                    'title'=>  $item->title,
+                ];
+             }
+        }
+       
+        // dd($type);
+
         return view('pages.quiz_step_3')->with([
+            'data' => $data,
             'level' => $level,
-            'level_text' => $levelText
+            'level_text' => $levelText,
         ]);
     }
 
     public function superkids(Request $request, $id)
     {
-        $getExamsAll = DB::table('exams')->get();
+        $getId = $id;   
+        // Lấy thông tin bài kiểm tra theo ID
+        $getExamById = DB::table('exams')->where('id', '=', $getId)->first();
         $getQuestionsAll = DB::table('questions')
-        ->join('exams', 'exams.id', '=', 'questions.exam_id')
-        ->select('questions.*','exams.point')->get();
-        foreach($getExamsAll as $key => $value){
-            $title = $value->title;
-            $duration = $value->duration;
-        }
-        
+            ->join('exams', 'exams.id', '=', 'questions.exam_id')
+            ->where('questions.exam_id', '=', $getId) 
+            ->select('questions.*', 'exams.point')
+            ->get();
+
+        // Khởi tạo mảng quiz
         $quiz = [
-            'point' => 0
+            'questions' => [], // Luôn đảm bảo mảng này tồn tại
+            'type' => $getExamById->type,
+            'title' => $getExamById->title,
+            'desc' =>  'fficial test kids',
+            'point' => $getExamById->point,
         ];
 
-        foreach ($getQuestionsAll as $question) {
-            
-            $quiz['questions'][$question->_index]= [
+        foreach ($getQuestionsAll as $key => $question) {
+            $quiz['questions'][$key] = [
                 'question' => $question->question_text,
+                'img' => $question->image,
                 'A' => $question->answer_1,
                 'B' => $question->answer_2,
                 'C' => $question->answer_3,
                 'D' => $question->answer_4,
                 'correct' => $question->answer_correct,
-                'question_id'=> $question->id
+                'question_id' => $question->id,
+                'exam_id' => $question->exam_id
             ];
-            $quiz['point'] = $question->point;
-            $quiz['exam_id'] = $question->exam_id;
-         }
-        // $questions = Question::where('exam_id', $id)->get();
-        // return view('pages.quiz', compact('quiz', 'questions'));
+            
+        }
 
+        // Phân trang
+        $perPage = 6;
+        $questions = !empty($quiz['questions']) ? array_chunk($quiz['questions'], $perPage) : [];
+        $totalPages = count($questions);
+        $page = max(1, min($request->input('page', 1), $totalPages));
+
+        $data = [
+            'questions' => $questions[$page - 1] ?? [],
+            'totalPages' => $totalPages,
+            'currentPage' => $page,
+        ];
+
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.quiz-question-component', [
+                    'type' => $quiz['type'],
+                    'questions' => $data['questions'],
+                    'currentPage' => $data['currentPage'],
+                ])->render(),
+                'totalPages' => $data['totalPages'],
+                'currentPage' => $data['currentPage'],
+            ]);
+        }
+
+        return view('pages.quiz-questions', compact('quiz', 'data', 'id'))->with('duration', $getExamById->duration);
+    }
+    public function communicate(Request $request, $id)
+    {
+        
+        $getId = $id;
+        $getExamById = DB::table('exams')->where('id','=', $getId)->first();
+        $getQuestionById = DB::table('questions')->where('questions.exam_id', '=', $getId)->get();
+  
+        $duration = $getExamById->duration;
+        $quiz = [
+            'title' => $getExamById->title,
+            'type' => $getExamById->type,
+            "desc" => "Official COMMUNICATE",
+            'questions' => [],
+            'point' => $getExamById->point,
+        ];
+
+        foreach($getQuestionById as $key => $item){ 
+            $quiz['questions'][$key] = [
+                'question' => $item->question_text,
+                'A' => $item->answer_1,
+                'B' =>$item->answer_1,
+                'C' =>$item->answer_1,
+                'D' =>$item->answer_1,
+                'correct' => $item->answer_correct,
+                'question_id' => $item->id,
+                'exam_id'=>$item->exam_id
+            ];
+        }   
+       
         $perPage = 6;
         $questions = array_chunk($quiz['questions'], $perPage);
         $totalPages = count($questions);
@@ -95,7 +196,8 @@ class QuizController extends Controller
 
         if ($request->ajax()) {
             return response()->json([
-                'html' => view('components.quiz_questions_superkids', [
+                'html' => view('components.quiz-question-component', [
+                    'type' => $quiz['type'],
                     'questions' => $data['questions'],
                     'currentPage' => $data['currentPage']
                 ])->render(),
@@ -104,26 +206,125 @@ class QuizController extends Controller
             ]);
         }
 
-        return view('pages.quiz-superkids', compact('quiz', 'data', 'id','title','duration'));
+        return view('pages.quiz-questions', compact('quiz', 'data', 'id','duration'));
     }
-    /**
-     * call function: call ajax submit submitQuizEnglishHub
-     */
-    // public function submitQuizEnglishHub(Request $request){
-      
-    //     if($request->ajax()){
-    //         $output = '';
-    //         $output = $request->questionIds;
-            
-    //         return response()->json([
-    //             'output'=>$output 
-    //         ]);
-    //     }
-    // }
+    public function teen(Request $request, $id)
+    {
+        $getId = $id;
+        $getExamById = DB::table('exams')->where('id', '=', $getId)->first();
+        $getQuestionId = DB::table('questions')->where('questions.exam_id', '=', $getId)->get();
+        
+        $title = $getExamById->title;
+       
+        $point = $getExamById->point;
+        $duration = $getExamById->duration;
+       
+        $quiz = [
+            'title' => $title,
+            "type" => $getExamById->type,
+            "description" => "Official test teen",
+            'parts' =>
+            [
+                [
+                    'part' => 1,
+                    'description' => "Grammar",
+                    'questions' =>[]
+                ],
+                [
+                    "part" => 2,
+                    "description" => "Reading",
+                    "passages" => []
+                ],
+                [
+                    "part" => 3,
+                    "description" => "Writing",
+                    'title' => "Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.",
+                    "question" => "Some people believe that the most important function of music is to help people relax, while others think that it serves a more meaningful purpose. Discuss both views and give your own opinion.\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+                    "at_least_words" => 150,
+                ]
+            ],
+            'point' => $point,
+        ];
+     
+        foreach ($getQuestionId as $key => $value) {
+            // Lưu câu hỏi vào phần "questions"
+            if ($key <= 24) {
+                $quiz['parts'][0]['questions'][] = [
+                    'question_id' => $value->id,
+                    'question' => $value->question_text,
+                    'img' => empty($value->image) ? '' : $value->image,
+                    'A' => $value->answer_1,
+                    'B' => $value->answer_2,
+                    'C' => $value->answer_3,
+                    'correct' => $value->answer_correct,
+                    'exam_id' => $value->exam_id
+                ];
+            }
+        
+            // Lưu passage vào "passages"
+            if ($key >= 25 && $key <= 36) {
+                $quiz['parts'][1]['passages'][] = [
+                    "passage_id" => $value->id, // Sử dụng ID thực từ DB
+                    'title' => "Read the text below. For questions 61–65, choose the best answer (A, B or C).",
+                    'heading' => $value->question_text,
+                    "text" => !empty($value->passage) ? $value->passage :'',
+                    "questions" => [
+                        [
+                            "question_id" => $value->id, // Lấy từ DB thay vì hard-code
+                            "question" => !empty($value->question_text) ? $value->question_text: '',
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => !empty($value->answer_1)? $value->answer_1:''
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => !empty($value->answer_2)? $value->answer_2:''
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => $value->answer_3
+                                ],
+                            ],
+                            "correct_answer" => $value->answer_correct
+                        ]
+                    ]
+                ];
+            }
+        }
+        
+
+        $totalPages = count($quiz['parts']);
+
+        $page = max(1, min($request->input('page', 1), $totalPages));
+        $data = [
+            'title' => $quiz['title'],
+            'desc' => $quiz['description'],
+            'questions' => $quiz['parts'][$page - 1] ?? [],
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ];
+        // dd($data);
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.quiz-toeic-question-component', [
+                    'type' => $quiz['type'],
+                    'questions' => $data['questions'],
+                    'currentPage' => $data['currentPage']
+                ])->render(),
+                'totalPages' => $data['totalPages'],
+                'currentPage' => $data['currentPage'],
+            ]);
+        }
+
+
+        return view('pages.quiz-toeic', compact('quiz', 'data', 'id','duration'));
+    }
     public function toeic(Request $request, $id)
     {
         $quiz = [
             "test_id" => 1,
+            "type" => "toeic",
             "title" => "TOEIC 1",
             "description" => "Official TOEIC test from 2023",
             "parts" => [
@@ -1132,7 +1333,8 @@ class QuizController extends Controller
                         ],
                     ]
                 ]
-            ]
+                    ],
+                    'point' => 50
         ];
 
         $correct_answers = [];
@@ -1150,7 +1352,7 @@ class QuizController extends Controller
                 }
             }
         }
-
+        $duration = 20;
         Session::put('correct_answers_toeic', $correct_answers);
 
         $totalPages = count($quiz['parts']);
@@ -1165,7 +1367,8 @@ class QuizController extends Controller
 
         if ($request->ajax()) {
             return response()->json([
-                'html' => view('components.quiz_toeic', [
+                'html' => view('components.quiz-toeic-question-component', [
+                    'type' => $quiz['type'],
                     'questions' => $data['questions'],
                     'currentPage' => $data['currentPage']
                 ])->render(),
@@ -1175,7 +1378,7 @@ class QuizController extends Controller
         }
 
 
-        return view('pages.quiz-toeic', compact('quiz', 'data', 'id'));
+        return view('pages.quiz-toeic', compact('quiz', 'data', 'id','duration'));
     }
 
     public function submitQuizToeic(Request $request)
@@ -1921,41 +2124,85 @@ class QuizController extends Controller
                     "questions" => [
                         [
                             'section' => 1,
-                            "title" => "",
+                            "heading" => "",
                             'question' => [
                                 [
-                                    "title" => "Topic 1: Home and Hometown",
+                                    "subheading" => "Topic 1: Home and Hometown",
                                     "content" => [
-                                        "What is your hometown like?",
-                                        "What do you like about your hometown?",
-                                        "What do you dislike about your hometown?",
+                                        [
+                                            'question_id' => 1,
+                                            'time_limit' => 1,
+                                            "title" => "What is your hometown like?",
+                                        ],
+                                        [
+                                            'question_id' => 2,
+                                            'time_limit' => 2,
+                                            "title" => "What do you like about your hometown?",
+                                        ],
+                                        [
+                                            'question_id' => 3,
+                                            'time_limit' => 1,
+                                            "title" => "What do you dislike about your hometown?",
+                                        ],
                                     ]
                                 ],
                                 [
-                                    "title" => "Topic 2: Technology and Social Media",
+                                    "subheading" => "Topic 2: Technology and Social Media",
                                     "content" => [
-                                        "What is your hometown like?",
-                                        "What do you like about your hometown?",
-                                        "What do you dislike about your hometown?",
+                                        [
+                                            'question_id' => 4,
+                                            'time_limit' => 2,
+                                            "title" => "What is your hometown like?",
+                                        ],
+                                        [
+                                            'question_id' => 5,
+                                            'time_limit' => 1,
+                                            "title" => "What do you like about your hometown?",
+                                        ],
+                                        [
+                                            'question_id' => 6,
+                                            'time_limit' => 1,
+                                            "title" => "What do you dislike about your hometown?",
+                                        ],
                                     ]
                                 ],
                             ],
                         ],
                         [
                             'section' => 2,
-                            "title" => "Describe an important event in your life. You should say:",
+                            "heading" => "Describe an important event in your life. You should say:",
                             "question" => [
-                                "What is your hometown like?",
-                                "What do you like about your hometown?",
-                                "What do you dislike about your hometown?",
+                                [
+                                    'question_id' => 7,
+                                    'time_limit' => 1,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
+                                [
+                                    'question_id' => 8,
+                                    'time_limit' => 2,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
+                                [
+                                    'question_id' => 9,
+                                    'time_limit' => 2,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
                             ]
                         ],
                         [
                             'section' => 3,
-                            "title" => "",
+                            "heading" => "",
                             "question" => [
-                                "Do you think people tend to remember positive events more than negative ones? Why?",
-                                "Do you think the way we perceive events changes as we get older?",
+                                [
+                                    'question_id' => 10,
+                                    'time_limit' => 2,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
+                                [
+                                    'question_id' => 11,
+                                    'time_limit' => 1,
+                                    "title" => "What do you dislike about your hometown?",
+                                ],
                             ]
                         ]
                     ]
@@ -2014,17 +2261,9 @@ class QuizController extends Controller
 
         $user_answers = $request->input('answers', []);
         $user_answer_writing = $request->input('answerWriting', []); // user answer for writing part
-        if (!empty($request->input('audio_data'))) {
-            $audioData = $request->input('audio_data', []); // audio data
-            $audioData = str_replace('data:audio/wav;base64,', '', $audioData);
-            $audioData = base64_decode($audioData);
-            $filename = 'recording_' . time() . '.wav';
-            $filePath = 'public/audio/' . $filename;
+        $audioData = $request->input('audio_data', []);  // audio data
 
-            // Save file into storage
-            Storage::put($filePath, $audioData);
-        }
-
+        Log::info('Received audio data:', $audioData);
         $currentDateTime = Carbon::now()->format('d-m-Y H:i:s');
         $correctCountReading = 0;
         $correctCountListening = 0;
@@ -2084,23 +2323,10 @@ class QuizController extends Controller
         return 0;
     }
 
-
-
-
-    // public function submit(Request $request)
-    // {
-    //     $score = 0;
-    //     $total = $quiz->questions->count();
-
-    //     foreach ($quiz->questions as $question) {
-    //         $selectedAnswer = $request->input('question_' . $question->id);
-    //         if ($selectedAnswer && $selectedAnswer === $question->answer) {
-    //             $score++;
-    //         }
-    //     }
-
-    //     return response()->json([
-    //         'message' => "You scored $score out of $total!",
-    //     ]);
+    
+    // public function submitQuizEnglishHub(Request $request){
+        
+        
     // }
+
 }

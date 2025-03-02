@@ -1,6 +1,6 @@
 <form class="exam-form exam-form-superkid hidden" method="POST">
     <div class="exam-superkid questions-container">
-        @for ($i = 0; $i < 2; $i++)
+        @for ($i = 0; $i < 25; $i++)
             <div class="question">
                 <h4 class="question-title has-toggle" >Question {{$i+1}}</h4>
                 <div class="question-content">

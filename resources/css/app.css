@@ -175,6 +175,10 @@ input[type="radio"]:checked::after {
     @apply max-w-[1440px] m-auto px-4 md:px-[60px] lg:px-[80px] py-8 md:py-[60px] lg:py-[80px];
 }
 
+.navbar {
+    @apply hover:bg-gray-100 text-rose-900 font-bold;
+}
+
 .padding-bottom-none {
     @apply pb-8 md:pb-0;
 }
@@ -231,6 +235,14 @@ input[type="radio"]:checked::after {
     width: 120px;
 }
 
+.slick-slide {
+    margin: 0 16px;
+}
+
+.slick-dots {
+    bottom: -36px;
+}
+
 #child-home {
     width: 50%;
     margin: 0 auto;
@@ -244,6 +256,9 @@ input[type="radio"]:checked::after {
     }
     .logo {
         width: 80px;
+    }
+    .slick-slide {
+        margin: 0;
     }
 }
 

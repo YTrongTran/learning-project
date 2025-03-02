@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone');
             $table->string('otp');
-            $table->string('email')->unique();
+            $table->string('email');
+            // $table->integer('exam_id');
+            // $table->double('pointQuiz');
             $table->timestamps();
         });
     }

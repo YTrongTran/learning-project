@@ -13,25 +13,26 @@
         </button>
         <nav class="hidden lg:flex">
             <ul class="flex lg:gap-4 xl:gap-6 text-base font-bold transition-all">
-                <li><a class="hover:text-rose-900 text-gray-500 font-semibold" href="/">Trang chủ</a></li>
+                <li><a class="hover:text-rose-900 {{ set_active('/') }}" href="/">Trang chủ</a></li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#">Các khóa học</a>
+                    <a class="hover:text-rose-900 {{ set_active('child-course') }}" href="#">Các khóa học</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="{{ route('quiz.step1') }}">Thi
+                    <a class="hover:text-rose-900 {{ set_active(['quiz.step1', 'quiz.step2', 'quiz.step3']) }}"
+                        href="{{ route('quiz.step1') }}">Thi
                         thử</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#">Đối tác</a>
+                    <a class="hover:text-rose-900 {{ set_active('partners') }}" href="#">Đối tác</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="#">Chương trình online</a>
+                    <a class="hover:text-rose-900 {{ set_active('online') }}" href="#">Chương trình online</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/news">Cơ hội việc làm</a>
+                    <a class="hover:text-rose-900 {{ set_active('news') }}" href="/news">Cơ hội việc làm</a>
                 </li>
                 <li>
-                    <a class="hover:text-rose-900 text-gray-500 font-semibold" href="/blog">Blog</a>
+                    <a class="hover:text-rose-900 {{ set_active('blog') }}" href="/blog">Blog</a>
                 </li>
             </ul>
         </nav>
@@ -118,10 +119,6 @@
     }
 
     @media (min-width: 1024px) {
-        .container {
-            padding: 0 16px;
-        }
-
         .menu-toggle {
             display: none;
         }

@@ -1,18 +1,20 @@
-@extends('layouts.main') @section('title', 'Login') @section('content')
+@extends('layouts.main') @section('title', 'Quiz step 1') @section('content')
 
 <div class="bg-section">
-    <div class="w-full custom-container flex flex-wrap bg-left-bottom bg-no-repeat" style="background-image: url('/assets/img/bg-login.png');">
-            <div class="w-full md:w-1/2 mb-6 md:mb-0">
-                <div class="text-left">
-                    <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-[#06052E] uppercase mb-2">Thi Thử</h1>
-                    <h2 class="text-xl md:text-5xl font-semibold uppercase text-[#06052E]">Nhận Kết Quả Ngay</h2>
-                </div>
+    <div class="w-full custom-container flex flex-wrap bg-left-bottom bg-no-repeat"
+        style="background-image: url('/assets/img/bg-login.png');background-position: center right;">
+        <div class="w-full md:w-1/2 mb-6 md:mb-0">
+            <div class="text-left">
+                <h1 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-[#06052E] uppercase mb-2">Thi Thử
+                </h1>
+                <h2 class="text-xl md:text-5xl font-semibold uppercase text-[#06052E]">Nhận Kết Quả Ngay</h2>
             </div>
+        </div>
 
-            <div class="w-full md:w-1/2 bg-white shadow-lg rounded-lg p-6 md:p-10 relative">
-                <h2 class="text-xl lg:text-3xl font-bold text-blue-900 uppercase mb-4">Đăng ký/ Đăng nhập nhanh 👋</h2>
+        <div class="w-full md:w-1/2 bg-white shadow-lg rounded-lg p-6 md:p-10 relative">
+            <h2 class="text-xl lg:text-3xl font-bold text-blue-900 uppercase mb-4">Đăng ký/ Đăng nhập nhanh 👋</h2>
 
-                <form action="{{ route('quiz.step2') }}" method="POST" class="space-y-6 md:space-y-8">
+                <form action="{{ route('quiz.registerInfor') }}" method="POST" class="space-y-6 md:space-y-8">
                     @csrf
                     <div>
                         <label for="name" class="text-sm md:text-lg font-semibold text-[#06052E] mb-2">Họ và tên</label>
@@ -43,7 +45,6 @@
                     </div>
 
                     <div class="mt-custom-otp">
-                        {{-- <label for="otp" class="">Nhập mã OTP</label> --}}
                         <input type="text" id="otp" name="otp" placeholder="Nhập mã OTP"
                             class="text-sm md:text-base w-full h-9 md:h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
                         @error('otp')
@@ -71,9 +72,25 @@
                             </span>
                         </button>
                     </div>
-                </form>
-            </div>
+            </form>
+        </div>
     </div>
 </div>
-
+@if(session('success'))
+<script>
+    $(document).ready(function() {
+        Toastify({
+            text: '{{session('success')}}',
+            duration: 3000,
+            close: true,
+            gravity: "top", 
+            position: "right", 
+            stopOnFocus: true, 
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+        }).showToast();
+    });
+</script>
+@endif
 @stop

@@ -1,6 +1,6 @@
 <form class="exam-form exam-form-teen hidden" method="POST">
     <div class="exam-teen questions-container">
-        <h3>LISTENING</h3>
+        <h3 lass="text-danger">LISTENING</h3>
         @for ($i = 0; $i < 25; $i++)
             <div class="question">
                 <h4 class="question-title has-toggle" >Question {{$i+1}}</h4>
@@ -99,8 +99,8 @@
                 </div>
             </div>
         @endfor
-        <h3>READING</h3>
-        @for ($i = 0; $i < 25; $i++)
+        <h3 lass="text-danger">READING</h3>
+        @for ($i = 0; $i < 12; $i++)
             <div class="question">
                 <h4 class="question-title has-toggle" >Question {{$i+1}}</h4>
                 <div class="question-content">
@@ -200,5 +200,19 @@
                 </div>
             </div>
         @endfor
+        <h3 class="text-danger">Writing</h3>
+        @for ($i = 0; $i < 2; $i++)
+        <div class="question">
+            <h4 class="question-title has-toggle" >Question {{$i+1}}</h4>
+            <div class="question-content">
+                <div class="form-group">
+                    <textarea type="text" class="form-control" name="questions[teen][{{$i+37}}][text]" placeholder="Question"></textarea>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="questions[teen][{{$i+37}}][passage]" placeholder="Passage"></textarea>
+                </div>
+            </div>
+        </div>
+    @endfor
     </div>
 </form>
