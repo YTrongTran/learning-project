@@ -3,9 +3,9 @@
         $questionNumber = ($currentPage - 1) * 6 + $index + 1;
     @endphp
 
-    {{-- Communicate --}}
-    @if ($type == 'communicate')
-        <div class="mb-4 question" id="question-{{ $questionNumber }}">
+    {{-- elderly --}}
+    @if ($type == 'elderly')
+        <div class="mb-4 question" id="question-{{ $questionNumber }}" data-id="{{$item['question_id']}}" data-exam_id="{{$item['exam_id']}}">
             <div class="font-medium text-lg mb-2">Câu hỏi {{ $questionNumber }}</div>
             <div class="text-gray-700 mb-3">{!! $item['question'] !!}</div>
             <div class="space-y-2">
@@ -34,14 +34,14 @@
         <div class="border border-solid border-gray-400 mb-4"></div>
 
         {{-- Superkids --}}
-    @elseif ($type == 'superkids')
+    @elseif ($type == 'superkid')
     
         <div class="mb-4 question" id="question-{{ $questionNumber }}" data-id="{{$item['question_id']}}" data-exam_id="{{$item['exam_id']}}">
             
             <div class="font-medium text-lg mb-2">Question {{ $questionNumber }}:</div>
             <div class="flex gap-6">
                 <div class="w-[310px]">
-                    <img src="{{ $item['img'] }}" alt="Grammar Question" class="w-full">
+                    <img src="{{asset('storage/'.$item['img'])}}" alt="Grammar Question" class="w-full">
                 </div>
                 <div class="flex-1">
                     <div class="text-gray-700 mb-3">{{ $item['question'] }}</div>

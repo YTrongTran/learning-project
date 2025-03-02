@@ -12,19 +12,23 @@
                 <div class="mx-auto py-6">
                     <h3 class="text-lg font-semibold text-[#06052E] mb-6">Chọn bài kiểm tra:</h3>
                     <div class="slick-option-quiz">
-                        @foreach ($tests as $test)
-                            <label class="p-4 border rounded-lg cursor-pointer hover:bg-gray-100 quiz-option"
-                                data-href="{{ route('quiz.' . $level, ['quiz' => $test['id']]) }}">
-                                <input type="radio" name="quiz_selection" value="{{ $test['id'] }}" class="hidden">
-                                <div class="text-lg font-bold">{{ $level_text }}</div>
-                                <div class="text-sm">Test {{ $test['id'] }}</div>
-                            </label>
-                        @endforeach
+                            @foreach ($data as $test)
+                                @if ($test['type'] == $level)
+
+                                <label class="p-4 border rounded-lg cursor-pointer hover:bg-gray-100 quiz-option"
+                                    data-href="{{ route('quiz.' . $level, ['id' => $test['id']]) }}">
+                                    <input type="radio" name="quiz_selection" value="{{ $test['id'] }}" class="hidden">
+                                    <div class="text-lg font-bold">{{ $test['title'] }}</div>
+                                    <div class="text-sm">Bài kiểm tra</div>
+                                </label>
+                                @endif
+                            @endforeach
                     </div>
+                   
                 </div>
 
                 <div class="flex justify-center mb-4">
-                    <a href="{{ route('quiz.' . $level, ['quiz' => 1]) }}" id="startQuizBtn"
+                    <a href="{{ route('quiz.' . $level, ['id' => 1]) }}" id="startQuizBtn"
                         class="btn-primary w-fit opacity-50 pointer-events-none">
                         <span class="relative z-10">Bắt đầu</span>
                     </a>
@@ -37,12 +41,11 @@
     <script>
         $(document).ready(function() {
             $(".quiz-option").click(function() {
+                localStorage.setItem('questionIds', JSON.stringify([]));
                 $(".quiz-option").removeClass("border-blue-500 bg-blue-100");
                 $(this).addClass("border-blue-500 bg-blue-100");
                 $(this).find("input").prop("checked", true);
-
                 let quizUrl = $(this).data("href");
-
                 $("#startQuizBtn").attr("href", quizUrl).removeClass("opacity-50 pointer-events-none");
             });
 

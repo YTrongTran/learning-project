@@ -20,12 +20,7 @@
             <a href="{{ route('quiz.step3') }}" data-level="toeic" class="quiz-link">
                 <div class="font-medium text-[13px] mb-2 hover:text-rose-700">Luyện Thi TOEIC</div>
             </a>
-            {{-- <ul class="space-y-2 text-[13px] pl-4 ">
-                <li>Học liệu</li>
-                <li>Viết</li>
-                <li>Nghe</li>
-                <li>Phát âm</li>
-            </ul> --}}
+           
         </div>
     </div>
     <form id="quizForm" action="{{ route('quiz.step3') }}" method="POST" style="display: none;">

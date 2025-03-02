@@ -2,7 +2,7 @@
     @if ($questions['part'] === 1)
         @foreach ($questions['questions'] as $question)
             @if (!empty($question['img']))
-                <div class="mb-4 question" id="question-{{ $question['question_id'] }}">
+                <div class="mb-4 question" id="question-{{ $question['question_id'] }}" data-id="{{$question['question_id']}}" data-exam_id="{{$question['exam_id']}}">
                     <div class="font-medium text-lg mb-2">Question {{ $question['question_id'] }}:</div>
                     <div class="flex gap-6">
                         <div class="w-[310px]">
@@ -26,7 +26,7 @@
                 </div>
                 <div class="border border-solid border-gray-400 mb-4"></div>
             @else
-                <div class="mb-4 question" id="question-{{ $question['question_id'] }}">
+                <div class="mb-4 question" id="question-{{ $question['question_id'] }}" data-id="{{$question['question_id']}}" data-exam_id="{{$question['exam_id']}}">
                     <div class="font-medium text-lg mb-2">Question {{ $question['question_id'] }}:</div>
                     <div class="text-gray-700 mb-3">{!! $question['question'] !!}</div>
                     <div class="space-y-2">
@@ -66,6 +66,7 @@
         </p>
 
         @foreach ($questions['passages'] as $question)
+        {{print_r($question)}}
             <h3 class="text-xl font-semibold mb-4 text-center">{{ $question['heading'] }}</h3>
             <p class="mb-4 border border-black bg-gray-100 rounded-lg text-base p-2">{!! nl2br(e($question['text'])) !!}</p>
 
@@ -243,7 +244,7 @@
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="radio" name="q-{{ $question['question_id'] }}"
                                 value="{{ $questionchild['option'] }}" class="w-4 h-4">
-                            <span>{{ $questionchild['option'] }}) {{ $questionchild['description'] }}</span>
+                            <span>{{ $questionchild['option'] }} {{ $questionchild['description'] }}</span>
                         </label>
                     @endforeach
                 </div>

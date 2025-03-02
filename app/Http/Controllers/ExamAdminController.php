@@ -36,7 +36,6 @@ class ExamAdminController extends Controller
             if( empty($questions) ){
                 return response()->json(['message' => 'Chưa đủ dữ liệu!', 'success' => false ], 200);
             }
-
             $exam = Exam::Create([
                 'title' => $examTitle,
                 'type' => $examType,
@@ -44,20 +43,21 @@ class ExamAdminController extends Controller
                 'point' => $examPoint,
                 'visible' => empty($examVisible) ? 0 : 1
             ]);
-
             $exam_id = $exam->id;
-
+            
             foreach( $questions as $key => $question ){
+              
                 Question::create([
                     '_index' => $key,
                     'question_text' => $question['text'],
-                    'answer_correct' => $question['correct'],
-                    'answer_1' => $question['answers'][0],
-                    'answer_2' => $question['answers'][1],
-                    'answer_3' => $question['answers'][2],
-                    'answer_4' => $question['answers'][3],
-                    'image' => $question['image'],
-                    'audio' => $question['sound'],
+                    'passage' => empty($question['passage'])? '':$question['passage'],
+                    'answer_correct' => empty($question['correct']) ? 1:$question['correct'],
+                    'answer_1' => empty($question['answers'][0])? '':$question['answers'][0],
+                    'answer_2' => empty($question['answers'][1])? '':$question['answers'][1],
+                    'answer_3' => empty($question['answers'][2])? '':$question['answers'][2],
+                    'answer_4' => empty($question['answers'][3])? '':$question['answers'][3],
+                    'image' =>  empty($question['image']) ? '' : $question['image'],
+                    'audio' => empty($question['sound'])? '' : $question['sound'],
                     'exam_id' => $exam_id
                 ]);
             }

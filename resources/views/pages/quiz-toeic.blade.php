@@ -95,16 +95,16 @@
                         <!-- Timer -->
                         <div class="mb-4 shadow-md rounded-md border p-3">
                             <div class="text-[13px] text-rose-600 mb-2 font-bold">Thời gian còn lại</div>
-                            <div class="text-[24px] font-bold">0:58:16</div>
+                            <div class="text-[24px] font-bold" id="countdown"></div>
                         </div>
 
                         <!-- Questions Grid -->
                         <div class="shadow-md border rounded-md p-3">
                             <div class="text-[20px] font-bold text-rose-600">Số câu hỏi</div>
 
-                            @foreach ($quiz['parts'] as $partIndex => $part)
+                            @foreach ($quiz['parts'] as  $partIndex => $part)
                                 @if ($quiz['type'] == 'teen')
-                                    <h6 id="part-{{ $partIndex + 1 }}" class="font-medium text-base my-2">
+                                    <h6 id="part-{{ (int)$partIndex + 1 }}" class="font-medium text-base my-2">
                                         @if ($partIndex == 0)
                                             Grammar
                                         @elseif($partIndex == 1)
@@ -114,11 +114,11 @@
                                         @endif
                                     </h6>
                                 @else
-                                    <h6 id="part-{{ $partIndex + 1 }}" class="font-medium text-base my-2">
-                                        Part {{ $partIndex + 1 }}
+                                    <h6 id="part-{{ (int) $partIndex + 1 }}" class="font-medium text-base my-2">
+                                        Part {{ (int) $partIndex + 1 }}
                                     </h6>
                                 @endif
-                                <div class="question-part" data-part="{{ $partIndex + 1 }}">
+                                <div class="question-part" data-part="{{ (int) $partIndex + 1 }}">
                                     <div class="question-list grid grid-cols-6 gap-2">
                                         @if (!empty($part['questions']))
                                             @foreach ($part['questions'] as $questionIndex => $question)
@@ -154,7 +154,9 @@
         </div>
     </div>
 
+    @include('components.popup-yes-no-component')
     @include('components.modal-result-quiz-component')
+    @include('components.loading')
 
     <x-popup-yes-no-component></x-popup-yes-no-component>
 
@@ -163,7 +165,7 @@
             <span class="spinner"></span>
         </div>
     </div>
-
+    <div id="quiz-data" data-router="{{ route('quiz.' . $quiz['type'], ['id' => $id ]) }}" data-quiz="{{ route('quiz.' .$quiz['type'].'s')}}"></div>
     <script>
         $(document).ready(function() {
 
@@ -171,7 +173,9 @@
             let totalPages = {{ $data['totalPages'] }};
             let typeQuiz = $("#type-quiz").val();
             let id = {{ $id }};
-            let urlAjax = "route('quiz." + typeQuiz + "'" + ",['quiz'=>" + id + "])";
+            // let urlAjax = "route('quiz." + typeQuiz + "'" + ",['quiz'=>" + id + "])";
+            let urlAjax = $("#quiz-data").data("router");
+            
             let selectedAnswers = {};
 
             $(".page-link").on("click", function(e) {
@@ -182,15 +186,6 @@
 
             // Function to scroll to question
             function scrollToQuestion(questionId) {
-                // setTimeout(() => {
-                //     const questionElement = document.getElementById(questionId);
-                //     if (questionElement) {
-                //         questionElement.scrollIntoView({
-                //             behavior: 'smooth',
-                //             block: 'start'
-                //         });
-                //     }
-                // }, 200);
 
                 setTimeout(() => {
                     const questionElement = document.getElementById(questionId);
@@ -251,7 +246,9 @@
             $("#finishTest").click(function() {
                 $("#popup-modal").removeClass("hidden").addClass("flex");
             });
-
+            // $("#finishTest").click(function() {
+            //     $("#popup-modal").css("display", "flex");
+            // });
             // Submit test
             $("[data-modal-hide='popup-modal-yes']").click(function() {
                 $("#popup-modal").addClass("hidden").removeClass("flex");
@@ -369,6 +366,72 @@
 
             updateButtons();
             attachAudioEvents();
+            startCountdown();
+
+             //show popup
+             $("#popup-modal-yes").click(function() {
+                duration = 0; // Đặt về 0 thay vì xóa
+                localStorage.setItem('duration', duration);
+                $("#popup-modal").css("display", "none");
+                let toUrl =  $("#quiz-data").data("quiz");
+                //lấy giá trị
+                let id = $(this).closest('#app').find('.question').data('exam_id');
+                let customsId =  localStorage.getItem('customsId') ? JSON.parse(localStorage.getItem('customsId')) : 0;
+                let questionIds =  localStorage.getItem('questionIds') ? JSON.parse(localStorage.getItem('questionIds')) : [];
+                let _url = toUrl; 
+                
+                $.ajax({
+                    url: _url,
+                    type: "POST",
+                    data: {
+                        exam_id:id,
+                        customsId:customsId,
+                        questionIds:questionIds
+                    },
+                    beforeSend: function() {
+                        $(".loading-overlay").show();
+                    },
+                    success: function(response) {
+                        if(response){
+                            const {time, correct_count, point ,size , wrong_answers} = response;
+                            $('.correct_count').text(correct_count);
+                            let number = (size / point) * correct_count;
+                            $('.total').text(`${number}/${point}`);
+                            $('.time-submit').text(`Submitted ${time}`);
+                            $("#modal-result-test").css("display", "flex");
+                            localStorage.setItem('questionIds', JSON.stringify([]));
+                        }
+                    },
+                    complete: function() {
+                        $(".loading-overlay").hide();
+                    }
+                });
+                
+            });
         });
+        var duration = localStorage.getItem('duration')|| {{$duration}} * 60 * 60;
+            
+            function startCountdown(){
+                var countdownInterval = setInterval(() => {
+                    var h = Math.floor(duration/ 3600);
+                    var m = Math.floor(duration % 3600 / 60);
+                    var s = Math.floor(duration %  60);
+                    $("#countdown").text(
+                        (h < 10 ? '0' + h : h) + ":"+
+                        (m < 10 ? '0' + m : m) + ":"+
+                        (s < 10 ? '0' + s : s) 
+                    );
+                    localStorage.setItem('duration', duration);
+                    
+                    if(duration <= 0){
+                        clearInterval(countdownInterval);
+                        $("#countdown").text("Time's up!");
+                        localStorage.removeItem('duration');
+                        $("#finishTest").css('pointer-events','none');
+                    }else{
+                        duration --;
+                    }
+                }, 1000);
+            } 
     </script>
 @stop

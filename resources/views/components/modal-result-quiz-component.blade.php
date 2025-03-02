@@ -18,7 +18,7 @@
                 </svg>
             </div>
             <div>
-                <h2 class="text-xl font-semibold">{{$quiz['title'] ? $quiz['title'] : ''}}</h2>
+                <h2 class="text-xl font-semibold">{{empty($quiz['title']) ? '': $quiz['title'] }}</h2>
                 <p class="text-sm text-gray-600 mt-1">Bài thi gồm 2 phần Listening và Reading, với tổng cộng 50
                     câu hỏi.</p>
                 <p class="text-sm text-gray-600">Bạn hãy trả lời hết sức mình nhé!</p>

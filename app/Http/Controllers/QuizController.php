@@ -28,7 +28,7 @@ class QuizController extends Controller
     }
     public function registerInfor(CustomesRequest $request)
     {
-        // dd($request->all());
+       
         $customId =  DB::table('customs')->insertGetId([
             'name' => $request->name,
             'phone' => $request->phone,
@@ -52,69 +52,89 @@ class QuizController extends Controller
     }
     public function step3(Request $request)
     {
+
         $level = $request->input('level');
         $levelText = $request->input('level_text');
-        //get db
-        $getExamAll = DB::table('exams')->get();
-        dd($getExamAll);
+        //check visible  = 1 thì hiển thị
+        $getExamAll = DB::table('exams')
+                ->where('exams.visible', 1)
+                ->whereNotExists(function ($query) {
+                    $query->select(DB::raw(1))
+                          ->from('customs')
+                          ->whereColumn('customs.id_exams', 'exams.id')
+                          ->where('customs.limit_number', 2);
+                })
+                ->get();
 
+        // check limit bộ đồ
         if (!$level) {
             return back()->with('error', 'Vui lòng chọn một cấp độ.');
         }
+        /**
+         *  $tests= [['id' => 1,...],['id' => 2,...],['id' => 3],['id' => 10]];
+         */
 
-        $tests = [
-            ['id' => 1],
-            ['id' => 2],
-            ['id' => 3],
-            ['id' => 10],
-        ];
+        $data = []; 
+        if($getExamAll){
+            foreach($getExamAll as $key => $item){
+                $data[] = [
+                    'id'=>  $item->id,
+                    'type'=>  $item->type,
+                    'title'=>  $item->title,
+                ];
+             }
+        }
+       
+        // dd($type);
 
         return view('pages.quiz_step_3')->with([
-            'tests' => $tests,
+            'data' => $data,
             'level' => $level,
-            'level_text' => $levelText
+            'level_text' => $levelText,
         ]);
     }
 
     public function superkids(Request $request, $id)
     {
-        $getExamsAll = DB::table('exams')->get();
+        $getId = $id;   
+        // Lấy thông tin bài kiểm tra theo ID
+        $getExamById = DB::table('exams')->where('id', '=', $getId)->first();
         $getQuestionsAll = DB::table('questions')
-        ->join('exams', 'exams.id', '=', 'questions.exam_id')
-        ->select('questions.*','exams.point')->get();
-        foreach($getExamsAll as $key => $value){
-            $title = $value->title;
-            $duration = $value->duration;
-        }
-        
+            ->join('exams', 'exams.id', '=', 'questions.exam_id')
+            ->where('questions.exam_id', '=', $getId) 
+            ->select('questions.*', 'exams.point')
+            ->get();
+
+        // Khởi tạo mảng quiz
         $quiz = [
-            'point' => 0
+            'questions' => [], // Luôn đảm bảo mảng này tồn tại
+            'type' => $getExamById->type,
+            'title' => $getExamById->title,
+            'desc' =>  'fficial test kids',
+            'point' => $getExamById->point,
         ];
 
-        foreach ($getQuestionsAll as $question) {
-            
-            $quiz['questions'][$question->_index]= [
+        foreach ($getQuestionsAll as $key => $question) {
+            $quiz['questions'][$key] = [
                 'question' => $question->question_text,
-                'img' => asset('assets/img/Listening.png'),
+                'img' => $question->image,
                 'A' => $question->answer_1,
                 'B' => $question->answer_2,
                 'C' => $question->answer_3,
                 'D' => $question->answer_4,
                 'correct' => $question->answer_correct,
-                'question_id'=> $question->id,
+                'question_id' => $question->id,
                 'exam_id' => $question->exam_id
             ];
-            $quiz['point'] = $question->point;
-            $quiz['type'] = 'superkids';
-            $quiz['desc'] = $question->question_text;
-            $quiz['title'] = $title;
+            
+        }
 
-         }
-
+        // Phân trang
         $perPage = 6;
-        $questions = array_chunk($quiz['questions'], $perPage);
+        $questions = !empty($quiz['questions']) ? array_chunk($quiz['questions'], $perPage) : [];
         $totalPages = count($questions);
         $page = max(1, min($request->input('page', 1), $totalPages));
+
         $data = [
             'questions' => $questions[$page - 1] ?? [],
             'totalPages' => $totalPages,
@@ -127,411 +147,43 @@ class QuizController extends Controller
                     'type' => $quiz['type'],
                     'questions' => $data['questions'],
                     'currentPage' => $data['currentPage'],
-                    
                 ])->render(),
                 'totalPages' => $data['totalPages'],
                 'currentPage' => $data['currentPage'],
             ]);
         }
 
-        return view('pages.quiz-questions', compact('quiz', 'data', 'id','duration'));
-    }
-    /**
-     * call function: call ajax submit submitQuizEnglishHub
-     */
-    public function submitQuizEnglishHub(Request $request){
-        if ($request->ajax()) {
-            $timeBeign = now()->setTimezone('Asia/Ho_Chi_Minh')->format('l, j F Y, g:i A');
-            $exam_id = $request->exam_id;
-            $customsId = $request->customsId;
-
-            $getExam = DB::table('exams')->where('id',$exam_id)->get();
-            foreach($getExam as $key => $value){
-                $point = $value->point;
-                $level = $value->type;
-            }
-            
-            // Lấy danh sách câu hỏi và đáp án đúng từ DB (dạng [id => answer_correct])
-            $questions = DB::table('questions')
-                ->where('exam_id', $exam_id)
-                ->pluck('answer_correct', 'id');
-            //tổng câu hỏi
-            $size = count($questions);
-            // Chuyển số thành chữ cái đáp án
-            $answer_map = [
-                0 => 'A',
-                1 => 'B',
-                2 => 'C',
-                3 => 'D'
-            ];
-            
-            // Lấy danh sách câu trả lời từ request
-            $questionIds_raw = $request->questionIds; // [0 => "1-B",1 => "2-B",...]
-
-            $questionIds = [];
-            foreach ($questionIds_raw as $item) {
-                $parts = explode('-', $item); // Tách "1-B" thành ['1', 'B']
-                if (count($parts) === 2) {
-                    $questionIds[(int)$parts[0]] = trim($parts[1]); // kết quả khi tách là [1 => 'B',...]
-                }
-            }
-        
-            // Biến lưu kết quả
-            $correctCount = 0; // Số câu trả lời đúng (bắt đầu từ 0)
-            $wrongAnswers = []; // Danh sách câu sai
-        
-            // Lặp qua từng câu trả lời của người dùng
-            foreach ($questionIds as $question_id => $user_answer) {
-                if (isset($questions[$question_id])) {
-                    $correct_answer = $answer_map[$questions[$question_id]]; // Chuyển đổi số sang chữ
-                    $user_answer = trim($user_answer); // Đảm bảo không có khoảng trắng dư thừa
-        
-                    if ($user_answer === $correct_answer) { 
-                        $correctCount++; 
-                    } else {
-                        $wrongAnswers[$question_id] = [
-                            'user_answer' => $user_answer, //đáp án từ người chọn
-                            'correct_answer' => $correct_answer //đáp án đúng từ db
-                        ];
-                    }
-                }
-            }
-
-           //update table customs
-            $customs =Customs::findOrFail($customsId);
-            $customs->correct_answer =  $correctCount;
-            $customs->total_question  = $size;
-            $customs->total_score = (float)($size/$point) * $correctCount; //tổng điểm
-            $customs->level = $level;
-            $customs->id_exams = $exam_id;
-            $customs->finished  = now()->setTimezone('Asia/Ho_Chi_Minh');   
-            $customs->save();
-
-            // Trả về JSON kết quả
-            return response()->json([
-                'time' => $timeBeign,
-                'point' => $point,
-                'size' => $size,
-                'correct_count' => $correctCount,
-                'wrong_answers' => $wrongAnswers
-            ]);
-        }
-        
-    }
-    public function teen(Request $request, $id)
-    {
-        $quiz = [
-            "test_id" => 1,
-            'title' => "TEST TEEN 1",
-            "type" => "teen",
-            "desc" => "Official test teen from 2023",
-            'questions' => [
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-            ],
-            'point' => 100
-        ];
-
-        // foreach ($getQuestionsAll as $question) {
-            
-        //     $quiz['questions'][$question->_index]= [
-        //         'question' => $question->question_text,
-        //         'A' => $question->answer_1,
-        //         'B' => $question->answer_2,
-        //         'C' => $question->answer_3,
-        //         'D' => $question->answer_4,
-        //         'correct' => $question->answer_correct,
-        //         'question_id'=> $question->id
-        //     ];
-        //     $quiz['point'] = $question->point;
-        //     $quiz['exam_id'] = $question->exam_id;
-        //  }
-        // $questions = Question::where('exam_id', $id)->get();
-        // return view('pages.quiz', compact('quiz', 'questions'));
+        return view('pages.quiz-questions', compact('quiz', 'data', 'id'))->with('duration', $getExamById->duration);
     }
     public function communicate(Request $request, $id)
     {
+        
+        $getId = $id;
+        $getExamById = DB::table('exams')->where('id','=', $getId)->first();
+        $getQuestionById = DB::table('questions')->where('questions.exam_id', '=', $getId)->get();
+  
+        $duration = $getExamById->duration;
         $quiz = [
-            "test_id" => 1,
-            'title' => "COMMUNICATE 1",
-            'type' => "communicate",
-            "desc" => "Official COMMUNICATE test from 2023",
-            'questions' => [
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-                [
-                    'question' => '<strong>Manager:</strong> Where’s Mr. Davidson?</br>
-                                    <strong>Assistant:</strong> Oh, he’s _______ London today.',
-                    'A' => 'answer 1',
-                    'B' => 'answer 2',
-                    'C' => 'answer 2',
-                    'D' => 'answer 2',
-                    'correct' => 'A'
-                ],
-
-            ],
-            'point' => 100
+            'title' => $getExamById->title,
+            'type' => $getExamById->type,
+            "desc" => "Official COMMUNICATE",
+            'questions' => [],
+            'point' => $getExamById->point,
         ];
-        // $questions = Question::where('exam_id', $id)->get();
-        // return view('pages.quiz', compact('quiz', 'questions'));
 
+        foreach($getQuestionById as $key => $item){ 
+            $quiz['questions'][$key] = [
+                'question' => $item->question_text,
+                'A' => $item->answer_1,
+                'B' =>$item->answer_1,
+                'C' =>$item->answer_1,
+                'D' =>$item->answer_1,
+                'correct' => $item->answer_correct,
+                'question_id' => $item->id,
+                'exam_id'=>$item->exam_id
+            ];
+        }   
+       
         $perPage = 6;
         $questions = array_chunk($quiz['questions'], $perPage);
         $totalPages = count($questions);
@@ -554,9 +206,120 @@ class QuizController extends Controller
             ]);
         }
 
-        return view('pages.quiz-questions', compact('quiz', 'data', 'id'));
+        return view('pages.quiz-questions', compact('quiz', 'data', 'id','duration'));
     }
-    
+    public function teen(Request $request, $id)
+    {
+        $getId = $id;
+        $getExamById = DB::table('exams')->where('id', '=', $getId)->first();
+        $getQuestionId = DB::table('questions')->where('questions.exam_id', '=', $getId)->get();
+        
+        $title = $getExamById->title;
+       
+        $point = $getExamById->point;
+        $duration = $getExamById->duration;
+       
+        $quiz = [
+            'title' => $title,
+            "type" => $getExamById->type,
+            "description" => "Official test teen",
+            'parts' =>
+            [
+                [
+                    'part' => 1,
+                    'description' => "Grammar",
+                    'questions' =>[]
+                ],
+                [
+                    "part" => 2,
+                    "description" => "Reading",
+                    "passages" => []
+                ],
+                [
+                    "part" => 3,
+                    "description" => "Writing",
+                    'title' => "Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.",
+                    "question" => "Some people believe that the most important function of music is to help people relax, while others think that it serves a more meaningful purpose. Discuss both views and give your own opinion.\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+                    "at_least_words" => 150,
+                ]
+            ],
+            'point' => $point,
+        ];
+     
+        foreach ($getQuestionId as $key => $value) {
+            // Lưu câu hỏi vào phần "questions"
+            if ($key <= 24) {
+                $quiz['parts'][0]['questions'][] = [
+                    'question_id' => $value->id,
+                    'question' => $value->question_text,
+                    'img' => empty($value->image) ? '' : $value->image,
+                    'A' => $value->answer_1,
+                    'B' => $value->answer_2,
+                    'C' => $value->answer_3,
+                    'correct' => $value->answer_correct,
+                    'exam_id' => $value->exam_id
+                ];
+            }
+        
+            // Lưu passage vào "passages"
+            if ($key >= 25 && $key <= 36) {
+                $quiz['parts'][1]['passages'][] = [
+                    "passage_id" => $value->id, // Sử dụng ID thực từ DB
+                    'title' => "Read the text below. For questions 61–65, choose the best answer (A, B or C).",
+                    'heading' => $value->question_text,
+                    "text" => !empty($value->passage) ? $value->passage :'',
+                    "questions" => [
+                        [
+                            "question_id" => $value->id, // Lấy từ DB thay vì hard-code
+                            "question" => !empty($value->question_text) ? $value->question_text: '',
+                            "options" => [
+                                [
+                                    "option" => "A",
+                                    "description" => !empty($value->answer_1)? $value->answer_1:''
+                                ],
+                                [
+                                    "option" => "B",
+                                    "description" => !empty($value->answer_2)? $value->answer_2:''
+                                ],
+                                [
+                                    "option" => "C",
+                                    "description" => $value->answer_3
+                                ],
+                            ],
+                            "correct_answer" => $value->answer_correct
+                        ]
+                    ]
+                ];
+            }
+        }
+        
+
+        $totalPages = count($quiz['parts']);
+
+        $page = max(1, min($request->input('page', 1), $totalPages));
+        $data = [
+            'title' => $quiz['title'],
+            'desc' => $quiz['description'],
+            'questions' => $quiz['parts'][$page - 1] ?? [],
+            'totalPages' => $totalPages,
+            'currentPage' => $page
+        ];
+        // dd($data);
+        if ($request->ajax()) {
+            return response()->json([
+                'html' => view('components.quiz-toeic-question-component', [
+                    'type' => $quiz['type'],
+                    'questions' => $data['questions'],
+                    'currentPage' => $data['currentPage']
+                ])->render(),
+                'totalPages' => $data['totalPages'],
+                'currentPage' => $data['currentPage'],
+            ]);
+        }
+
+
+        return view('pages.quiz-toeic', compact('quiz', 'data', 'id','duration'));
+    }
     public function toeic(Request $request, $id)
     {
         $quiz = [
@@ -1570,7 +1333,8 @@ class QuizController extends Controller
                         ],
                     ]
                 ]
-            ]
+                    ],
+                    'point' => 50
         ];
 
         $correct_answers = [];
@@ -1588,7 +1352,7 @@ class QuizController extends Controller
                 }
             }
         }
-
+        $duration = 20;
         Session::put('correct_answers_toeic', $correct_answers);
 
         $totalPages = count($quiz['parts']);
@@ -1614,7 +1378,7 @@ class QuizController extends Controller
         }
 
 
-        return view('pages.quiz-toeic', compact('quiz', 'data', 'id'));
+        return view('pages.quiz-toeic', compact('quiz', 'data', 'id','duration'));
     }
 
     public function submitQuizToeic(Request $request)
@@ -2500,17 +2264,6 @@ class QuizController extends Controller
         $audioData = $request->input('audio_data', []);  // audio data
 
         Log::info('Received audio data:', $audioData);
-        if (!empty($audioData)) {
-            // $audioData = $request->input('audio_data', []); 
-            // $audioData = str_replace('data:audio/wav;base64,', '', $audioData);
-            // $audioData = base64_decode($audioData);
-            // $filename = 'recording_' . time() . '.wav';
-            // $filePath = 'public/audio/' . $filename;
-
-            // // Save file into storage
-            // Storage::put($filePath, $audioData);
-        }
-
         $currentDateTime = Carbon::now()->format('d-m-Y H:i:s');
         $correctCountReading = 0;
         $correctCountListening = 0;
@@ -2570,5 +2323,10 @@ class QuizController extends Controller
         return 0;
     }
 
+    
+    // public function submitQuizEnglishHub(Request $request){
+        
+        
+    // }
 
 }

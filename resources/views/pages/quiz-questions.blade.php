@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Quiz ' . $quiz['type'])
+@section('title', 'Quiz ' . empty($quiz['type'] ) ? '': $quiz['type'])
 
 @section('content')
 
@@ -16,7 +16,7 @@
 
                             <div class="flex lg:flex-row flex-col lg:gap-0 gap-4 justify-between items-center mb-4">
                                 <div class="flex items-center gap-3">
-                                    <h1 class="text-xl lg:text-2xl font-bold uppercase">{{ $quiz['desc'] }}</h1>
+                                    <h1 class="text-xl lg:text-2xl font-bold uppercase">{{ empty($quiz['desc']) ?  '': $quiz['desc']}}</h1>
                                 </div>
                                 <div class="flex items-center gap-4">
                                     <div class="relative">
@@ -41,11 +41,11 @@
                             </div>
 
                             <div class="bg-white shadow-md border border-[#E5E7EB] rounded-lg p-6">
-                                <h1 class="text-xl lg:text-2xl font-bold mb-4">{{ $quiz['title'] }}</h1>
+                                <h1 class="text-xl lg:text-2xl font-bold mb-4">{{ empty($quiz['title']) ? '':$quiz['title'] }}</h1>
 
                                 <div id="quiz-container">
                                     @include('components.quiz-question-component', [
-                                        'type' => $quiz['type'],
+                                        'type' => empty($quiz['type'] ) ? '': $quiz['type'],
                                         'questions' => $data['questions'],
                                         'currentPage' => $data['currentPage'],
                                         
@@ -115,15 +115,16 @@
             <span class="spinner"></span>
         </div>
     </div>
+    <div id="quiz-data" data-router="{{ route('quiz.' . $quiz['type'], ['id' => $id ]) }}" data-quiz="{{ route('quiz.' .$quiz['type'].'s')}}"></div>
 
     <script>
         $(document).ready(function() {
-
             let currentPage = 1;
             let totalPages = {{ $data['totalPages'] }};
             let typeQuiz = $("#type-quiz").val();
             let id = {{ $id }};
-            let urlAjax = "route('quiz." + typeQuiz + "'" + ",['quiz'=>" + id + "])";
+
+            let urlAjax = $("#quiz-data").data("router");
             let selectedAnswers = {};
 
             // Function to scroll to question
@@ -146,7 +147,6 @@
                 }, 200);
             }
 
-
             // Highlight selected question button when an answer is chosen
             $('#quiz-container').on('change', 'input[type="radio"]', function() {
                 const questionDiv = $(this).closest('.question');
@@ -155,7 +155,33 @@
 
                 // Highlight the selected question button
                 $(`.question-button[data-question="${questionIndex}"]`).addClass('bg-rose-700 text-white');
+                // lặp qua từng phần từ để add vào mảng danh sách câu hỏi
 
+                let questionDivs = $('#app .question');
+                let storedQuestionIds = localStorage.getItem('questionIds');
+                let questionIds = storedQuestionIds ? JSON.parse(storedQuestionIds) : [];
+
+                // Tạo object để dễ dàng kiểm tra và cập nhật (tránh trùng lặp)
+                let questionMap = {};
+
+                // Chuyển danh sách câu trả lời đã lưu vào object để tra cứu nhanh
+                questionIds.forEach(item => {
+                    let [keyid, value] = item.split('-');
+                    questionMap[keyid] = value; // Lưu câu trả lời cuối cùng cho mỗi câu hỏi
+                });
+
+                questionDivs.each(function() {
+                    let keyid = $(this).data('id'); 
+                    let selectedValue = $(this).find('input[type="radio"]:checked').val();
+
+                    if (selectedValue) {
+                        questionMap[keyid] = selectedValue; // Cập nhật câu trả lời mới nhất
+                    }
+                });
+
+                questionIds = Object.keys(questionMap).map(key => `${key}-${questionMap[key]}`);
+                localStorage.setItem('questionIds', JSON.stringify(questionIds));
+                //
                 const answerValue = $(this).val();
                 if (!selectedAnswers[currentPage]) {
                     selectedAnswers[currentPage] = {};
@@ -167,10 +193,6 @@
             $(document).on('click', '.question-button', function() {
                 const questionIndex = $(this).data('question');
                 const targetPage = Math.ceil(questionIndex / 6);
-
-                // console.log("Target question:", questionIndex, "Target page:", targetPage);
-                // console.log("current page:", currentPage)
-
                 if (targetPage != currentPage) {
                     currentPage = targetPage;
                     loadQuestions(targetPage, function() {
@@ -180,7 +202,6 @@
                     scrollToQuestion(`question-${questionIndex}`);
                 }
             });
-
             // Show result modal on next page button click
             // $("#finishTest").click(function() {
             //     $("#modal-result-test").css("display", "flex");
@@ -249,32 +270,20 @@
             updateButtons();
             startCountdown();
 
-
              //show popup
              $("#popup-modal-yes").click(function() {
                 duration = 0; // Đặt về 0 thay vì xóa
                 localStorage.setItem('duration', duration);
                 $("#popup-modal").css("display", "none");
-
+                let toUrl =  $("#quiz-data").data("quiz");
                 //lấy giá trị
                 let id = $(this).closest('#app').find('.question').data('exam_id');
-                let customsId = localStorage.getItem('customsId') ? JSON.parse(localStorage.getItem('customsId')) : 0;
-
-                let questionDivs = $('#app .question');
-                let questionIds = [];
+                let customsId =  localStorage.getItem('customsId') ? JSON.parse(localStorage.getItem('customsId')) : 0;
+                let questionIds =  localStorage.getItem('questionIds') ? JSON.parse(localStorage.getItem('questionIds')) : [];
+                let _url = toUrl; 
                 
-                questionDivs.each(function() {
-                    let keyid = $(this).data('id'); 
-                    let selectedValues = $(this).find('input[type="radio"]:checked').map(function() {
-                        return $(this).val(); 
-                    }).get();
-
-                    selectedValues.forEach(value => {
-                            questionIds.push(keyid + '-' + value);
-                    });
-                });
                 $.ajax({
-                    url: "{{ route('quiz.englishHub')}}",
+                    url: _url,
                     type: "POST",
                     data: {
                         exam_id:id,
@@ -282,7 +291,6 @@
                         questionIds:questionIds
                     },
                     beforeSend: function() {
-                        // Hiển thị loading
                         $(".loading-overlay").show();
                     },
                     success: function(response) {
@@ -293,10 +301,10 @@
                             $('.total').text(`${number}/${point}`);
                             $('.time-submit').text(`Submitted ${time}`);
                             $("#modal-result-test").css("display", "flex");
+                            localStorage.setItem('questionIds', JSON.stringify([]));
                         }
                     },
                     complete: function() {
-                        // Ẩn loading khi request hoàn tất (thành công hoặc thất bại)
                         $(".loading-overlay").hide();
                     }
                 });

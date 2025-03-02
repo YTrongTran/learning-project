@@ -1,11 +1,7 @@
-
 @extends('layouts.main') @section('title', 'Nhận Kết Quả Ngay') @section('content')
-
 @if (session('error'))
     <p class="text-red-500">{{ session('error') }}</p>
 @endif
-
-
 <div class="bg-section">
     <div class="w-full custom-container flex flex-wrap bg-left-bottom bg-contain bg-no-repeat"
         style="background-image: url('/assets/img/bg-login.png');">
@@ -26,7 +22,7 @@
                 @csrf
                 <div class="space-y-4">
                     <label class="block text-sm md:text-base font-medium text-[#06052E] hover:cursor-pointer">
-                        <input type="radio" name="level" value="superkids" class="mr-2 align-middle">
+                        <input type="radio" name="level" value="superkid" class="mr-2 align-middle">
                         Tiếng Anh Thiếu Nhi Superkids (6-11 Tuổi)
                     </label>
                     <div class="w-full h-custom-line"></div>
@@ -36,7 +32,7 @@
                     </label>
                     <div class="w-full h-custom-line"></div>
                     <label class="block text-sm md:text-base font-medium text-[#06052E] hover:cursor-pointer">
-                        <input type="radio" name="level" value="communicate" class="mr-2 align-middle">
+                        <input type="radio" name="level" value="elderly" class="mr-2 align-middle">
                         Tiếng Anh Người Lớn English Hub
                     </label>
                     <div class="w-full h-custom-line"></div>

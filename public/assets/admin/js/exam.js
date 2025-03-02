@@ -79,13 +79,13 @@ jQuery(document).ready(function($) {
         formData.append('exam-title', $("#exam-title").val() );
         formData.append('exam-duration', $("#exam-duration").val() );
         formData.append('exam-point', $("#exam-point").val() );
-        formData.append('exam-visible', $("#exam-visible").val() );
-
+        // formData.append('exam-visible', $("#exam-visible").val());
+        if($("#exam-visible").prop('checked')){ 
+          formData.append('exam-visible', true)
+        }
         $.ajax({
           url: '/admin/adminExams',
-          // url: '/admin/adminExams/' + ( + $("#exam-id").length > 0 ? $("#exam-id").val() : '' ) ,
           type: 'POST',
-          // type: $("#exam-id").length > 0  ? 'PATCH' : 'POST',
           data: formData,
           processData: false,
           contentType: false,
@@ -128,12 +128,13 @@ jQuery(document).ready(function($) {
 
             const currentForm = $(".exam-form:visible"),
             questions = $(".question", currentForm);
-            console.log(currentForm);     
+            // console.log(currentForm);     
             const min = Math.min(data.length, questions.length);
             questions.each( function(index){
               if( index >= min){
                 return false;
               }
+              console.log(data[index]['Passage']);
               $("textarea", $(this) ).first().text(data[index]['Question']);
               $("input[type='text']", $(this) ).eq(0).val(data[index]['Answer 1']);
               $("input[type='text']", $(this) ).eq(1).val(data[index]['Answer 2']);
