@@ -2731,7 +2731,7 @@ class QuizController extends Controller
         $user_answer_writing = $request->input('answerWriting', []); // user answer for writing part
         $audioData = $request->input('audio_data', []);  // audio data
 
-        Log::info('Received audio data:', $audioData);
+        // Log::info('Received audio data:', $audioData);
         if (!empty($audioData)) {
             // $audioData = $request->input('audio_data', []); 
             // $audioData = str_replace('data:audio/wav;base64,', '', $audioData);
