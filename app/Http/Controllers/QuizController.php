@@ -238,27 +238,31 @@ class QuizController extends Controller
                 [
                     "part" => 3,
                     "description" => "Writing",
-                    'title' => "Read part of an email you have received from an English-speaking friend. Write an email answering your friend’s questions.",
-                    "question" => "Some people believe that the most important function of music is to help people relax, while others think that it serves a more meaningful purpose. Discuss both views and give your own opinion.\nGive reasons for your answer and include any relevant examples from your own knowledge or experience.",
+                    'title' => "",
+                    "question" => "",
                     "at_least_words" => 150,
                 ]
             ],
             'point' => $point,
         ];
-     
+       
+      
         foreach ($getQuestionId as $key => $value) {
             // Lưu câu hỏi vào phần "questions"
             if ($key <= 24) {
-                $quiz['parts'][0]['questions'][] = [
-                    'question_id' => $value->id,
-                    'question' => $value->question_text,
-                    'img' => empty($value->image) ? '' : $value->image,
-                    'A' => $value->answer_1,
-                    'B' => $value->answer_2,
-                    'C' => $value->answer_3,
-                    'correct' => $value->answer_correct,
-                    'exam_id' => $value->exam_id
-                ];
+                // Kiểm tra nếu câu hỏi có nội dung và ít nhất một đáp án không phải null
+                if (!empty($value->question_text) && (!empty($value->answer_1) || !empty($value->answer_2) || !empty($value->answer_3))) {
+                    $quiz['parts'][0]['questions'][] = [
+                        'question_id' => $value->_index +1,
+                        'question' => $value->question_text,
+                        'img' => empty($value->image) ? '' : $value->image,
+                        'A' => $value->answer_1,
+                        'B' => $value->answer_2,
+                        'C' => $value->answer_3,
+                        'correct' => $value->answer_correct,
+                        'exam_id' => $value->exam_id
+                    ];
+                }
             }
         
             // Lưu passage vào "passages"
@@ -266,12 +270,11 @@ class QuizController extends Controller
                 $quiz['parts'][1]['passages'][] = [
                     "passage_id" => $value->id, // Sử dụng ID thực từ DB
                     'title' => "Read the text below. For questions 61–65, choose the best answer (A, B or C).",
-                    'heading' => $value->question_text,
-                    "text" => !empty($value->passage) ? $value->passage :'',
                     "questions" => [
                         [
-                            "question_id" => $value->id, // Lấy từ DB thay vì hard-code
-                            "question" => !empty($value->question_text) ? $value->question_text: '',
+                            "question_id" => $value->_index +1, // Lấy từ DB thay vì hard-code
+                            'heading' => $value->question_text,
+                            "passage" => $value->passage,
                             "options" => [
                                 [
                                     "option" => "A",
@@ -279,7 +282,7 @@ class QuizController extends Controller
                                 ],
                                 [
                                     "option" => "B",
-                                    "description" => !empty($value->answer_2)? $value->answer_2:''
+                                    "description" => $value->answer_2
                                 ],
                                 [
                                     "option" => "C",
@@ -291,7 +294,12 @@ class QuizController extends Controller
                     ]
                 ];
             }
+            if($key >= 37 && $key <= 38){
+                $quiz['parts'][2]['title'] = $value->question_text;
+                $quiz['parts'][2]['question'] = $value->passage;
+            }
         }
+        
         
 
         $totalPages = count($quiz['parts']);
@@ -304,7 +312,7 @@ class QuizController extends Controller
             'totalPages' => $totalPages,
             'currentPage' => $page
         ];
-        // dd($data);
+        dd($data);
         if ($request->ajax()) {
             return response()->json([
                 'html' => view('components.quiz-toeic-question-component', [
