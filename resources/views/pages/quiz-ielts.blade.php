@@ -107,7 +107,7 @@
                                                     @foreach ($questionParent['questions'] as $questionIndex => $question)
                                                         <button
                                                             onclick="scrollToQuestion('question-{{ $question['question_id'] }}')"
-                                                            class="question-button border border-gray-300 rounded p-3 text-sm text-gray-700 justify-self-center w-[42px]"
+                                                            class="question-button border border-gray-300 rounded p-3 text-sm text-gray-700 flex justify-center w-[42px]"
                                                             data-question="{{ $question['question_id'] }}">
                                                             {{ $question['question_id'] }}
                                                         </button>
@@ -130,7 +130,7 @@
                                                             @foreach ($question['questionsChild'] as $questionIndex => $questionChild)
                                                                 <button
                                                                     onclick="scrollToQuestion('question-{{ $questionChild['question_id'] }}')"
-                                                                    class="question-button border border-gray-300 rounded p-3 text-sm text-gray-700 justify-self-center w-[42px]"
+                                                                    class="question-button border border-gray-300 rounded p-3 text-sm text-gray-700 flex justify-center w-[42px]"
                                                                     data-question="{{ $questionChild['question_id'] }}">
                                                                     {{ $questionChild['question_id'] }}
                                                                 </button>

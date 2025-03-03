@@ -66,46 +66,61 @@
         </p>
 
         @foreach ($questions['passages'] as $question)
-        {{print_r($question)}}
-            <h3 class="text-xl font-semibold mb-4 text-center">{{ $question['heading'] }}</h3>
-            <p class="mb-4 border border-black bg-gray-100 rounded-lg text-base p-2">{!! nl2br(e($question['text'])) !!}</p>
-
             @foreach ($question['questions'] as $questionChild)
-                <div class="mb-4 question" id="question-3-{{ $questionChild['question_id'] }}"
-                    data-id="question-3-{{ $questionChild['question_id'] }}">
-                    <p class="font-medium text-base mb-2">{{ $questionChild['question_id'] }}.
-                        {{ $questionChild['question'] }}</p>
-                    <div class="mt-3 space-y-2">
-                        @foreach ($questionChild['options'] as $questionChild2)
+            
+                @if ($questionChild['passage'] != null)
+                 {{-- {{print_r($questionChild)}} --}}
+                 <h3 class="text-xl font-semibold mb-4 text-center">{{ $questionChild['heading'] }}</h3>
+                 <p class="mb-4 border border-black bg-gray-100 rounded-lg text-base p-2">
+                    {!! nl2br(e($questionChild['passage'])) !!}
+                </p>
+                @endif
+                @if ($questionChild['passage'] == null)
+                <div class="mb-4 question" id="question-{{ $questionChild['question_id'] }}"
+                data-id="question-{{ $questionChild['question_id'] }}">
+                <p class="font-medium text-base mb-2">
+                    {{ $questionChild['question_id'] }}. {{ $questionChild['heading'] }}
+                </p>
+                <div class="mt-3 space-y-2">
+                    @foreach ($questionChild['options'] as $item)
+                        @if ($item['description'] !== null)
                             <label class="flex items-center gap-2 cursor-pointer">
                                 <input type="radio" name="q-{{ $questionChild['question_id'] }}"
-                                    value="{{ $questionChild2['option'] }}" class="w-4 h-4">
-                                <span>{{ $questionChild2['option'] }}) {{ $questionChild2['description'] }}
-                                </span>
+                                    value="{{ $item['option'] }}" class="w-4 h-4">
+                                <span>{{ $item['description'] }}</span>
                             </label>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="border border-solid border-gray-400 mb-4"></div>
+                        @endif
+                    @endforeach
+                </div> 
+                @endif
+               
+                
+            </div>
+            <div class="border border-solid border-gray-400 mb-4"></div>
             @endforeach
         @endforeach
+
     @else
-        <h2 class="text-lg font-semibold mb-2">Writing:</h2>
-        <p class="text-black mb-4">
-            <strong>Time Allowed: </strong>30 minutes
-        </p>
-        <p class="text-black mb-4">
-            {!! $questions['title'] !!}
-        </p>
-        <p class="mb-4 border border-black bg-gray-100 rounded-lg text-base p-2">{!! nl2br(e($questions['question'])) !!}</p>
+        @if ($questions['part'] === 3)
+            <h2 class="text-lg font-semibold mb-2">Writing:</h2>
+            <p class="text-black mb-4">
+                <strong>Time Allowed: </strong>30 minutes
+            </p>
+            @foreach ($questions['questions'] as $item)
+                {{print_r($item)}}
+            @endforeach
+            <p class="text-black mb-4">
+                {!! $questions['title'] !!}
+            </p>
+            <p class="mb-4 border border-black bg-gray-100 rounded-lg text-base p-2">{!! nl2br(e($questions['question'])) !!}</p>
 
-        <h3 class="text-base font-semibold mb-4">Write at least {!! $questions['at_least_words'] !!} words.</h3>
-        <div class="w-full space-y-3">
-            <textarea id="writing-textarea"
-                class="p-2 block w-full border border-black rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                rows="10" placeholder="Write here..."></textarea>
-        </div>
-
+            <h3 class="text-base font-semibold mb-4">Write at least {!! $questions['at_least_words'] !!} words.</h3>
+            <div class="w-full space-y-3">
+                <textarea id="writing-textarea"
+                    class="p-2 block w-full border border-black rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                    rows="10" placeholder="Write here..."></textarea>
+            </div>
+        @endif
     @endif
 @elseif ($type == 'toeic')
     {{-- Part1 --}}

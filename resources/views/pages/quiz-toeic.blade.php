@@ -124,7 +124,7 @@
                                             @foreach ($part['questions'] as $questionIndex => $question)
                                                 <button
                                                     onclick="scrollToQuestion('question-{{ $question['question_id'] }}')"
-                                                    class="question-button border border-gray-300 rounded p-3 text-sm text-gray-700 justify-self-center w-[42px]"
+                                                    class="question-button border border-gray-300 rounded p-3 text-sm text-gray-700 flex justify-center w-[42px]"
                                                     data-question="{{ $question['question_id'] }}">
                                                     {{ $question['question_id'] }}
                                                 </button>
@@ -134,12 +134,24 @@
                                             @foreach ($part['passages'] as $passageIndex => $passage)
                                                 @if (!empty($passage['questions']))
                                                     @foreach ($passage['questions'] as $questionIndex => $question)
+                                                    @php
+                                                        // Kiểm tra nếu có ÍT NHẤT MỘT option có description là null hoặc "null"
+                                                        $hasNullOption = !empty(
+                                                            array_filter($question['options'], function ($option) {
+                                                                return empty($option['description']) ||
+                                                                    strtolower($option['description']) === 'null';
+                                                            })
+                                                        );
+                                                    @endphp
+
+                                                    @if (!$hasNullOption)
                                                         <button
                                                             onclick="scrollToQuestion('question-{{ $question['question_id'] }}')"
-                                                            class="question-button border border-gray-300 rounded p-3 text-sm text-gray-700 justify-self-center w-[42px]"
+                                                            class="question-button border border-gray-300 rounded p-3 text-sm text-gray-700 flex justify-center w-[42px]"
                                                             data-question="{{ $question['question_id'] }}">
                                                             {{ $question['question_id'] }}
                                                         </button>
+                                                        @endif
                                                     @endforeach
                                                 @endif
                                             @endforeach
