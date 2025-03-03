@@ -11,15 +11,19 @@ import laravel from 'laravel-vite-plugin';
 // });
 
 export default defineConfig({
+    base: '/',
     plugins: [laravel(['resources/js/app.js'])],
     server: {
         host: '0.0.0.0',
         hmr: {
-            host: process.env.RAILWAY_STATIC_URL, // Fix HMR khi deploy
+            protocol: 'wss', // Fix WebSocket Secure khi dùng HTTPS
+            host: process.env.RAILWAY_STATIC_URL
         }
     },
     build: {
-        outDir: 'public/build', // Đảm bảo build vào thư mục public/build
+        outDir: 'public/build',
+        assetsDir: 'assets'
     }
 });
+
 
