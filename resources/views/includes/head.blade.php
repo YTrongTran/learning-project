@@ -17,4 +17,5 @@
 <script src="/assets/js/jquery.js"></script>
 <script src="/assets/js/handle.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-@vite('resources/css/app.css')
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+
