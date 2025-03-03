@@ -238,8 +238,7 @@ class QuizController extends Controller
                 [
                     "part" => 3,
                     "description" => "Writing",
-                    'title' => "",
-                    "question" => "",
+                    "wirtings" => [],
                     "at_least_words" => 150,
                 ]
             ],
@@ -251,7 +250,7 @@ class QuizController extends Controller
             // Lưu câu hỏi vào phần "questions"
             if ($key <= 24) {
                 // Kiểm tra nếu câu hỏi có nội dung và ít nhất một đáp án không phải null
-                if (!empty($value->question_text) && (!empty($value->answer_1) || !empty($value->answer_2) || !empty($value->answer_3))) {
+                if (!empty($value->answer_1) && !empty($value->answer_2) && !empty($value->answer_3) && empty($value->passage)) {
                     $quiz['parts'][0]['questions'][] = [
                         'question_id' => $value->_index +1,
                         'question' => $value->question_text,
@@ -295,8 +294,11 @@ class QuizController extends Controller
                 ];
             }
             if($key >= 37 && $key <= 38){
-                $quiz['parts'][2]['title'] = $value->question_text;
-                $quiz['parts'][2]['question'] = $value->passage;
+                $quiz['parts'][2]['wirtings'][] =[
+                    'title' =>$value->question_text,
+                    'passage' => $value->passage,
+                ] ;
+                
             }
         }
         
@@ -312,7 +314,7 @@ class QuizController extends Controller
             'totalPages' => $totalPages,
             'currentPage' => $page
         ];
-        dd($data);
+        
         if ($request->ajax()) {
             return response()->json([
                 'html' => view('components.quiz-toeic-question-component', [

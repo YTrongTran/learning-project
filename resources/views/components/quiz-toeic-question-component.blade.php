@@ -64,7 +64,6 @@
         <p class="text-black mb-4">
             <strong>Time Allowed: </strong>30 minutes
         </p>
-
         @foreach ($questions['passages'] as $question)
             @foreach ($question['questions'] as $questionChild)
             
@@ -101,25 +100,29 @@
         @endforeach
 
     @else
+    
         @if ($questions['part'] === 3)
             <h2 class="text-lg font-semibold mb-2">Writing:</h2>
             <p class="text-black mb-4">
                 <strong>Time Allowed: </strong>30 minutes
             </p>
-            @foreach ($questions['questions'] as $item)
-                {{print_r($item)}}
+            @foreach ($questions['wirtings'] as $question)
+            
+                <p class="text-black mb-4">
+                    {!! $question['title'] !!}
+                </p>
+                <p class="mb-4 border border-black bg-gray-100 rounded-lg text-base p-2">
+                    {!! nl2br(e($question['passage'])) !!}
+                </p>
+                <h3 class="text-base font-semibold mb-4">Write at least {!! $questions['at_least_words'] !!} words.</h3>
+                <div class="w-full space-y-3">
+                    <textarea id="writing-textarea" name="writing[]"
+                        class="p-2 block w-full border border-black rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                        rows="10" placeholder="Write here..."></textarea>
+                </div>
             @endforeach
-            <p class="text-black mb-4">
-                {!! $questions['title'] !!}
-            </p>
-            <p class="mb-4 border border-black bg-gray-100 rounded-lg text-base p-2">{!! nl2br(e($questions['question'])) !!}</p>
 
-            <h3 class="text-base font-semibold mb-4">Write at least {!! $questions['at_least_words'] !!} words.</h3>
-            <div class="w-full space-y-3">
-                <textarea id="writing-textarea"
-                    class="p-2 block w-full border border-black rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                    rows="10" placeholder="Write here..."></textarea>
-            </div>
+            
         @endif
     @endif
 @elseif ($type == 'toeic')
