@@ -12,3 +12,19 @@ export default defineConfig({
         host: "0.0.0.0",
     },
 });
+
+// export default defineConfig({
+//     base: "/",
+//     plugins: [laravel(["resources/css/app.css", "resources/js/app.js"])],
+//     server: {
+//         host: "0.0.0.0",
+//         hmr: {
+//             protocol: "wss", // Fix WebSocket Secure khi dùng HTTPS
+//             host: process.env.RAILWAY_STATIC_URL,
+//         },
+//     },
+//     build: {
+//         outDir: "public/build",
+//         assetsDir: "assets",
+//     },
+// });
