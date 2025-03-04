@@ -48,13 +48,17 @@
                     </div>
 
                     <div class="mt-custom-otp">
-                        <input type="text" id="otp" name="otp" placeholder="Nhập mã OTP"
+                        <input type="text" id="otp" name="otp" placeholder="Nhập mã OTP"  maxlength="4" max="4"
                             class="text-sm md:text-base w-full h-9 md:h-12 px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                            
                         @error('otp')
                         <div class="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
                             <span class="font-medium">{{ $message }}</span> 
                             </div>
-                        @enderror    
+                        @enderror
+                        <div class="" id="error-otp"  role="alert" >
+                            <span class="font-medium error-otp"></span> 
+                        </div>    
                     </div>
 
                     <div>
@@ -70,7 +74,7 @@
 
                     <div class="text-center">
                         <button type="submit"
-                            class="btn-primary w-full"><span class="relative z-10">
+                            class="btn-primary w-full" id="submit-btn"><span class="relative z-10">
                             Đăng ký
                             </span>
                         </button>

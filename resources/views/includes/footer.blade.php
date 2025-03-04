@@ -50,7 +50,7 @@
         </div>
     </div>
 </div>
-
+@include('components.loading')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script>
@@ -63,24 +63,58 @@
         $("#error-phone").addClass('hidden');
         $('#code-otp').click(function() {
             let phone = $('#phone').val();
-            if(phone === ""){
+            if (phone === "") {
                 $("#error-phone").removeClass('hidden').addClass('block');
                 $('.error-phone').text("Vui lòng nhập số điện thoại");
-            }else{
+            } else {
                 $('.error-phone').text("");
                 $("#error-phone").removeClass('block').addClass('hidden');
             }
             $.ajax({
-                type: 'POST',
+                type: "POST",
                 url: "{{ route('quiz.getcode') }}",
                 data: {
                     'phone': phone,
+                },
+                beforeSend: function() {
+                    $(".loading-overlay").show();
+                },
+                success: function(response) {
+                    if (response) {
+                        const {success} = response;
+                    }
+                },
+                complete: function() {
+                    $(".loading-overlay").hide();
                 }
-            }).done(function(result) {
-                console.log(result);
             });
+        });
+        $("#otp").keyup(function() {
+            let otpValue = $(this).val();
+            if(otpValue.length  != 4){
+                $('.error-otp').text("");
+            }
+            $.ajax({
+                type: "POST",
+                url: "{{ route('quiz.verifyOtp') }}",
+                data: {
+                    'otpValue': otpValue,
+                },
+                success: function(response) {
+                    if (response) {
+                        if (response.valid) {
+                            $('#error-otp').addClass('mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 ');
+                            $('.error-otp').text("✅ Mã OTP chính xác!").css("color","green");
+                            $('#submit-btn').prop("disabled", false); // Bật nút xác nhận
+                        } else {
+                            $('#error-otp').addClass('mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 ');
+                            $('.error-otp').text("❌ Mã OTP không hợp lệ!");
+                            $('#submit-btn').prop("disabled",true); // Vô hiệu hóa nút xác nhận
+                        }
+                    }
+                },
 
+            });
         });
     })
 </script>
-

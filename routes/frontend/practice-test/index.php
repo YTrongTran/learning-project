@@ -34,6 +34,7 @@ Route::group([
     Route::post('/quiz-submit-teen', [QuizAjaxController::class, 'submitQuizTeen'])->name('teens');
     //code otp
     Route::post('/get-code', [QuizAjaxController::class, 'callCode'])->name('getcode');
+    Route::post('/verify-otp', [QuizAjaxController::class, 'verifyOtp'])->name('verifyOtp');
 });
 
 
