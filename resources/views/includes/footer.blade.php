@@ -60,13 +60,19 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
+        $("#error-phone").addClass('hidden');
         $('#code-otp').click(function() {
             let phone = $('#phone').val();
-
+            if(phone === ""){
+                $("#error-phone").removeClass('hidden').addClass('block');
+                $('.error-phone').text("Vui lòng nhập số điện thoại");
+            }else{
+                $('.error-phone').text("");
+                $("#error-phone").removeClass('block').addClass('hidden');
+            }
             $.ajax({
                 type: 'POST',
-                url: "{{ route('customes.getcode') }}",
+                url: "{{ route('quiz.getcode') }}",
                 data: {
                     'phone': phone,
                 }

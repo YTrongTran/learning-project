@@ -74,7 +74,7 @@ class QuizController extends Controller
          *  $tests= [['id' => 1,...],['id' => 2,...],['id' => 3],['id' => 10]];
          */
 
-        $data = []; 
+         $data = [];
         if($getExamAll){
             foreach($getExamAll as $key => $item){
                 $data[] = [
@@ -84,9 +84,6 @@ class QuizController extends Controller
                 ];
              }
         }
-       
-        // dd($type);
-
         return view('pages.quiz_step_3')->with([
             'data' => $data,
             'level' => $level,

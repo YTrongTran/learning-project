@@ -11,68 +11,6 @@ use Twilio\Rest\Client;
 
 class CustomsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('pages.test_step_2');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCustomsRequest $request)
-    {
-        //lưu xong rồi 
-        // dd($request->all());
-    //    return redirect()->route('test.step2');
-    }
-
-    public function step_2(StoreCustomsRequest $request)
-    {
-       return view('pages.test-step-3');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Customs $customs)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Customs $customs)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCustomsRequest $request, Customs $customs)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Customs $customs)
-    {
-        //
-    }
     public function call_code(Request $request){
         $phone = $request->input('phone');
         $receiverNumber = $phone; // Replace with the recipient's phone number

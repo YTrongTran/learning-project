@@ -186,4 +186,11 @@ class QuizAjaxController extends Controller
     function submitQuizTeen(Request $request){
 
     }
+    /**
+     * Submit Code SMS OTP
+     * 
+     */
+    function callCode(Request $request){
+        dd();
+    }
 }
