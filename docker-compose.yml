@@ -1,4 +1,4 @@
-version: '3.8'
+
 services:
   learningapp-server:
     build:
@@ -30,11 +30,6 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - ./docker/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: english_center
-    command: --user=root
-
-volumes:
-  mysql_data:
