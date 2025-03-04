@@ -18,37 +18,35 @@ class QuizController extends Controller
 
     public function step1(Request $request)
     {
-        
+
         return view('pages.quiz_step_1');
     }
     public function step2()
     {
         return view('pages.quiz_step_2');
-        
     }
     public function registerInfor(CustomesRequest $request)
     {
-       
+
         $customId =  DB::table('customs')->insertGetId([
             'name' => $request->name,
             'phone' => $request->phone,
             'otp' => $request->otp,
             'email' => $request->email,
-            'correct_answer'=> 0,
+            'correct_answer' => 0,
             'total_question' => 0,
-            'total_score'=>0,
-            'level'=>'null',
-            'id_exams'=>0,
-            'limit_number'=>0,
-            'finished' => now()->setTimezone('Asia/Ho_Chi_Minh'),    
+            'total_score' => 0,
+            'level' => 'null',
+            'id_exams' => 0,
+            'limit_number' => 0,
+            'finished' => now()->setTimezone('Asia/Ho_Chi_Minh'),
             'created_at' => now()->setTimezone('Asia/Ho_Chi_Minh'),
         ]);
-    
-        if($customId){
+
+        if ($customId) {
             $request->session()->put('customsId', $customId);
             return redirect()->route('quiz.step2')->with('success', 'Đăng ký tài khoản thành công!!!');
         }
-        
     }
     public function step3(Request $request)
     {
@@ -57,14 +55,14 @@ class QuizController extends Controller
         $levelText = $request->input('level_text');
         //check visible  = 1 thì hiển thị
         $getExamAll = DB::table('exams')
-                ->where('exams.visible', 1)
-                ->whereNotExists(function ($query) {
-                    $query->select(DB::raw(1))
-                          ->from('customs')
-                          ->whereColumn('customs.id_exams', 'exams.id')
-                          ->where('customs.limit_number', 2);
-                })
-                ->get();
+            ->where('exams.visible', 1)
+            ->whereNotExists(function ($query) {
+                $query->select(DB::raw(1))
+                    ->from('customs')
+                    ->whereColumn('customs.id_exams', 'exams.id')
+                    ->where('customs.limit_number', 2);
+            })
+            ->get();
 
         // check limit bộ đồ
         if (!$level) {
@@ -74,17 +72,17 @@ class QuizController extends Controller
          *  $tests= [['id' => 1,...],['id' => 2,...],['id' => 3],['id' => 10]];
          */
 
-        $data = []; 
-        if($getExamAll){
-            foreach($getExamAll as $key => $item){
+        $data = [];
+        if ($getExamAll) {
+            foreach ($getExamAll as $key => $item) {
                 $data[] = [
-                    'id'=>  $item->id,
-                    'type'=>  $item->type,
-                    'title'=>  $item->title,
+                    'id' =>  $item->id,
+                    'type' =>  $item->type,
+                    'title' =>  $item->title,
                 ];
-             }
+            }
         }
-       
+
         // dd($type);
 
         return view('pages.quiz_step_3')->with([
@@ -96,12 +94,12 @@ class QuizController extends Controller
 
     public function superkids(Request $request, $id)
     {
-        $getId = $id;   
+        $getId = $id;
         // Lấy thông tin bài kiểm tra theo ID
         $getExamById = DB::table('exams')->where('id', '=', $getId)->first();
         $getQuestionsAll = DB::table('questions')
             ->join('exams', 'exams.id', '=', 'questions.exam_id')
-            ->where('questions.exam_id', '=', $getId) 
+            ->where('questions.exam_id', '=', $getId)
             ->select('questions.*', 'exams.point')
             ->get();
 
@@ -126,7 +124,6 @@ class QuizController extends Controller
                 'question_id' => $question->id,
                 'exam_id' => $question->exam_id
             ];
-            
         }
 
         // Phân trang
@@ -157,11 +154,11 @@ class QuizController extends Controller
     }
     public function communicate(Request $request, $id)
     {
-        
+
         $getId = $id;
-        $getExamById = DB::table('exams')->where('id','=', $getId)->first();
+        $getExamById = DB::table('exams')->where('id', '=', $getId)->first();
         $getQuestionById = DB::table('questions')->where('questions.exam_id', '=', $getId)->get();
-  
+
         $duration = $getExamById->duration;
         $quiz = [
             'title' => $getExamById->title,
@@ -171,19 +168,19 @@ class QuizController extends Controller
             'point' => $getExamById->point,
         ];
 
-        foreach($getQuestionById as $key => $item){ 
+        foreach ($getQuestionById as $key => $item) {
             $quiz['questions'][$key] = [
                 'question' => $item->question_text,
                 'A' => $item->answer_1,
-                'B' =>$item->answer_1,
-                'C' =>$item->answer_1,
-                'D' =>$item->answer_1,
+                'B' => $item->answer_1,
+                'C' => $item->answer_1,
+                'D' => $item->answer_1,
                 'correct' => $item->answer_correct,
                 'question_id' => $item->id,
-                'exam_id'=>$item->exam_id
+                'exam_id' => $item->exam_id
             ];
-        }   
-       
+        }
+
         $perPage = 6;
         $questions = array_chunk($quiz['questions'], $perPage);
         $totalPages = count($questions);
@@ -206,19 +203,19 @@ class QuizController extends Controller
             ]);
         }
 
-        return view('pages.quiz-questions', compact('quiz', 'data', 'id','duration'));
+        return view('pages.quiz-questions', compact('quiz', 'data', 'id', 'duration'));
     }
     public function teen(Request $request, $id)
     {
         $getId = $id;
         $getExamById = DB::table('exams')->where('id', '=', $getId)->first();
         $getQuestionId = DB::table('questions')->where('questions.exam_id', '=', $getId)->get();
-        
+
         $title = $getExamById->title;
-       
+
         $point = $getExamById->point;
         $duration = $getExamById->duration;
-       
+
         $quiz = [
             'title' => $title,
             "type" => $getExamById->type,
@@ -228,7 +225,7 @@ class QuizController extends Controller
                 [
                     'part' => 1,
                     'description' => "Grammar",
-                    'questions' =>[]
+                    'questions' => []
                 ],
                 [
                     "part" => 2,
@@ -245,15 +242,15 @@ class QuizController extends Controller
             ],
             'point' => $point,
         ];
-       
-      
+
+
         foreach ($getQuestionId as $key => $value) {
             // Lưu câu hỏi vào phần "questions"
             if ($key <= 24) {
                 // Kiểm tra nếu câu hỏi có nội dung và ít nhất một đáp án không phải null
                 if (!empty($value->question_text) && (!empty($value->answer_1) || !empty($value->answer_2) || !empty($value->answer_3))) {
                     $quiz['parts'][0]['questions'][] = [
-                        'question_id' => $value->_index +1,
+                        'question_id' => $value->_index + 1,
                         'question' => $value->question_text,
                         'img' => empty($value->image) ? '' : $value->image,
                         'A' => $value->answer_1,
@@ -264,7 +261,7 @@ class QuizController extends Controller
                     ];
                 }
             }
-        
+
             // Lưu passage vào "passages"
             if ($key >= 25 && $key <= 36) {
                 $quiz['parts'][1]['passages'][] = [
@@ -272,13 +269,13 @@ class QuizController extends Controller
                     'title' => "Read the text below. For questions 61–65, choose the best answer (A, B or C).",
                     "questions" => [
                         [
-                            "question_id" => $value->_index +1, // Lấy từ DB thay vì hard-code
+                            "question_id" => $value->_index + 1, // Lấy từ DB thay vì hard-code
                             'heading' => $value->question_text,
                             "passage" => $value->passage,
                             "options" => [
                                 [
                                     "option" => "A",
-                                    "description" => !empty($value->answer_1)? $value->answer_1:''
+                                    "description" => !empty($value->answer_1) ? $value->answer_1 : ''
                                 ],
                                 [
                                     "option" => "B",
@@ -294,13 +291,13 @@ class QuizController extends Controller
                     ]
                 ];
             }
-            if($key >= 37 && $key <= 38){
+            if ($key >= 37 && $key <= 38) {
                 $quiz['parts'][2]['title'] = $value->question_text;
                 $quiz['parts'][2]['question'] = $value->passage;
             }
         }
-        
-        
+
+
 
         $totalPages = count($quiz['parts']);
 
@@ -312,7 +309,6 @@ class QuizController extends Controller
             'totalPages' => $totalPages,
             'currentPage' => $page
         ];
-        dd($data);
         if ($request->ajax()) {
             return response()->json([
                 'html' => view('components.quiz-toeic-question-component', [
@@ -326,7 +322,7 @@ class QuizController extends Controller
         }
 
 
-        return view('pages.quiz-toeic', compact('quiz', 'data', 'id','duration'));
+        return view('pages.quiz-toeic', compact('quiz', 'data', 'id', 'duration'));
     }
     public function toeic(Request $request, $id)
     {
@@ -1341,8 +1337,8 @@ class QuizController extends Controller
                         ],
                     ]
                 ]
-                    ],
-                    'point' => 50
+            ],
+            'point' => 50
         ];
 
         $correct_answers = [];
@@ -1386,7 +1382,7 @@ class QuizController extends Controller
         }
 
 
-        return view('pages.quiz-toeic', compact('quiz', 'data', 'id','duration'));
+        return view('pages.quiz-toeic', compact('quiz', 'data', 'id', 'duration'));
     }
 
     public function submitQuizToeic(Request $request)
@@ -2331,10 +2327,10 @@ class QuizController extends Controller
         return 0;
     }
 
-    
+
     // public function submitQuizEnglishHub(Request $request){
-        
-        
+
+
     // }
 
 }
