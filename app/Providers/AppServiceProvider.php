@@ -20,8 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // railway
-        if ($this->app->environment('production')) {
+       if ($this->app->environment('learning')) {
             URL::forceScheme('https');
         }
     }
