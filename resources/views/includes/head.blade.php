@@ -7,7 +7,8 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.bunny.net" />
 <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-<link rel="icon" href="/assets/img/logoheader.png">
+<link rel="icon" type="image/png" href="{{ secure_asset('assets/img/logoheader.png') }}">
+
 
 <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
