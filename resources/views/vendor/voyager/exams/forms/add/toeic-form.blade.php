@@ -1,4 +1,4 @@
-<form class="exam-form exam-form-toeic hidden" method="POST">
+    <form class="exam-form exam-form-toeic" method="POST">
     <div class="exam-toeic questions-container">
         <h3 class="text-danger">PART 1: Photographs</h3>
         <div class="form-group">
@@ -69,21 +69,20 @@
 
         <h3 class="text-danger">PART 7: Reading Comprehension</h3>
         <div class="form-group">
-            <label for="number-of-questions-part7">Number of questions</label>
-            <input type="number" class="form-control question-count" id="number-of-questions-part7" min="10"
-                value="10" data-section="part7">
+            <label for="number-of-questions-part7">Number of messages</label>
+            <input type="number" class="form-control question-count" id="number-of-questions-part7" min="1"
+                value="1" data-section="part7">
         </div>
-        <div class="form-group">
-            <textarea class="form-control" name="questions[toeic][part7][passage]" placeholder="Passage" required></textarea>
-        </div>
+
         <div id="part7-questions"></div>
     </div>
 </form>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
+     $(document).ready(function() {
         function generateQuestions(section, minQuestions, answerCount = 0, requiresText = true, requiresImage =
-            false) {
+            false, requiresQuestion = false, requiresMessage = false) {
             let $input = $(`#number-of-questions-${section}`);
             let $container = $(`#${section}-questions`);
 
@@ -93,11 +92,29 @@
 
                 for (let i = 0; i < count; i++) {
                     let questionNumber = startNumber + i;
+                    let messageHtml = `<div class="form-group form-group-message">
+                    <div class="form-group">
+                        <textarea class="form-control" name="questions[toeic][part7][passage]" placeholder="Passage" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="number-of-questions-part77">Number of questions</label>
+                        <input type="number" class="form-control question-count-part7" id="number-of-questions-part77" min="1"
+                            value="1" data-section="part77">
+                    </div></div>
+                    `;
+
                     let questionHtml = `
                     <div class="question form-group">
-                        <h4 class="question-title">Question ${questionNumber}</h4>
-                        <div class="question-content">
+                        <h4 class="question-title">Question ${questionNumber}</h4>`;
+                           if(requiresQuestion)
+                 {
+questionHtml +=   `<div class="form-group">
+                        <textarea type="text" class="form-control" name="questions" placeholder="Question" required></textarea>
+                    </div>`;
+                 }
+                    questionHtml +=   ` <div class="question-content">
                 `;
+
 
                     if (requiresImage) {
                         questionHtml += `
@@ -130,20 +147,22 @@
                     }
 
                     questionHtml += `</div></div>`;
-                    $container.append(questionHtml);
+
+                    if (requiresMessage) $container.append(messageHtml);
+                    if (questionHtml) $container.append(questionHtml);
                 }
             }
 
             return updateQuestions;
         }
 
-        let updatePart1 = generateQuestions("part1", 6, 3, false, true);
-        let updatePart2 = generateQuestions("part2", 6, 3, false, false);
-        let updatePart3 = generateQuestions("part3", 6, 4, true, false);
-        let updatePart4 = generateQuestions("part4", 7, 4, true, false);
-        let updatePart5 = generateQuestions("part5", 10, 4, true, false);
-        let updatePart6 = generateQuestions("part6", 5, 4, true, false);
-        let updatePart7 = generateQuestions("part7", 10, 4, true, false);
+        let updatePart1 = generateQuestions("part1", 6, 3, false, true, false, false);
+        let updatePart2 = generateQuestions("part2", 6, 3, false, false, false, false);
+        let updatePart3 = generateQuestions("part3", 6, 4, true, false, true, false);
+        let updatePart4 = generateQuestions("part4", 7, 4, true, false, true, false);
+        let updatePart5 = generateQuestions("part5", 10, 4, true, false, true, false);
+        let updatePart6 = generateQuestions("part6", 5, 4, true, false, true, false);
+        let updatePart7 = generateQuestions("part7", 1, 4, true, false,true, true);
 
         function updateAllSections() {
             let part1Count = Math.max(parseInt($("#number-of-questions-part1").val(), 10), 6);
@@ -171,6 +190,26 @@
         }
 
         $(".question-count").on("input", updateAllSections);
+
+        $(document).on("change", ".question-count-part7", function () {
+            console.log("vo day 1");
+             var count = $(this).val(); // Lấy số lượng câu hỏi từ input select hoặc input number
+            var container = $("#question-answer-container"); // Chọn container chứa câu hỏi và câu trả lời
+            container.empty(); // Xóa các câu hỏi cũ trước khi thêm mới
+
+            for (var i = 1; i <= count; i++) {
+                var questionHtml = `
+                    <div class="question-answer-block">
+                        <label for="question_${i}">Question ${i}:</label>
+                        <input type="text" id="question_${i}" name="questions[]" class="question-input" placeholder="Enter question ${i}">
+                        
+                        <label for="answer_${i}">Answer ${i}:</label>
+                        <input type="text" id="answer_${i}" name="answers[]" class="answer-input" placeholder="Enter answer ${i}">
+                    </div>
+                `;
+                container.append(questionHtml);
+            }
+        });
         updateAllSections();
     });
 </script>
