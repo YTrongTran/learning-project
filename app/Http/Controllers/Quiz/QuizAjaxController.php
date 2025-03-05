@@ -241,11 +241,14 @@ class QuizAjaxController extends Controller
     function verifyOtp(Request $request)
     {
         $enteredOtp = $request->otpValue;
-        $sessionOtp = session('otp'); // Lấy OTP từ session
-       
-        if ($enteredOtp == $sessionOtp) {
-            return response()->json(['valid' => true]); // OTP đúng
-        } else {
+        if(!empty($enteredOtp)){
+            $sessionOtp = session('otp'); // Lấy OTP từ session
+            if ($enteredOtp == $sessionOtp) {
+                return response()->json(['valid' => true]); // OTP đúng
+            } else {
+                return response()->json(['valid' => false]); // OTP sai
+            }
+        }else{
             return response()->json(['valid' => false]); // OTP sai
         }
     }

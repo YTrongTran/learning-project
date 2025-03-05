@@ -9,7 +9,7 @@
                         TRUNG TÂM ANH NGỮ TỰ NHIÊN
                     </h1>
                     <h2 class="lg:text-3xl text-xl font-bold text-yellow-400 mb-4 lg:mb-10">
-                        ENGLISH SCHOOL CENTER
+                         NATURAL ENGLISH SCHOOL  
                     </h2>
                     <p class="mb-4 lg:mb-10 text-gray-600 text-sm lg:text-base text-center max-w-[918px]">
                         NES cung cấp cho bạn nhiều khóa học tiếng Anh đa dạng, phù hợp với mọi lứa tuổi & nhu cầu, từ

@@ -134,7 +134,7 @@ jQuery(document).ready(function($) {
               if( index >= min){
                 return false;
               }
-              console.log(data[index]['Passage']);
+           
               $("textarea", $(this) ).first().text(data[index]['Question']);
               $("input[type='text']", $(this) ).eq(0).val(data[index]['Answer 1']);
               $("input[type='text']", $(this) ).eq(1).val(data[index]['Answer 2']);
