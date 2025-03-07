@@ -165,9 +165,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        // Khởi tạo biến toàn cục để theo dõi số thứ tự câu hỏi
         let globalQuestionCounter = 1;
-
+        let sectionQuestionCounts = {};
         function generateQuestionsByType(questionType, container, questionNumber) {
             let questionHtml = '';
 
@@ -285,96 +284,114 @@
             return questionHtml;
         }
 
-        function generateQuestions(section, questionType) {
-            let $input = $(`#${section}-count`);
-            let $container = $(`#${section}-questions`);
-            let sectionPrefix = section.split('-')[0]; // listening, reading, speaking
+       function generateQuestions(section, questionType) {
+        let $input = $(`#${section}-count`);
+        let $container = $(`#${section}-questions`);
+        let sectionPrefix = section.split('-')[0]; 
 
-            function updateQuestions() {
-                let count = parseInt($input.val(), 10);
-                $container.empty();
+        const allSections = [
+            'listening-section1', 'listening-section2',
+            'reading-passage1', 'reading-passage2',
+            'speaking-part1', 'speaking-part2', 'speaking-part3', 'speaking-part4'
+        ];
 
-                for (let i = 0; i < count; i++) {
-                    let questionHtml = `<div class="question-group mb-4" data-question-number="${globalQuestionCounter}">
-                                        <h5>Question ${globalQuestionCounter}</h5>`;
-                    if (sectionPrefix === 'speaking') {
-                        questionHtml += `
-                            <div class="form-group">
-                                <textarea class="form-control"  data-question="${globalQuestionCounter}" name="speaking_part${globalQuestionCounter}_topic" placeholder="Question text" required></textarea>
-                            </div>
-                             <div class="form-group">
-                                <input type="number" class="form-control" name="time_limit_${globalQuestionCounter}" placeholder="Time minute Limit (e.g., 1)"
-                                    required>
-                            </div>
-                            `;
-                    } else {
-                        questionHtml +=
-                            `<div class="form-group">
-                                <label>Question Type</label>
-                                <select class="form-control question-type-selector" data-question="${globalQuestionCounter}">`;
+        function updateQuestions() {
+            let startQuestionNumber;
+            let sectionIndex = allSections.indexOf(section);
+            if (sectionIndex === 0) {
+                startQuestionNumber = 1;
+            } else {
+                let previousSection = allSections[sectionIndex - 1];
+                if (sectionQuestionCounts[previousSection]) {
+                    let previousMax = Math.max(...Object.keys(sectionQuestionCounts[previousSection]).map(Number));
+                    startQuestionNumber = previousMax + 1;
+                } else {
+                    startQuestionNumber = globalQuestionCounter;
+                }
+            }
+            let count = parseInt($input.val(), 10);
+            $container.empty();
+            sectionQuestionCounts[section] = {};
+            for (let i = 0; i < count; i++) {
+                let questionNumber = startQuestionNumber + i;
+                sectionQuestionCounts[section][questionNumber] = true;
 
-                        // Add appropriate question types based on section
-                        if (sectionPrefix === 'listening') {
-                            questionHtml += `
-                            <option value="multiple_choice">Multiple Choice</option>
-                            <option value="fill_blank">Fill in the Blank</option>
-                            <option value="matching">Matching</option>
-                            <option value="true_false">True/False/Not Given</option>`;
-                        } else if (sectionPrefix === 'reading') {
-                            questionHtml += `
-                            <option value="multiple_choice">Multiple Choice</option>
-                            <option value="true_false">True/False/Not Given</option>
-                            <option value="matching_headings">Matching Headings</option>
-                            <option value="fill_blank">Fill in the Blank</option>
-                            <option value="summary_completion">Summary Completion</option>`;
-                        }
-
-                        questionHtml += `
-                                </select>
-                            </div>
-                            <div class="question-content" id="question-content-${globalQuestionCounter}">
-                                
-                            </div>
+                let questionHtml = `<div class="question-group mb-4" data-question-number="${questionNumber}">
+                                    <h5>Question ${questionNumber}</h5>`;
+                if (sectionPrefix === 'speaking') {
+                    questionHtml += `
+                        <div class="form-group">
+                            <textarea class="form-control" name="speaking_part${questionNumber}_topic" placeholder="Question text" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="time_limit_${questionNumber}" placeholder="Time minute Limit (e.g., 1)" required>
                         </div>`;
-                    }
-
-                    $container.append(questionHtml);
-
-                    // Generate initial question content based on default selected type
-                    let $questionContent = $(`#question-content-${globalQuestionCounter}`);
-                    let defaultType = $(`select[data-question="${globalQuestionCounter}"]`).val();
-                    $questionContent.html(generateQuestionsByType(defaultType, $questionContent,
-                        globalQuestionCounter));
-
-                    globalQuestionCounter++;
+                } else {
+                    questionHtml += `
+                        <div class="form-group">
+                            <label>Question Type</label>
+                            <select class="form-control question-type-selector" data-question="${questionNumber}">
+                                ${sectionPrefix === 'listening' ? `
+                                    <option value="multiple_choice">Multiple Choice</option>
+                                    <option value="fill_blank">Fill in the Blank</option>
+                                    <option value="matching">Matching</option>
+                                    <option value="true_false">True/False/Not Given</option>` : ''}
+                                ${sectionPrefix === 'reading' ? `
+                                    <option value="multiple_choice">Multiple Choice</option>
+                                    <option value="true_false">True/False/Not Given</option>
+                                    <option value="matching_headings">Matching Headings</option>
+                                    <option value="fill_blank">Fill in the Blank</option>
+                                    <option value="summary_completion">Summary Completion</option>` : ''}
+                            </select>
+                        </div>
+                        <div class="question-content" id="question-content-${questionNumber}"></div>`;
                 }
-            }
+                questionHtml += `</div>`;
+                $container.append(questionHtml);
 
-            // Handle question type changes
-            $(document).on('change', '.question-type-selector', function() {
-                let questionNumber = $(this).data('question');
-                let selectedType = $(this).val();
                 let $questionContent = $(`#question-content-${questionNumber}`);
-                $questionContent.html(generateQuestionsByType(selectedType, $questionContent,
-                    questionNumber));
-            });
-
-            $input.on('input', function() {
-                // Reset global counter before updating if this is the first section
-                if (section === 'listening-section1') {
-                    globalQuestionCounter = 1;
+                let defaultType = $(`select[data-question="${questionNumber}"]`).val();
+                if (defaultType) {
+                    $questionContent.html(generateQuestionsByType(defaultType, $questionContent, questionNumber));
                 }
-                updateQuestions();
-            });
 
-            // Initial generation
-            if (section === 'listening-section1') {
-                globalQuestionCounter = 1;
+                if (i === count - 1) {
+                    globalQuestionCounter = questionNumber + 1;
+                }
             }
-            updateQuestions();
+
+            updateSubsequentSections(section);
         }
 
-        // Initialize all sections
+        function updateSubsequentSections(currentSection) {
+            let startUpdating = false;
+            for (let sec of allSections) {
+                if (sec === currentSection) {
+                    startUpdating = true;
+                    continue;
+                }
+                if (startUpdating) {
+                    let $nextInput = $(`#${sec}-count`);
+                    if ($nextInput.length) {
+                        let nextCount = parseInt($nextInput.val(), 10);
+                        $nextInput.val(nextCount).trigger('input');
+                    }
+                }
+            }
+        }
+
+        $input.on('input', updateQuestions);
+
+        $(document).on('change', '.question-type-selector', function() {
+            let questionNumber = $(this).data('question');
+            let selectedType = $(this).val();
+            let $questionContent = $(`#question-content-${questionNumber}`);
+            $questionContent.html(generateQuestionsByType(selectedType, $questionContent, questionNumber));
+        });
+
+        updateQuestions();
+    }
+
         generateQuestions('listening-section1', 'listening');
         generateQuestions('listening-section2', 'listening');
 
